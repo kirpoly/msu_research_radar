@@ -18,6 +18,7 @@ dependencies = [
   "rapidfuzz",
   "openpyxl",
   "tqdm",
+  "pyarrow",
 ]
 
 [project.scripts]
@@ -25,3 +26,9 @@ msu_research_radar = "msu_research_radar.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.pytest.ini_options]
+markers = [
+  "live_openalex: optional live integration test against OpenAlex API",
+]
+

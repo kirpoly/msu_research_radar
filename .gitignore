@@ -81,3 +81,11 @@ __marimo__/
 marimo/_static/
 marimo/_lsp/
 .streamlit/secrets.toml
+
+# Generated data artifacts (keep manual fixtures)
+msu_research_radar/data/raw/openalex/**
+msu_research_radar/data/interim/openalex_works.csv
+msu_research_radar/data/interim/openalex_works.parquet
+msu_research_radar/data/raw/istina/search_cache/**
+msu_research_radar/data/raw/istina/profiles/**
+msu_research_radar/data/interim/istina_profiles/**
