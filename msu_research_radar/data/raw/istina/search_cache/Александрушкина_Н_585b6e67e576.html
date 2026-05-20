@@ -1,0 +1,618 @@
+
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+
+<head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    
+
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <!-- for Firefox -->
+    <link rel="shortcut icon" href="/static/base/img/favicon.png" type="image/x-icon" />
+    
+
+    
+    <!-- Blueprint CSS framework -->
+    <link rel="stylesheet" href="/static/base/css/blueprint/screen.css" type="text/css" media="screen, projection" charset="utf-8" />
+    <link rel="stylesheet" href="/static/base/css/blueprint/print.css" type="text/css" media="print" charset="utf-8" />
+    <!--[if IE]><link rel="stylesheet" href="/static/base/css/blueprint/ie.css" type="text/css" media="screen, projection" charset="utf-8" /><![endif]-->
+    <!-- /Blueprint CSS framework -->
+    <link rel="stylesheet" href="/static/base/css/redmond/jquery-ui-1.8.23.custom.css" type="text/css" media="all" charset="utf-8" />
+    <link rel="stylesheet" href="/static/userprofile/css/django-profile.css" type="text/css" media="all" charset="utf-8" />
+    <link rel="stylesheet" href="/static/base/css/base.css" type="text/css" media="all" charset="utf-8" />
+    <!-- Misc tools -->
+    <link rel="stylesheet" href="/static/base/css/tabs.css" type="text/css" media="all" charset="utf-8" />
+    
+    
+<link rel="stylesheet" href="/static/base/css/pagination.css" type="text/css" media="all" charset="utf-8" />
+<link rel="stylesheet" href="/static/base/css/list.css" type="text/css" media="all" charset="utf-8" />
+<link rel="stylesheet" href="/static/base/css/detail.css" type="text/css" media="all" charset="utf-8" />
+<link rel="stylesheet" href="/static/base/css/search_results.css" type="text/css" media="all" charset="utf-8" />
+
+
+    
+
+    
+    <script type="text/javascript" src="/static/base/js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="/static/base/js/jquery-ui-1.8.23.custom.min.js"></script>
+    <script type="text/javascript" src="/static/base/js/base.js"></script>
+    
+    <script>
+        var csrf_token = 'BuzOoUlEXyL4AxBMo1IsAE3mhnObgsjhyaqcteJjtxRFIVWIH3wzIxHkr3DCmwAV';
+
+
+        $(function(){
+            //Скрыть PopUp при загрузке страницы
+            $("#popup1").hide();
+            if ( $( "td strong.authenticated" ).length ) {
+                $("#email_field_for_nonauth").hide();
+            }
+
+        });
+        //Функция отображения PopUp
+        function PopUpShow(){
+            $("#popup1").show();
+        }
+        //Функция отображения PopUp
+        function PopUpShowCategory(category){
+            $("#popup1").show();
+            $("#helpdesk_issue_category").val(category);
+        }
+        //Функция скрытия PopUp
+        function PopUpClose(){
+            $("#popup1").hide();
+            $("p#issue_create_result").text("");
+            $("#helpdesk_issue").show();
+            $(".b-popup-content").css("height", "500");
+            //$("textarea#helpdesk_issue_descr").val("");
+            $("p#issue_create_result").css('color', 'black');
+        }
+    function validateEmail($email) {
+        if ($email.length == 0)
+            return false;
+        var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+        return emailReg.test( $email );
+    }
+    $(function(){
+    $('input#helpdesk_issue_create').click(function(event) { // catch the form's submit event
+       event.preventDefault();
+        //here we should validate our fields
+       $('input#helpdesk_issue_create').prop('disabled', true);
+       var category = $(this).parent().children('#helpdesk_issue_category').val();
+       //var subject = $(this).parent().children('#helpdesk_issue_subj').val();
+       var description = $('textarea#helpdesk_issue_descr').val();
+       var subject = $('input#helpdesk_issue_subj').val();
+       var user_email = $('input#helpdesk_issue_useremail').val();
+       var email_valid = (($( "td strong.authenticated" ).length ) || (validateEmail(user_email)))
+       if ( (description != "") && email_valid ){
+           dataSource = {'category' :  category,  'description' : description, 'subject' : subject, 'user_email' : user_email};
+           $.ajax({
+               "url" : "/common/add_ticket/",
+               "data" : dataSource,
+               "dataType" : "JSON",
+               "type" : "POST",
+               "headers": { 'X-CSRFToken': 'BuzOoUlEXyL4AxBMo1IsAE3mhnObgsjhyaqcteJjtxRFIVWIH3wzIxHkr3DCmwAV' },
+               success : function(result){
+                  $("p#issue_create_result").text("Обращение с номером " + result['new_ticket_id'] + " было успешно создано! На адрес Вашей электронной почты в ближайшее время будет отправлено письмо с результатами рассмотрения Вашего обращения.");
+                  $("p#issue_create_result").css("font-weight","Bold");
+                  $("p#issue_create_result").css("font-size", "20");
+                  $(".b-popup-content").css("height", "100");
+                  $("#helpdesk_issue").hide();
+                  $("p#issue_create_result").css('color', 'black');
+                  $('input#helpdesk_issue_create').prop('disabled', false);
+                  $("input#helpdesk_issue_subj").val("");
+                  $("textarea#helpdesk_issue_descr").val("");
+               },
+               error : function(result){
+                  $('input#helpdesk_issue_create').prop('disabled', false);
+                  $("p#issue_create_result").text("Произошла ошибка при создании обращения. Попробуйте перезагрузить страницу и заново создать обращение.");
+                  $("p#issue_create_result").css('color', 'red');
+               }
+           });
+       }
+       else {
+           if (description == "") {
+                $("p#issue_create_result").text("Для создания обращения необходимо заполнить описание обращения. ");
+                $("p#issue_create_result").css('color', 'red');
+           }
+           if (!email_valid) {
+                $("p#issue_create_result").text("Необходимо ввести корректный почтовый адрес");
+                $("p#issue_create_result").css('color', 'red');
+                $('input#helpdesk_issue_create').prop('disabled', false);
+
+           }
+       }
+       return false;
+   });
+   });
+
+
+
+
+    </script>
+
+
+
+    <script>
+    $(function() {
+        $( "#question_pop_window.info[is_active='True']").attr('title', 'Новое информационное сообщение');
+        $( "#question_pop_window.info[is_active='True']" ).dialog({
+            close: function() {
+                queue_id = $(this).attr("queue_id");
+                dataSource = {'queue_id' :  queue_id};
+                $.ajax({
+                   "url" : "/questions/set_answered/",
+                   "data" : dataSource,
+                   "dataType" : "JSON",
+                   "type" : "GET",
+                   "headers": { 'X-CSRFToken': 'BuzOoUlEXyL4AxBMo1IsAE3mhnObgsjhyaqcteJjtxRFIVWIH3wzIxHkr3DCmwAV' },
+                   success : function(result){
+                   },
+                   error : function(result){
+                   }
+                });
+            }
+        });
+
+    });
+    </script>
+
+    
+    
+<script type="text/javascript" src="/static/base/js/search_paginating.js"></script>
+
+    
+    
+    
+    
+
+
+
+    
+
+    <title>Результаты поиска | ИСТИНА – Интеллектуальная Система Тематического Исследования НАукометрических данных</title>
+
+    
+    
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-27629404-1']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+
+    <!-- Yandex.Metrika counter -->
+<script type="text/javascript" >
+    (function (d, w, c) {
+        (w[c] = w[c] || []).push(function() {
+            try {
+                w.yaCounter45923424 = new Ya.Metrika({
+                    id:45923424,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true,
+                    webvisor:true,
+                    trackHash:true,
+                    ut:"noindex"
+                });
+            } catch(e) { }
+        });
+
+        var n = d.getElementsByTagName("script")[0],
+            s = d.createElement("script"),
+            f = function () { n.parentNode.insertBefore(s, n); };
+        s.type = "text/javascript";
+        s.async = true;
+        s.src = "https://mc.yandex.ru/metrika/watch.js";
+
+        if (w.opera == "[object Opera]") {
+            d.addEventListener("DOMContentLoaded", f, false);
+        } else { f(); }
+    })(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/45923424?ut=noindex" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+
+
+    
+    
+</head>
+
+<body class="js_off ">
+<style>
+    .left   {text-align:left;}
+    .center {text-align:center;}
+    .right  {text-align:right;}
+    .top    {vertical-align: text-top;}
+    .top_table {
+        /* background-color: #ff0000; */
+        border-collapse: separate;
+        border-spacing: 0px; /* cellspacing */
+        *border-collapse: expression('separate', cellSpacing = '0px'); /* see http://stackoverflow.com/questions/339923/how-to-set-cellpadding-and-cellspacing-in-css */
+    }
+    .top_table td { padding: 2px; }
+    .top_table .istina_name { padding: 0px; }
+
+
+
+
+
+.b-popup{
+    width:100%;
+    min-height:100%;
+    background-color: rgba(0,0,0,0.5);
+    overflow:hidden;
+    position:fixed;
+    top:0px;
+    z-index: 100;
+}
+.b-popup .b-popup-content{
+    margin:40px auto 0px auto;
+    width:500px;
+    height: 550px;
+    padding:10px;
+    background-color: #c5c5c5;
+    border-radius:5px;
+    box-shadow: 0px 0px 10px #000;
+}
+
+
+</style>
+
+
+
+
+    <script type="text/javascript">document.body.className = document.body.className.replace("js_off", "js_on"); </script>
+
+    <div id="question_pop_window" class="" is_active="" queue_id=""></div>
+
+    <div class="b-popup" id="popup1" style="display: none;">
+    <div class="b-popup-content">
+        <div id="helpdesk_issue">
+Выберите категорию обращения:
+<select id="helpdesk_issue_category">
+  <option value="Общие_вопросы">Общие вопросы</option>
+  <option value="Отчеты">Отчеты</option>
+  <option value="Рейтинги">Рейтинги</option>
+  <option value="Отчет_мониторинг">Мониторинговый отчёт</option>
+  <option value="Диссертационные_советы">Диссертационные советы</option>
+  <option value="Конкурсы">Конкурсы</option>
+  <option value="Ввод_данных">Ввод данных</option>
+  <option value="Структура_организаций">Структура организаций</option>
+  <option value="Аспирантура">Аспирантура</option>
+  <option value="Научное_оборудование">Научное оборудование</option>
+  <option value="Импорт_педагогической_нагрузки">Импорт педагогической нагрузки</option>
+  <option value="Журналы_и_импакт-факторы">Журналы и импакт-факторы</option>
+</select>
+<br />
+<br />
+
+<p style="text-align: center;margin: 0;">Тема обращения:
+<input type="text" id="helpdesk_issue_subj" title="Введите тему обращения"  style="margin: 0 auto; display:block;"/>
+</p>
+
+
+<p style="text-align: center;margin: 0;">Описание проблемы: </p>
+
+<textarea rows="20" cols="50" id="helpdesk_issue_descr" style="display: block;     margin-left: auto;     margin-right: auto; resize:none;">
+</textarea>
+
+<br />
+<p id="email_field_for_nonauth" style="text-align: center;margin: 0;">Введите почтовый адрес:
+<input type="text" id="helpdesk_issue_useremail" title="Введите почтовый адрес"  style="margin: 0 auto; display:block;"/>
+</p>
+<br />
+
+<input id="helpdesk_issue_create" type="submit" value="Создать обращение" title="Отправить сообщение администраторам системы" style="margin: 0 auto; display:block; min-width: 300px;"/>
+</div>
+        <p id="issue_create_result" style="margin: 0; text-align: center;"></p>
+        <br />
+        <input id="helpdesk_close_popup" type="submit" value="Закрыть окно" title="Закрыть окно создания обращения" onClick="javascript:PopUpClose()" style="display: block;    margin: 0 auto; min-width: 300px;"/>
+    </div>
+    </div>
+
+    
+
+
+    <div class="container">
+        <div id="header">
+            
+             <table class="top_table">
+               <tr>
+                  <td rowspan="3" style="padding-right: 10px; vertical-align: bottom;">
+                    <a href="/" title="Перейти на главную страницу">
+                      <img src="/static/base/img/logo-msu-150x148.png" width="90px" alt="ИСТИНА" style="display: block;" />
+                    </a>
+                  </td>
+                  <td width="40%">
+                    <h1>ИСТИНА</h1>
+                  </td>
+                  <td class="right">
+                     
+                        <a href="/accounts/login/" title="Перейти на страницу входа в систему"><b>Войти&nbsp;в&nbsp;систему</b></a><br/>
+                        <a href="/accounts/register/" title="Перейти на страницу регистрации в системе">Регистрация</a>
+                      
+                  </td>
+                </tr>
+                <tr><td colspan="2" class="left"> 
+                  <h3>Интеллектуальная Система Тематического Исследования НАукометрических данных</h3>
+                </td>
+                </tr>
+                <tr class="top"><td colspan="2">
+                  <ul id="upper_navigation">
+                     <li><a href="/" title="Перейти на главную страницу">Главная</a></li>
+                     
+                    <li><a href="/search/">Поиск</a></li>
+                    <li><a href="/statistics/activity/">Статистика</a></li>
+                    <li><a href="/about/">О проекте</a></li>
+                    <li><a href="/help/">Помощь</a></li>
+                    
+                  </ul>
+               </td></tr>
+              
+              </table>
+            <hr class="margin" />
+            
+        </div>
+
+        
+        
+        
+        
+
+        
+        
+        
+        
+
+        
+
+
+
+<input type="hidden" id="id_search_string" value="Александрушкина Н">
+
+<form id="id_worker_search" class="search_form"  action="/workers/worker_search/" method="get">
+    <input type="text" value="Александрушкина Н" name="s" class="search_box" >
+    <input type="submit"  value="Поиск" title="Поиск по базе зарегистрированных сотрудников" />
+</form>
+
+<h2>Результаты поиска:</h2>
+
+
+
+
+
+
+<div>
+    
+        <div class="worker_short span-24 last">
+            <div class="span-2">
+    
+        <a href="/profile/AleksandrushkinaNI/" title="Перейти на страницу сотрудника">
+            
+<img class="border" alt="AleksandrushkinaNI" src="/media/userprofile/generic.64.jpg" />
+
+        </a>
+    
+</div>
+
+<div class="span-22 last">
+    <h3>
+        <a href="/workers/1243021/" title="Перейти на страницу сотрудника">Александрушкина Надежда Ивановна</a>
+        <span class="detail_label">AleksandrushkinaNI</span>
+    </h3>
+</div>
+
+
+<div class="span-22 last">
+    
+        <div>
+            <a href="/organizations/214524/" title="Перейти на страницу организации">МГУ имени М.В. Ломоносова</a>, <a href="/organizations/department/276005/" title="Перейти на страницу подразделения">Научно-исследовательский институт физико-химической биологии имени А.Н.Белозерского</a>, <a href="/organizations/department/2308502/" title="Перейти на страницу подразделения">Отдел научной информации</a>, ведущий инженер, с 1 октября 2025
+        </div>
+    
+
+
+    
+        <div>
+            Соавторы:
+            
+                
+                    <a href="/workers/8020439/" title="Перейти на страницу сотрудника">Ванюшин Б.Ф.</a>, 
+                
+                    <a href="/workers/2260092/" title="Перейти на страницу сотрудника">Кирнос М.Д.</a>, 
+                
+                    <a href="/workers/2829141/" title="Перейти на страницу сотрудника">Кутуева Л.И.</a>, 
+                
+                    <a href="/workers/1003667/" title="Перейти на страницу сотрудника">Kirnos M.D.</a>, 
+                
+                    <a href="/workers/2773060/" title="Перейти на страницу сотрудника">Ашапкин В.В.</a>, 
+                
+                    <a href="/workers/2258098/" title="Перейти на страницу сотрудника">Кирьянов Г.И.</a>, 
+                
+                    <a href="/workers/2147152/" title="Перейти на страницу сотрудника">Бакеева Л.Е.</a>, 
+                
+                    <a href="/workers/2540387/" title="Перейти на страницу сотрудника">Фетисова З.Г.</a>
+                
+            
+            
+            и др.
+            
+        </div>
+    
+
+    
+        <div>81 статья, 1 книга, 6 докладов на конференциях, 9 тезисов докладов, 4 НИР, 1 научный отчёт</div>
+    
+</div>
+
+
+
+
+
+
+            
+        </div>
+    
+        <div class="worker_short span-24 last">
+            <div class="span-2">
+    
+        <a href="/profile/N.Alexandrushkina/" title="Перейти на страницу сотрудника">
+            
+<img class="border" alt="N.Alexandrushkina" src="/media/userprofile/generic.64.jpg" />
+
+        </a>
+    
+</div>
+
+<div class="span-22 last">
+    <h3>
+        <a href="/workers/50264918/" title="Перейти на страницу сотрудника">Александрушкина Наталья Андреевна</a>
+        <span class="detail_label">N.Alexandrushkina</span>
+    </h3>
+</div>
+
+
+<div class="span-22 last">
+    
+        <div>
+            <a href="/organizations/214524/" title="Перейти на страницу организации">МГУ имени М.В. Ломоносова</a>, <a href="/organizations/department/708037354/" title="Перейти на страницу подразделения">Медицинский научно-образовательный институт</a>, <a href="/organizations/department/58239218/" title="Перейти на страницу подразделения">Центр регенеративной медицины МНОИ МГУ</a>, <a href="/organizations/department/58239330/" title="Перейти на страницу подразделения">Лаборатория медицинской биоинженерии</a>, научный сотрудник, с 7 февраля 2025
+        </div>
+    
+
+
+    
+        <div>
+            Соавторы:
+            
+                
+                    <a href="/workers/532685/" title="Перейти на страницу сотрудника">Ефименко А.Ю.</a>, 
+                
+                    <a href="/workers/539640/" title="Перейти на страницу сотрудника">Макаревич П.И.</a>, 
+                
+                    <a href="/workers/37827831/" title="Перейти на страницу сотрудника">Басалова Н.А.</a>, 
+                
+                    <a href="/workers/56455618/" title="Перейти на страницу сотрудника">Григорьева О.А.</a>, 
+                
+                    <a href="/workers/322050820/" title="Перейти на страницу сотрудника">Виговский М.А.</a>, 
+                
+                    <a href="/workers/10267590/" title="Перейти на страницу сотрудника">Еремичев Р.Ю.</a>, 
+                
+                    <a href="/workers/39514025/" title="Перейти на страницу сотрудника">Новоселецкая Е.С.</a>, 
+                
+                    <a href="/workers/2297682/" title="Перейти на страницу сотрудника">Ткачук В.А.</a>
+                
+            
+            
+            и др.
+            
+        </div>
+    
+
+    
+        <div>56 статей, 1 книга, 55 докладов на конференциях, 45 тезисов докладов, 26 НИР, 2 патента, 1 диссертация, 1 дипломная работа, 1 выступление в СМИ</div>
+    
+</div>
+
+
+
+
+
+
+            
+        </div>
+    
+        <div class="worker_short span-24 last">
+            <div class="span-2">
+    
+        <a href="/workers/5320821/" title="Перейти на страницу сотрудника">
+            
+<img class="border" alt="Александрушкина Кирьянов Н.И.Г.И" src="/media/userprofile/generic.64.jpg" />
+
+        </a>
+    
+</div>
+
+<div class="span-22 last">
+    <h3>
+        <a href="/workers/5320821/" title="Перейти на страницу сотрудника">Александрушкина Кирьянов Н.И.Г.И</a>
+        
+    </h3>
+</div>
+
+
+<div class="span-22 last">
+    
+
+
+    
+        <div>
+            Соавторы:
+            
+                
+                    <a href="/workers/5320584/" title="Перейти на страницу сотрудника">Башките Е.А.</a>, 
+                
+                    <a href="/workers/8020439/" title="Перейти на страницу сотрудника">Ванюшин Б.Ф.</a>, 
+                
+                    <a href="/workers/2260092/" title="Перейти на страницу сотрудника">Кирнос М.Д.</a>
+                
+            
+            
+        </div>
+    
+
+    
+        <div>1 тезисы доклада</div>
+    
+</div>
+
+
+
+
+
+
+            
+        </div>
+    
+</div>
+
+
+
+
+
+
+        
+        <div id="footer" class="span-24 last">
+            <hr class="margin" />
+            <div class="span-24 last append-bottom">
+                <div class="span-18">
+                    &nbsp;
+                </div>
+                <div class="span-6 last">
+                    <span class="quiet">
+                        © 2011-2025 <a href="http://www.imec.msu.ru/" title="Перейти на официальный веб-сайт НИИ механики МГУ">НИИ механики МГУ</a>. <br/>
+                        <span title="Лаборатория 404. Найдём, что сможем ;)">Лаборатория 404.</span><br/>
+                        Все права защищены.</span><br/>
+                        <a href="/common/legal/terms/">Правила пользования</a><br/>
+                    <a href="/help/feedback/" title="Перейти на страницу обратной связи" target="_blank">обратная связь</a>
+
+                    <div class="b-container">
+                        <a href="javascript:PopUpShow()">Создать обращение в службу поддержки пользователей</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+    </div> <!-- /container -->
+
+</body>
+</html>

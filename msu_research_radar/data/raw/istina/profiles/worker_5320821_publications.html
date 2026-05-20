@@ -1,0 +1,620 @@
+
+
+
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+
+    
+    
+
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <!-- for Firefox -->
+    <link rel="shortcut icon" href="/static/base/img/favicon.png" type="image/x-icon" />
+    
+
+    
+    
+
+      <!-- Bootstrap -->
+      <link href="/static/base/css/bootstrap-4.5-istina.min.css" rel="stylesheet">
+      <link href="/static/base/css/base_bootstrap4.css" rel="stylesheet">
+      <link href="/static/base/bootstrap-4.1.2/css/fontawesome-all.min.css" rel="stylesheet">
+    
+<link rel="stylesheet" href="/static/workers/css/public_custom.css" type="text/css"/>
+
+    
+
+    
+
+    
+
+    <script>
+      var csrf_token = 'IRPkd6u0Xn9KjegQ1mppqKnCqoYxgHSfmK2U83ItlYLvKWUduS1jJhhlLE7121Yt';
+
+      function toggleSidebarPosition() {
+        const sidebar = document.getElementById("sidebar");
+        sidebar.classList.toggle("order-11");
+        sidebar.classList.toggle("mr-lg-2");
+        sidebar.classList.toggle("mr--30");
+        const button = document.querySelector('[data-target="#sidebar"]')
+        button.classList.toggle("order-11");
+        button.classList.toggle("mr--46");
+      }
+    </script>
+    
+    
+    <script src="https://sentry.istina.msu.ru/js-sdk-loader/a7158f42d39244479d32dae0a896bcc5.min.js"></script>
+    <script>
+      Sentry.init({
+        dsn: "https://a7158f42d39244479d32dae0a896bcc5:def6725be15c4e5fb0425df80a58d11a@sentry.istina.msu.ru/5",
+        tracesSampleRate: 1.0,
+      })
+    </script>
+    
+
+    <script src="/static/base/js/jquery-3.3.1.min.js"></script>
+    <script src="/static/base/bootstrap-4.5.2/bootstrap.bundle.min.js"></script>
+    <script src="/static/base/js/helpdesk.js"></script>
+    <script src="/static/base/js/array-flat-polyfill.js"></script>
+    
+    
+
+    
+<script src="/static/base/js/base.js"></script>
+<script src="/static/base/js/filter_activities.js"></script>
+
+
+    
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <title>Александрушкина Кирьянов Н.И.Г.И — профиль | ИСТИНА</title>
+
+    
+    
+    <script>
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-27629404-1']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    <!-- Yandex.Metrika counter -->
+<script type="text/javascript" >
+    (function (d, w, c) {
+        (w[c] = w[c] || []).push(function() {
+            try {
+                w.yaCounter45923424 = new Ya.Metrika({
+                    id:45923424,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true,
+                    webvisor:true,
+                    trackHash:true,
+                    ut:"noindex"
+                });
+            } catch(e) { }
+        });
+
+        var n = d.getElementsByTagName("script")[0],
+            s = d.createElement("script"),
+            f = function () { n.parentNode.insertBefore(s, n); };
+        s.type = "text/javascript";
+        s.async = true;
+        s.src = "https://mc.yandex.ru/metrika/watch.js";
+
+        if (w.opera == "[object Opera]") {
+            d.addEventListener("DOMContentLoaded", f, false);
+        } else { f(); }
+    })(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/45923424?ut=noindex" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+
+    
+    
+
+  </head>
+
+  <body>
+   <div class="modal" id="helpdesk_modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Создать обращение в службу поддержки пользователей</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Закрыть">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="alert alert-success" role="alert" id="helpdesk_alert_success">
+          Обращение успешно создано! Ему присвоен номер <span id="new_ticket_id">0</span>.
+          <br/>
+          На адрес Вашей электронной почты отправлено письмо о регистрации обращения.
+          Вы можете ответить на него, если хотите предоставить дополнительную информацию
+          или прикрепить файлы.
+        </div>
+        <div class="alert alert-danger" role="alert" id="helpdesk_alert_failure">
+          Произошла ошибка при создании обращения.  Попробуйте перезагрузить страницу и заново создать обращение.
+        </div>
+        <form id="helpdesk_form" method="POST" action="/common/add_ticket/">
+          <div class="form-group">
+            <label for="helpdesk_issue_category" class="col-form-label">Выберите категорию обращения:</label>
+            <select class="form-control" id="helpdesk_issue_category" name="category">
+              <option value="Общие_вопросы">Общие вопросы</option>
+              <option value="Отчеты">Отчёты</option>
+              <option value="Рейтинги">Рейтинги</option>
+              <option value="Отчет_мониторинг">Мониторинговый отчёт</option>
+              <option value="Диссертационные_советы">Диссертационные советы</option>
+              <option value="Конкурсы">Конкурсы</option>
+              <option value="Ввод_данных">Ввод данных</option>
+              <option value="Структура_организаций">Структура организаций</option>
+              <option value="Аспирантура">Аспирантура</option>
+              <option value="Научное_оборудование">Научное оборудование</option>
+              <option value="Импорт_педагогической_нагрузки">Импорт педагогической нагрузки</option>
+              <option value="Журналы_и_импакт-факторы">Журналы и импакт-факторы</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="helpdesk_issue_subj" class="col-form-label">Тема обращения:</label>
+            <input type="text" class="form-control" id="helpdesk_issue_subj" name="subject" placeholder="Коротко опишите тему Вашего вопроса" required="required" />
+          </div>
+          <div class="form-group">
+            <label for="helpdesk_issue_descr" class="col-form-label">Описание проблемы:</label>
+            <textarea class="form-control" id="helpdesk_issue_descr" name="description" rows="7" required="required"></textarea>
+          </div>
+          
+          <div class="form-group">
+            <label for="helpdesk_issue_useremail" class="col-form-label">Введите почтовый адрес:</label>
+            <input type="email" class="form-control" id="helpdesk_issue_useremail" name="user_email" placeholder="Например, user@example.com" required="required" />
+          </div>
+          
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" title="Закрыть окно создания обращения" data-dismiss="modal">Закрыть окно</button>
+        <button type="button" class="btn btn-primary" title="Отправить сообщение администраторам системы" id="helpdesk_issue_create">Создать обращение</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+      
+      
+
+<!-- Modal for logout confirmation -->
+<form class="form-inline" action="/accounts/logout/" method="GET">
+  
+
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="label_for_logoutModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" style="display: inline;" id="label_for_logoutModal">Подтверждение выхода</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body">
+        Вы действительно хотите завершить сессию?
+      </div>
+      <div class="modal-footer">
+        
+          <button type="button" class="btn btn-light" data-dismiss="modal">Нет</button>
+          <button type="submit" class="btn btn-primary pull-right">Да</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+</form>
+
+<script src="/static/notifications/notify.js" type="text/javascript"></script>
+
+<nav class="navbar navbar-light navbar-expand-lg">
+  
+  <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+    <span class="sr-only">Toggle navigation</span>
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div id="navbar" class="nav navbar-collapse collapse">
+    <div class="container-fluid mb-0 px-0">
+      <a class="navbar-brand mb-auto" href="/">
+        <img src="/static/base/img/logo-msu-150x148.png" class="image main-logo" alt="ИСТИНА" />
+      </a>
+      <a href="/" class="h1 mb-0 text-body" title="Главная страница">ИСТИНА</a>
+      <div class="text-right lg-small flex-lg-grow-1">
+        
+          <div>
+            <a href="/accounts/login/" title="Перейти на страницу входа в систему"><b>Войти&nbsp;в&nbsp;систему</b> <span class="fa fa-sign-in-alt" aria-hidden="true"></span></a>
+          </div>
+          <div>
+            <a href="/accounts/register/" title="Перейти на страницу регистрации в системе">Регистрация</a>
+          </div>
+        
+      </div>
+    </div>
+      <ul class="container-fluid nav row ml-n3">
+        <li class="nav-item btn-primary btn rounded-0 border-0 mr-2"  style="visibility: hidden;" >
+          <span class="nav-link"><i class="fa fa-angle-double-down"></i></span>
+        </li>
+        
+        
+          <li id="profile.home"
+              class="nav-item 
+                    "
+              title="Главная страница работника Александрушкина Кирьянов Н.И.Г.И">
+             
+              
+                <a class="nav-link"  href="/workers/5320821/" >
+                  <span class="fas fa-user"></span>
+                </a>
+              
+            
+          </li>
+        
+        
+        
+          <li id="profile.topics"
+              class="nav-item 
+                    "
+              title="Область научных интересов по направлениям исследований">
+             
+              
+                <span class="nav-link disabled">Область интересов</span>
+              
+            
+          </li>
+        
+        
+        
+          <li id="profile.publications"
+              class="nav-item 
+                     active "
+              title="Статьи, тезисы и книги работника">
+             
+              
+                <a class="nav-link"  href="/workers/5320821/publications/" >
+                  Публикации
+                </a>
+              
+            
+          </li>
+        
+        
+        
+          <li id="profile.projects"
+              class="nav-item 
+                    "
+              title="Научно-исследовательские и опытно-конструкторские работы">
+             
+              
+                <span class="nav-link disabled">НИР и НИОКР</span>
+              
+            
+          </li>
+        
+        
+        
+          <li id="profile.talks"
+              class="nav-item 
+                    "
+              title="Доклады на научных конференциях и выступления в СМИ">
+             
+              
+                <span class="nav-link disabled">Доклады</span>
+              
+            
+          </li>
+        
+        
+        
+          <li id="profile.teaching"
+              class="nav-item 
+                    "
+              title="Учебные курсы и научное руководство">
+             
+              
+                <span class="nav-link disabled">Учебная работа</span>
+              
+            
+          </li>
+        
+        
+        
+          <li id="profile.innovation"
+              class="nav-item 
+                    "
+              title="Патенты и свидетельства о регистрации прав на ПО">
+             
+              
+                <span class="nav-link disabled">Инновации</span>
+              
+            
+          </li>
+        
+        
+        
+          <li id="profile.misc"
+              class="nav-item 
+                    "
+              title="Членства в научных коллективах, награды и премии, отчёты, стажировки">
+             
+              
+                <span class="nav-link disabled">Прочее</span>
+              
+            
+          </li>
+        
+        
+        
+          <li id="profile.all"
+              class="nav-item 
+                    "
+              title="Все результаты деятельности на одной странице">
+             
+              
+                <a class="nav-link"  href="/workers/5320821/all/" >
+                  Все результаты
+                </a>
+              
+            
+          </li>
+        
+        
+        <li class="mx-auto"></li>
+      </ul>
+  </div><!--/.nav-collapse -->
+</nav>
+
+      
+<div class="container-fluid flex-lg-nowrap row mr-2">
+  <nav class="  nav col-lg-2 bg-primary collapse pr-0 mr-lg-2 mb-2 mb-lg-0 align-items-start" id="sidebar">
+  <div class="pr-0 pt-2 w-100">
+    
+        
+
+
+
+    
+  </div>
+  </nav>
+
+  <div class="col">
+  
+  
+  
+  
+<div class="modal fade" id="delete-worker-modal" tabindex="-1" role="dialog" aria-labelledby="delete-worker-modal-label" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="delete-worker-modal-label">Удаление сотрудника</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Закрыть">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Вы действительно хотите удалить сотрудника?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+        <a role="button" class="btn btn-danger" href="/common/delete_if_no_related_objects/86/5320821/">Удалить</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3 personal-info hidden-sm hidden-xs border-right">
+    <div class="container-fluid">
+      
+      <div>
+        
+<img class="border" alt="Александрушкина Кирьянов Н.И.Г.И" src="/media/userprofile/generic.128.jpg" />
+
+      </div>
+      
+      <a class="fullname" href="/workers/5320821/">Александрушкина Кирьянов Н.И.Г.И</a>
+      
+      
+
+      
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+      
+
+      <div>
+        IstinaResearcherID (IRID): 5320821
+      </div>
+
+      
+
+      
+
+      
+      
+
+      
+      
+    </div>
+  </div>
+
+  <div class="col-md-9">
+    
+
+
+
+
+
+<div class="mb-4">
+  <input type="text" id="filter_activities" placeholder="Поиск" title="Введите текст для фильтрации результатов, например, фрагмент названия, фамилию соавтора или журнал" />
+  <input type="number" id="year_begin" min="1900" max="2100" value="1900" title="Выберите год для отображения результатов, опубликованных не ранее этого года" /> –
+  <input type="number" id="year_end" min="1900" max="2100" value="2100" title="Выберите год для отображения результатов, опубликованных не позднее этого года" />
+
+  
+</div>
+
+
+<section id="theses">
+  <h3 class="activity_label">Тезисы докладов</h3>
+
+  <div class="activities-block">
+    
+      <ul>
+      
+        <li>
+          <div class="float-left">
+
+
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="1980"><!-- article short information -->
+    <li>
+        <b>
+        
+            1980
+        
+        </b>
+        
+            <a href="/publications/article/5320822/" title="Перейти на страницу статьи">Метилирование вновь синтезируемой ДНК в суспензионной культуре клеток табака</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            <a href="/workers/5320584/" title="Башките Е.А. (перейти на страницу сотрудника)">Башките Е.А.</a>, 
+            
+            <a href="/workers/8020439/" title="Ванюшин Борис Федорович (перейти на страницу сотрудника)">Ванюшин Б.Ф.</a>, 
+            
+            <a href="/workers/2260092/" title="Кирнос М.Д. (перейти на страницу сотрудника)">Кирнос М.Д.</a>, 
+            
+            <a href="/workers/5320821/" title="Александрушкина Кирьянов Н.И.Г.И (перейти на страницу сотрудника)">Александрушкина Кирьянов Н.И.Г.И</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+            
+            
+
+            
+                в сборнике <i><a href="/collections/5320774/" title="Перейти на страницу сборника">Мутагенные факторы и создание селекционного материала</a></i>, место издания <i>Вильнюс</i>, том&nbsp;53, тезисы, с.&nbsp;52-52
+            
+
+            
+            
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+      </ul>
+    
+  </div>
+</section>
+
+
+
+
+  </div>
+</div>
+
+  </div>
+</div>
+
+
+<footer>
+  <hr class="mt-0"/>
+  <div class="container-fluid small justify-content-between row">
+    <div class="nav-link">
+      
+      Интеллектуальная Система Тематического Исследования НАукометрических данных <br/>
+      © 2011-2025 <span title="Лаборатория 404. Найдём, что сможем ;)" ondblclick="toggleSidebarPosition()">Лаборатория 404.</span> <a href="http://www.imec.msu.ru/" title="Перейти на официальный веб-сайт НИИ механики МГУ">НИИ механики МГУ</a>.
+      
+    </div>
+
+    <div class="nav">
+    <a href="/common/legal/terms/" class="nav-link text-linkblue">Правила пользования</a><br/>
+    <a href="/help/" class="nav-link text-linkblue">Помощь</a>
+    </div>
+    
+    <div class="nav">
+      <a href="#" class="nav-link text-linkblue" data-toggle="modal" data-target="#helpdesk_modal">
+        Создать обращение
+      </a>
+      <a href="/help/feedback/" class="nav-link text-linkblue">
+        Обратная связь
+      </a>
+    </div>
+  </div>
+</footer>
+
+<script>
+if (window.matchMedia("(max-width: 992px)").matches) {
+  document.getElementById("sidebar").classList.remove("show");
+}
+</script>
+  </body>
+</html>
+

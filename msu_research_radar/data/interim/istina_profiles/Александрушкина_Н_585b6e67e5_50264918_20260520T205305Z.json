@@ -1,0 +1,105 @@
+{
+  "query": "Александрушкина Н",
+  "article_title": "Reconceptualizing Mesenchymal Stromal Cell Sheets: From Delivery Tool to Models of Morphogenesis.",
+  "input_coauthors": [],
+  "selection_mode": "single exact title match",
+  "chosen_candidate": {
+    "name": "Александрушкина Наталья Андреевна",
+    "profile_url": "https://istina.msu.ru/profile/N.Alexandrushkina/",
+    "worker_url": "https://istina.msu.ru/workers/50264918/",
+    "snippet": "Александрушкина Наталья Андреевна N.Alexandrushkina МГУ имени М.В. Ломоносова , Медицинский научно-образовательный институт , Центр регенеративной медицины МНОИ МГУ , Лаборатория медицинской биоинженерии , научный сотрудник, с 7 февраля 2025 Соавторы: Ефименко А.Ю. , Макаревич П.И. , Басалова Н.А. , Григорьева О.А. , Виговский М.А. , Еремичев Р.Ю. , Новоселецкая Е.С. , Ткачук В.А. и др. 56 статей, 1 книга, 55 докладов на конференциях, 45 тезисов докладов, 26 НИР, 2 патента, 1 диссертация, 1 дипломная работа, 1 выступление в СМИ",
+    "affiliation_hint": "МГУ имени М.В. Ломоносова , Медицинский научно-образовательный институт , Центр регенеративной медицины МНОИ МГУ , Лаборатория медицинской биоинженерии , научный сотрудник, с 7 февраля 2025"
+  },
+  "chosen_match": {
+    "score": 100.0,
+    "title_exact_norm": true,
+    "title_fuzzy": 100.0,
+    "coauthor_overlap": [],
+    "matched_publication_title": "Reconceptualizing Mesenchymal Stromal Cell Sheets: From Delivery Tool to Models of Morphogenesis",
+    "match_reason": "exact title match"
+  },
+  "candidates": [
+    {
+      "candidate": {
+        "name": "Александрушкина Наталья Андреевна",
+        "profile_url": "https://istina.msu.ru/profile/N.Alexandrushkina/",
+        "worker_url": "https://istina.msu.ru/workers/50264918/",
+        "snippet": "Александрушкина Наталья Андреевна N.Alexandrushkina МГУ имени М.В. Ломоносова , Медицинский научно-образовательный институт , Центр регенеративной медицины МНОИ МГУ , Лаборатория медицинской биоинженерии , научный сотрудник, с 7 февраля 2025 Соавторы: Ефименко А.Ю. , Макаревич П.И. , Басалова Н.А. , Григорьева О.А. , Виговский М.А. , Еремичев Р.Ю. , Новоселецкая Е.С. , Ткачук В.А. и др. 56 статей, 1 книга, 55 докладов на конференциях, 45 тезисов докладов, 26 НИР, 2 патента, 1 диссертация, 1 дипломная работа, 1 выступление в СМИ",
+        "affiliation_hint": "МГУ имени М.В. Ломоносова , Медицинский научно-образовательный институт , Центр регенеративной медицины МНОИ МГУ , Лаборатория медицинской биоинженерии , научный сотрудник, с 7 февраля 2025"
+      },
+      "score": 100.0,
+      "title_exact_norm": true,
+      "title_fuzzy": 100.0,
+      "coauthor_overlap": [],
+      "matched_publication_title": "Reconceptualizing Mesenchymal Stromal Cell Sheets: From Delivery Tool to Models of Morphogenesis",
+      "match_reason": "exact title match"
+    },
+    {
+      "candidate": {
+        "name": "Александрушкина Надежда Ивановна",
+        "profile_url": "https://istina.msu.ru/profile/AleksandrushkinaNI/",
+        "worker_url": "https://istina.msu.ru/workers/1243021/",
+        "snippet": "Александрушкина Надежда Ивановна AleksandrushkinaNI МГУ имени М.В. Ломоносова , Научно-исследовательский институт физико-химической биологии имени А.Н.Белозерского , Отдел научной информации , ведущий инженер, с 1 октября 2025 Соавторы: Ванюшин Б.Ф. , Кирнос М.Д. , Кутуева Л.И. , Kirnos M.D. , Ашапкин В.В. , Кирьянов Г.И. , Бакеева Л.Е. , Фетисова З.Г. и др. 81 статья, 1 книга, 6 докладов на конференциях, 9 тезисов докладов, 4 НИР, 1 научный отчёт",
+        "affiliation_hint": "МГУ имени М.В. Ломоносова , Научно-исследовательский институт физико-химической биологии имени А.Н.Белозерского , Отдел научной информации , ведущий инженер, с 1 октября 2025"
+      },
+      "score": 44.14414414414414,
+      "title_exact_norm": false,
+      "title_fuzzy": 44.14414414414414,
+      "coauthor_overlap": [],
+      "matched_publication_title": "Influence of various phytohormones on the replicative synthesis of nuclear DNA in the S-phase of cells of the 1st leaf of etiolated wheat seedlings",
+      "match_reason": "fuzzy=44.1"
+    },
+    {
+      "candidate": {
+        "name": "Александрушкина Кирьянов Н.И.Г.И",
+        "profile_url": null,
+        "worker_url": "https://istina.msu.ru/workers/5320821/",
+        "snippet": "Александрушкина Кирьянов Н.И.Г.И Соавторы: Башките Е.А. , Ванюшин Б.Ф. , Кирнос М.Д. 1 тезисы доклада",
+        "affiliation_hint": "Соавторы: Башките Е.А. , Ванюшин Б.Ф. , Кирнос М.Д."
+      },
+      "score": 9.356725146198826,
+      "title_exact_norm": false,
+      "title_fuzzy": 9.356725146198826,
+      "coauthor_overlap": [],
+      "matched_publication_title": "Метилирование вновь синтезируемой ДНК в суспензионной культуре клеток табака",
+      "match_reason": "fuzzy=9.4"
+    }
+  ],
+  "parsed_profile": {
+    "full_name": "Александрушкина Наталья Андреевна",
+    "profile_url": "https://istina.msu.ru/profile/N.Alexandrushkina/",
+    "username": "N.Alexandrushkina",
+    "irid": "50264918",
+    "researcher_id": "U-1044-2017",
+    "orcid": "0000-0003-4946-7843",
+    "spin": "3611-7954",
+    "scopus_author_id": null,
+    "current_affiliations": [
+      "Лаборатория медицинской биоинженерии",
+      "Медицинский научно-образовательный институт"
+    ],
+    "lab": "Лаборатория медицинской биоинженерии",
+    "department": null,
+    "institute": "Медицинский научно-образовательный институт",
+    "position": "научный сотрудник",
+    "visible_blocks": [
+      "profile.home",
+      "profile.topics",
+      "profile.publications",
+      "profile.projects",
+      "profile.talks",
+      "profile.teaching",
+      "profile.innovation",
+      "profile.misc",
+      "profile.all"
+    ],
+    "raw_text_snippets": [
+      "МГУ имени М.В. Ломоносова Лаборатория медицинской биоинженерии ( Медицинский научно-образовательный институт ) научный сотрудник с 7 февраля 2025 г.",
+      "Александрушкина Наталья Андреевна N.Alexandrushkina кандидат биологических наук с 2022 года МГУ имени М.В. Ломоносова Лаборатория медицинской биоинженерии ( Медицинский научно-образовательный институт ) научный сотрудник с 7 февраля 2025 г. Предыдущие места работы МГУ имени М.В. Ломоносова Лаборатория медицинской биоинженерии ( Медицинский научно-образовательный институт ) лаборант с 8 августа 2016 г. по 7 февраля 2025 г. Кафедра биохимии и регенеративной биомедицины ( Медицинский научно-образовательный институт ) аспирант с 1 октября 2017 г. по 1 октября 2021 г. IstinaResearcherID (IRID): 50264918 ResearcherID: U-1044-2017 ORCID: 0000-0003-4946-7843 РИНЦ(SPIN): 3611-7954",
+      "ResearcherID: U-1044-2017",
+      "ORCID: 0000-0003-4946-7843",
+      "SPIN: 3611-7954"
+    ]
+  },
+  "profile_cache_path": "data\\raw\\istina\\profiles\\worker_50264918_profile.html"
+}

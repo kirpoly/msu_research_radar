@@ -1,0 +1,8058 @@
+
+
+
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+
+    
+    
+
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <!-- for Firefox -->
+    <link rel="shortcut icon" href="/static/base/img/favicon.png" type="image/x-icon" />
+    
+
+    
+    
+
+      <!-- Bootstrap -->
+      <link href="/static/base/css/bootstrap-4.5-istina.min.css" rel="stylesheet">
+      <link href="/static/base/css/base_bootstrap4.css" rel="stylesheet">
+      <link href="/static/base/bootstrap-4.1.2/css/fontawesome-all.min.css" rel="stylesheet">
+    
+<link rel="stylesheet" href="/static/workers/css/public_custom.css" type="text/css"/>
+
+    
+
+    
+
+    
+
+    <script>
+      var csrf_token = 'lQuLokcalaYxthI6j73oh65IcrtWzHVe4XTSKIC8AAoVLz5csivsej9vZymel0yG';
+
+      function toggleSidebarPosition() {
+        const sidebar = document.getElementById("sidebar");
+        sidebar.classList.toggle("order-11");
+        sidebar.classList.toggle("mr-lg-2");
+        sidebar.classList.toggle("mr--30");
+        const button = document.querySelector('[data-target="#sidebar"]')
+        button.classList.toggle("order-11");
+        button.classList.toggle("mr--46");
+      }
+    </script>
+    
+    
+    <script src="https://sentry.istina.msu.ru/js-sdk-loader/a7158f42d39244479d32dae0a896bcc5.min.js"></script>
+    <script>
+      Sentry.init({
+        dsn: "https://a7158f42d39244479d32dae0a896bcc5:def6725be15c4e5fb0425df80a58d11a@sentry.istina.msu.ru/5",
+        tracesSampleRate: 1.0,
+      })
+    </script>
+    
+
+    <script src="/static/base/js/jquery-3.3.1.min.js"></script>
+    <script src="/static/base/bootstrap-4.5.2/bootstrap.bundle.min.js"></script>
+    <script src="/static/base/js/helpdesk.js"></script>
+    <script src="/static/base/js/array-flat-polyfill.js"></script>
+    
+    
+
+    
+<script src="/static/base/js/base.js"></script>
+<script src="/static/base/js/filter_activities.js"></script>
+
+
+    
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <title>Александрушкина Надежда Ивановна — профиль | ИСТИНА</title>
+
+    
+    
+    <script>
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-27629404-1']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    <!-- Yandex.Metrika counter -->
+<script type="text/javascript" >
+    (function (d, w, c) {
+        (w[c] = w[c] || []).push(function() {
+            try {
+                w.yaCounter45923424 = new Ya.Metrika({
+                    id:45923424,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true,
+                    webvisor:true,
+                    trackHash:true,
+                    ut:"noindex"
+                });
+            } catch(e) { }
+        });
+
+        var n = d.getElementsByTagName("script")[0],
+            s = d.createElement("script"),
+            f = function () { n.parentNode.insertBefore(s, n); };
+        s.type = "text/javascript";
+        s.async = true;
+        s.src = "https://mc.yandex.ru/metrika/watch.js";
+
+        if (w.opera == "[object Opera]") {
+            d.addEventListener("DOMContentLoaded", f, false);
+        } else { f(); }
+    })(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/45923424?ut=noindex" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+
+    
+    
+
+  </head>
+
+  <body>
+   <div class="modal" id="helpdesk_modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Создать обращение в службу поддержки пользователей</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Закрыть">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="alert alert-success" role="alert" id="helpdesk_alert_success">
+          Обращение успешно создано! Ему присвоен номер <span id="new_ticket_id">0</span>.
+          <br/>
+          На адрес Вашей электронной почты отправлено письмо о регистрации обращения.
+          Вы можете ответить на него, если хотите предоставить дополнительную информацию
+          или прикрепить файлы.
+        </div>
+        <div class="alert alert-danger" role="alert" id="helpdesk_alert_failure">
+          Произошла ошибка при создании обращения.  Попробуйте перезагрузить страницу и заново создать обращение.
+        </div>
+        <form id="helpdesk_form" method="POST" action="/common/add_ticket/">
+          <div class="form-group">
+            <label for="helpdesk_issue_category" class="col-form-label">Выберите категорию обращения:</label>
+            <select class="form-control" id="helpdesk_issue_category" name="category">
+              <option value="Общие_вопросы">Общие вопросы</option>
+              <option value="Отчеты">Отчёты</option>
+              <option value="Рейтинги">Рейтинги</option>
+              <option value="Отчет_мониторинг">Мониторинговый отчёт</option>
+              <option value="Диссертационные_советы">Диссертационные советы</option>
+              <option value="Конкурсы">Конкурсы</option>
+              <option value="Ввод_данных">Ввод данных</option>
+              <option value="Структура_организаций">Структура организаций</option>
+              <option value="Аспирантура">Аспирантура</option>
+              <option value="Научное_оборудование">Научное оборудование</option>
+              <option value="Импорт_педагогической_нагрузки">Импорт педагогической нагрузки</option>
+              <option value="Журналы_и_импакт-факторы">Журналы и импакт-факторы</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="helpdesk_issue_subj" class="col-form-label">Тема обращения:</label>
+            <input type="text" class="form-control" id="helpdesk_issue_subj" name="subject" placeholder="Коротко опишите тему Вашего вопроса" required="required" />
+          </div>
+          <div class="form-group">
+            <label for="helpdesk_issue_descr" class="col-form-label">Описание проблемы:</label>
+            <textarea class="form-control" id="helpdesk_issue_descr" name="description" rows="7" required="required"></textarea>
+          </div>
+          
+          <div class="form-group">
+            <label for="helpdesk_issue_useremail" class="col-form-label">Введите почтовый адрес:</label>
+            <input type="email" class="form-control" id="helpdesk_issue_useremail" name="user_email" placeholder="Например, user@example.com" required="required" />
+          </div>
+          
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" title="Закрыть окно создания обращения" data-dismiss="modal">Закрыть окно</button>
+        <button type="button" class="btn btn-primary" title="Отправить сообщение администраторам системы" id="helpdesk_issue_create">Создать обращение</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+      
+      
+
+<!-- Modal for logout confirmation -->
+<form class="form-inline" action="/accounts/logout/" method="GET">
+  
+
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="label_for_logoutModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" style="display: inline;" id="label_for_logoutModal">Подтверждение выхода</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body">
+        Вы действительно хотите завершить сессию?
+      </div>
+      <div class="modal-footer">
+        
+          <button type="button" class="btn btn-light" data-dismiss="modal">Нет</button>
+          <button type="submit" class="btn btn-primary pull-right">Да</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+</form>
+
+<script src="/static/notifications/notify.js" type="text/javascript"></script>
+
+<nav class="navbar navbar-light navbar-expand-lg">
+  
+  <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+    <span class="sr-only">Toggle navigation</span>
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div id="navbar" class="nav navbar-collapse collapse">
+    <div class="container-fluid mb-0 px-0">
+      <a class="navbar-brand mb-auto" href="/">
+        <img src="/static/base/img/logo-msu-150x148.png" class="image main-logo" alt="ИСТИНА" />
+      </a>
+      <a href="/" class="h1 mb-0 text-body" title="Главная страница">ИСТИНА</a>
+      <div class="text-right lg-small flex-lg-grow-1">
+        
+          <div>
+            <a href="/accounts/login/" title="Перейти на страницу входа в систему"><b>Войти&nbsp;в&nbsp;систему</b> <span class="fa fa-sign-in-alt" aria-hidden="true"></span></a>
+          </div>
+          <div>
+            <a href="/accounts/register/" title="Перейти на страницу регистрации в системе">Регистрация</a>
+          </div>
+        
+      </div>
+    </div>
+      <ul class="container-fluid nav row ml-n3">
+        <li class="nav-item btn-primary btn rounded-0 border-0 mr-2"  style="visibility: hidden;" >
+          <span class="nav-link"><i class="fa fa-angle-double-down"></i></span>
+        </li>
+        
+        
+          <li id="profile.home"
+              class="nav-item 
+                    "
+              title="Главная страница работника Александрушкина Надежда Ивановна">
+             
+              
+                <a class="nav-link"  href="/workers/1243021/" >
+                  <span class="fas fa-user"></span>
+                </a>
+              
+            
+          </li>
+        
+        
+        
+          <li id="profile.topics"
+              class="nav-item 
+                    "
+              title="Область научных интересов по направлениям исследований">
+             
+              
+                <span class="nav-link disabled">Область интересов</span>
+              
+            
+          </li>
+        
+        
+        
+          <li id="profile.publications"
+              class="nav-item 
+                     active "
+              title="Статьи, тезисы и книги работника">
+             
+              
+                <a class="nav-link"  href="/workers/1243021/publications/" >
+                  Публикации
+                </a>
+              
+            
+          </li>
+        
+        
+        
+          <li id="profile.projects"
+              class="nav-item 
+                    "
+              title="Научно-исследовательские и опытно-конструкторские работы">
+             
+              
+                <a class="nav-link"  href="/workers/1243021/projects/" >
+                  НИР и НИОКР
+                </a>
+              
+            
+          </li>
+        
+        
+        
+          <li id="profile.talks"
+              class="nav-item 
+                    "
+              title="Доклады на научных конференциях и выступления в СМИ">
+             
+              
+                <a class="nav-link"  href="/workers/1243021/talks/" >
+                  Доклады
+                </a>
+              
+            
+          </li>
+        
+        
+        
+          <li id="profile.teaching"
+              class="nav-item 
+                    "
+              title="Учебные курсы и научное руководство">
+             
+              
+                <span class="nav-link disabled">Учебная работа</span>
+              
+            
+          </li>
+        
+        
+        
+          <li id="profile.innovation"
+              class="nav-item 
+                    "
+              title="Патенты и свидетельства о регистрации прав на ПО">
+             
+              
+                <span class="nav-link disabled">Инновации</span>
+              
+            
+          </li>
+        
+        
+        
+          <li id="profile.misc"
+              class="nav-item 
+                    "
+              title="Членства в научных коллективах, награды и премии, отчёты, стажировки">
+             
+              
+                <a class="nav-link"  href="/workers/1243021/misc/" >
+                  Прочее
+                </a>
+              
+            
+          </li>
+        
+        
+        
+          <li id="profile.all"
+              class="nav-item 
+                    "
+              title="Все результаты деятельности на одной странице">
+             
+              
+                <a class="nav-link"  href="/workers/1243021/all/" >
+                  Все результаты
+                </a>
+              
+            
+          </li>
+        
+        
+        <li class="mx-auto"></li>
+      </ul>
+  </div><!--/.nav-collapse -->
+</nav>
+
+      
+<div class="container-fluid flex-lg-nowrap row mr-2">
+  <nav class="  nav col-lg-2 bg-primary collapse pr-0 mr-lg-2 mb-2 mb-lg-0 align-items-start" id="sidebar">
+  <div class="pr-0 pt-2 w-100">
+    
+        
+
+
+
+    
+  </div>
+  </nav>
+
+  <div class="col">
+  
+  
+  
+  
+<div class="modal fade" id="delete-worker-modal" tabindex="-1" role="dialog" aria-labelledby="delete-worker-modal-label" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="delete-worker-modal-label">Удаление сотрудника</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Закрыть">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Вы действительно хотите удалить сотрудника?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+        <a role="button" class="btn btn-danger" href="/common/delete_if_no_related_objects/86/1243021/">Удалить</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3 personal-info hidden-sm hidden-xs border-right">
+    <div class="container-fluid">
+      
+      <div>
+        
+<img class="border" alt="AleksandrushkinaNI" src="/media/userprofile/generic.128.jpg" />
+
+      </div>
+      
+      <a class="fullname" href="/workers/1243021/">Александрушкина Надежда Ивановна</a>
+      
+      <span class="badge badge-primary" title="Имя пользователя">AleksandrushkinaNI</span>
+
+      
+      <p>
+        <span class="degree">кандидат биологических наук</span>
+        
+          <span class="dates">с 1975 года</span>
+        
+      </p>
+      
+      
+
+      
+      <p class="position">
+        
+          <a class="orgname" href="/organizations/214524/">МГУ имени М.В. Ломоносова</a>
+        
+        
+  <a href="/organizations/department/2308502/" title="Перейти на страницу подразделения">Отдел научной информации</a>
+  
+    (<a href="/organizations/department/276005/">Научно-исследовательский институт физико-химической биологии имени А.Н.Белозерского</a>)
+  
+
+        <span class="name">ведущий инженер</span>
+        <span class="dates">с 1 октября 2025 г.</span>
+      </p>
+      
+
+      
+
+      
+
+      
+      <p>
+        <a data-toggle="collapse" href="#non_current_employments" aria-expanded="false" aria-controls="non_current_employments">
+          Предыдущие места работы
+        </a>
+      </p>
+      <div class="collapse" id="non_current_employments">
+      
+        <p class="position">
+          
+            <a class="orgname" href="/organizations/214524/">МГУ имени М.В. Ломоносова</a>
+          
+          
+  <a href="/organizations/department/276042/" title="Перейти на страницу подразделения">Отдел молекулярных основ онтогенеза</a>
+  
+    (<a href="/organizations/department/276005/">Научно-исследовательский институт физико-химической биологии имени А.Н.Белозерского</a>)
+  
+
+          <span class="name">старший научный сотрудник</span>
+          <span class="dates">с 1 февраля 1974 г. по 16 марта 2025 г.</span>
+        </p>
+      
+        <p class="position">
+          
+          
+  <a href="/organizations/department/2308502/" title="Перейти на страницу подразделения">Отдел научной информации</a>
+  
+    (<a href="/organizations/department/276005/">Научно-исследовательский институт физико-химической биологии имени А.Н.Белозерского</a>)
+  
+
+          <span class="name">ведущий инженер</span>
+          <span class="dates">с 17 марта 2025 г. по 30 июня 2025 г.</span>
+        </p>
+      
+      </div>
+      
+
+      
+        
+        <p class="position">
+          
+            <a class="orgname" href="/organizations/214524/">МГУ имени М.В. Ломоносова</a>
+            
+  <a href="/organizations/department/276005/" title="Перейти на страницу подразделения">Научно-исследовательский институт физико-химической биологии имени А.Н.Белозерского</a>
+  
+
+            
+          
+          <span class="name">
+            <strong>ответственный по системе</strong>
+            
+          </span>
+        </p>
+        
+      
+
+      
+      
+        <div>
+          <a href="https://elibrary.ru/author_counter_click.asp?id=82203" target="_blank">
+            <img src="https://elibrary.ru/author_counter.aspx?id=82203&rand=552609"
+                 title="Профиль автора в Science Index" height="31" width="88">
+          </a>
+        </div>
+      
+
+      <div>
+        IstinaResearcherID (IRID): 1243021
+      </div>
+
+      
+        
+      
+        
+        <div>
+          ResearcherID:
+          <a href="https://www.webofscience.com/wos/author/record/J-2865-2013" title="Перейти на страницу исследователя в системе ResearcherID" target="_blank">
+            J-2865-2013
+          </a>
+        </div>
+        
+      
+
+      
+
+      
+      
+
+      
+      
+    </div>
+  </div>
+
+  <div class="col-md-9">
+    
+
+
+
+
+<div class="mb-2">
+  
+  <a class="btn btn-primary mb-1" href="#articles_journal" title="Перейти к разделу «Статьи в журналах»">
+    <span class="fas fa-arrow-down"></span> Статьи в журналах
+  </a>
+  
+  <a class="btn btn-primary mb-1" href="#articles_collection" title="Перейти к разделу «Статьи в сборниках»">
+    <span class="fas fa-arrow-down"></span> Статьи в сборниках
+  </a>
+  
+  <a class="btn btn-primary mb-1" href="#theses" title="Перейти к разделу «Тезисы докладов»">
+    <span class="fas fa-arrow-down"></span> Тезисы докладов
+  </a>
+  
+  <a class="btn btn-primary mb-1" href="#books" title="Перейти к разделу «Книги»">
+    <span class="fas fa-arrow-down"></span> Книги
+  </a>
+  
+</div>
+
+
+<div class="mb-4">
+  <input type="text" id="filter_activities" placeholder="Поиск" title="Введите текст для фильтрации результатов, например, фрагмент названия, фамилию соавтора или журнал" />
+  <input type="number" id="year_begin" min="1900" max="2100" value="1900" title="Выберите год для отображения результатов, опубликованных не ранее этого года" /> –
+  <input type="number" id="year_end" min="1900" max="2100" value="2100" title="Выберите год для отображения результатов, опубликованных не позднее этого года" />
+
+  
+</div>
+
+
+<section id="articles_journal">
+  <h3 class="activity_label">Статьи в журналах</h3>
+
+  <div class="activities-block">
+    
+      <ul>
+      
+        <li>
+          <div class="float-left">
+
+    <span class="fas fa-star" style="color: blue;" title="Статья опубликована в высокорейтинговом журнале"></span>
+
+
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="2023"><!-- article short information -->
+    <li>
+        <b>
+        
+            2023
+        
+        </b>
+        
+            <a href="/publications/article/531953398/" title="Перейти на страницу статьи">Genomic and Epigenomic Mechanisms of the Interaction between Parasitic and Host Plants</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            <a href="/workers/2773060/" title="Ашапкин Василий Васильевич (перейти на страницу сотрудника)">Ashapkin Vasily V.</a>, 
+            
+            <a href="/workers/2829141/" title="Кутуева Людмила Ильтизировна (перейти на страницу сотрудника)">Kutueva Lyudmila I.</a>, 
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Aleksandrushkina Nadezhda I.</a>, 
+            
+            <a href="/workers/8020439/" title="Ванюшин Борис Федорович (перейти на страницу сотрудника)">Vanyushin Boris F.</a>, 
+            
+            Teofanova Denitsa R., 
+            
+            Zagorchev Lyuben I.
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+
+            
+                в журнале <i><a href="/journals/68814/" title="Перейти на страницу журнала">International Journal of Molecular Sciences</a></i>, издательство <i><a href="/publishers/57238/" title="Перейти на страницу издательства">MDPI</a> (Basel, Switzerland)</i>, том&nbsp;24, №&nbsp;3, с.&nbsp;2647_1-2647_39
+
+            
+
+            
+
+        
+
+        
+        <a href="http://dx.doi.org/10.3390/ijms24032647" title="Перейти на страницу с информацией о публикации на сайте издателя" target="_blank">DOI</a>
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+    <span class="fas fa-star" style="color: blue;" title="Статья опубликована в высокорейтинговом журнале"></span>
+
+
+
+<span class="fas fa-globe-americas" title="Информация о цитировании статьи получена из внешних систем"></span>
+
+
+
+<span class="fas fa-file-alt" title="Доступен полный текст статьи"></span>
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="2020"><!-- article short information -->
+    <li>
+        <b>
+        
+            2020
+        
+        </b>
+        
+            <a href="/publications/article/326367992/" title="Перейти на страницу статьи">Epigenetic Mechanisms of Plant Adaptation to Biotic and Abiotic Stresses</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            <a href="/workers/2773060/" title="Ашапкин Василий Васильевич (перейти на страницу сотрудника)">Ashapkin V.V.</a>, 
+            
+            <a href="/workers/2829141/" title="Кутуева Людмила Ильтизировна (перейти на страницу сотрудника)">Kutueva L.I.</a>, 
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Aleksandrushkina N.I.</a>, 
+            
+            <a href="/workers/8020439/" title="Ванюшин Борис Федорович (перейти на страницу сотрудника)">Vanyushin B.F.</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+
+            
+                в журнале <i><a href="/journals/68814/" title="Перейти на страницу журнала">International Journal of Molecular Sciences</a></i>, издательство <i><a href="/publishers/57238/" title="Перейти на страницу издательства">MDPI</a> (Basel, Switzerland)</i>, том&nbsp;21, №&nbsp;20
+
+            
+
+            
+
+        
+
+        
+        <a href="http://dx.doi.org/10.3390/ijms21207457" title="Перейти на страницу с информацией о публикации на сайте издателя" target="_blank">DOI</a>
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+    <span class="fas fa-star" style="color: blue;" title="Статья опубликована в высокорейтинговом журнале"></span>
+
+
+
+<span class="fas fa-globe-americas" title="Информация о цитировании статьи получена из внешних систем"></span>
+
+
+
+<span class="fas fa-file-alt" title="Доступен полный текст статьи"></span>
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="2019"><!-- article short information -->
+    <li>
+        <b>
+        
+            2019
+        
+        </b>
+        
+            <a href="/publications/article/210333809/" title="Перейти на страницу статьи">Epigenetic regulation of plant gametophyte development</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            <a href="/workers/2773060/" title="Ашапкин Василий Васильевич (перейти на страницу сотрудника)">Ashapkin V.V.</a>, 
+            
+            <a href="/workers/2829141/" title="Кутуева Людмила Ильтизировна (перейти на страницу сотрудника)">Kutueva L.I.</a>, 
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Aleksandrushkina N.I.</a>, 
+            
+            <a href="/workers/8020439/" title="Ванюшин Борис Федорович (перейти на страницу сотрудника)">Vanyushin B.F.</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+
+            
+                в журнале <i><a href="/journals/68814/" title="Перейти на страницу журнала">International Journal of Molecular Sciences</a></i>, издательство <i><a href="/publishers/57238/" title="Перейти на страницу издательства">MDPI</a> (Basel, Switzerland)</i>, том&nbsp;20, с.&nbsp;3051:1-3051:25
+
+            
+
+            
+
+        
+
+        
+        <a href="http://dx.doi.org/10.3390/ijms20123051" title="Перейти на страницу с информацией о публикации на сайте издателя" target="_blank">DOI</a>
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+    <span class="fas fa-star" style="color: red;" title="Статья опубликована в журнале из списка RSCI Web of Science"></span>
+
+
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="2017"><!-- article short information -->
+    <li>
+        <b>
+        
+            2017
+        
+        </b>
+        
+            <a href="/publications/article/87620466/" title="Перейти на страницу статьи">Регуляторные пепетиды у растений</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            <a href="/workers/8020439/" title="Ванюшин Борис Федорович (перейти на страницу сотрудника)">Ванюшин Б.Ф.</a>, 
+            
+            <a href="/workers/2773060/" title="Ашапкин Василий Васильевич (перейти на страницу сотрудника)">Ашапкин В.В.</a>, 
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Александрушкина Н.И.</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+
+            
+                в журнале <i><a href="/journals/93637/" title="Перейти на страницу журнала">Биохимия</a></i>, издательство <i><a href="/publishers/17843256/" title="Перейти на страницу издательства">ФГБУ &quot;Издательство &quot;Наука&quot;</a> (Москва)</i>, том&nbsp;82, №&nbsp;2, с.&nbsp;189-195
+
+            
+
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="2017"><!-- article short information -->
+    <li>
+        <b>
+        
+            2017
+        
+        </b>
+        
+            <a href="/publications/article/36568149/" title="Перейти на страницу статьи">Regulatory peptides in plants</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            <a href="/workers/8020439/" title="Ванюшин Борис Федорович (перейти на страницу сотрудника)">Vanyushin B.F.</a>, 
+            
+            <a href="/workers/2773060/" title="Ашапкин Василий Васильевич (перейти на страницу сотрудника)">Ashapkin V.V.</a>, 
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Aleksandrushkina N.I.</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+
+            
+                в журнале <i><a href="/journals/54985/" title="Перейти на страницу журнала">Biochemistry (Moscow)</a></i>, издательство <i><a href="/publishers/83977330/" title="Перейти на страницу издательства">Pleiades Publishing, Ltd</a> (Road Town, United Kingdom)</i>, том&nbsp;82, №&nbsp;2
+
+            
+
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="2012"><!-- article short information -->
+    <li>
+        <b>
+        
+            2012
+        
+        </b>
+        
+            <a href="/publications/article/8852661/" title="Перейти на страницу статьи">(Эндо)нуклеазы и апоптоз у животных</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Александрушкина Н.И.</a>, 
+            
+            <a href="/workers/8020439/" title="Ванюшин Борис Федорович (перейти на страницу сотрудника)">Ванюшин Б.Ф.</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+
+            
+                в журнале <i><a href="/journals/97125/" title="Перейти на страницу журнала">Успехи биологической химии</a></i>, том&nbsp;52, с.&nbsp;63-96 
+
+            
+
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+    <span class="fas fa-star" style="color: red;" title="Статья опубликована в журнале из списка RSCI Web of Science"></span>
+
+
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="2009"><!-- article short information -->
+    <li>
+        <b>
+        
+            2009
+        
+        </b>
+        
+            <a href="/publications/article/8832304/" title="Перейти на страницу статьи">Эндонуклеазы растенийи их участие в апоптозе растений</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Александрушкина Н.И.</a>, 
+            
+            <a href="/workers/8020439/" title="Ванюшин Борис Федорович (перейти на страницу сотрудника)">Ванюшин Б.Ф.</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+
+            
+                в журнале <i><a href="/journals/97219/" title="Перейти на страницу журнала">Физиология растений</a></i>, издательство <i><a href="/publishers/17843256/" title="Перейти на страницу издательства">ФГБУ &quot;Издательство &quot;Наука&quot;</a> (Москва)</i>, том&nbsp;56, №&nbsp;3, с.&nbsp;323-339
+
+            
+
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+    <span class="fas fa-star" style="color: red;" title="Статья опубликована в журнале из списка RSCI Web of Science"></span>
+
+
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="2009"><!-- article short information -->
+    <li>
+        <b>
+        
+            2009
+        
+        </b>
+        
+            <a href="/publications/article/8827901/" title="Перейти на страницу статьи">Активность эндонуклеазв колеоптиле и первом листе развивающихся этиолированных проростков пшеницы</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Александрушкина Н.И.</a>, 
+            
+            <a href="/workers/2831959/" title="Середина А.В. (перейти на страницу сотрудника)">Середина А.В.</a>, 
+            
+            <a href="/workers/8020439/" title="Ванюшин Борис Федорович (перейти на страницу сотрудника)">Ванюшин Б.Ф.</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+
+            
+                в журнале <i><a href="/journals/97219/" title="Перейти на страницу журнала">Физиология растений</a></i>, издательство <i><a href="/publishers/17843256/" title="Перейти на страницу издательства">ФГБУ &quot;Издательство &quot;Наука&quot;</a> (Москва)</i>, том&nbsp;56, №&nbsp;1, с.&nbsp;1-11
+
+            
+
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+    <span class="fas fa-star" style="color: red;" title="Статья опубликована в журнале из списка RSCI Web of Science"></span>
+
+
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="2008"><!-- article short information -->
+    <li>
+        <b>
+        
+            2008
+        
+        </b>
+        
+            <a href="/publications/article/9291867/" title="Перейти на страницу статьи">Связанные со старением деградация ДНК и эндонуклеазная активность в листьях гороха нормального и афильного генотипов</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Александрушкина Н.И.</a>, 
+            
+            <a href="/workers/1643850/" title="Коф Э.М. (перейти на страницу сотрудника)">Коф Э.М.</a>, 
+            
+            <a href="/workers/2831959/" title="Середина А.В. (перейти на страницу сотрудника)">Середина А.В.</a>, 
+            
+            Борзов А.А., 
+            
+            <a href="/workers/8020439/" title="Ванюшин Борис Федорович (перейти на страницу сотрудника)">Ванюшин Б.Ф.</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+
+            
+                в журнале <i><a href="/journals/97219/" title="Перейти на страницу журнала">Физиология растений</a></i>, издательство <i><a href="/publishers/17843256/" title="Перейти на страницу издательства">ФГБУ &quot;Издательство &quot;Наука&quot;</a> (Москва)</i>, том&nbsp;55, с.&nbsp;1-10
+
+            
+
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+    <span class="fas fa-star" style="color: blue;" title="Статья опубликована в высокорейтинговом журнале"></span>
+
+
+
+<span class="fas fa-globe-americas" title="Информация о цитировании статьи получена из внешних систем"></span>
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="2004"><!-- article short information -->
+    <li>
+        <b>
+        
+            2004
+        
+        </b>
+        
+            <a href="/publications/article/2209438/" title="Перейти на страницу статьи">Apoptosis in plants: specific features of plant apoptotic cells and effect of various factors and agents</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            <a href="/workers/8020439/" title="Ванюшин Борис Федорович (перейти на страницу сотрудника)">Vanyushin B.F.</a>, 
+            
+            <a href="/workers/2147152/" title="Бакеева Лора Евгеньевна (перейти на страницу сотрудника)">Bakeeva L.E.</a>, 
+            
+            Zamyatnina V.A., 
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Aleksandrushkina N.I.</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+
+            
+                в журнале <i><a href="/journals/356867/" title="Перейти на страницу журнала">International review of cytology</a></i>, издательство <i><a href="/publishers/322222/" title="Перейти на страницу издательства">Academic Press.</a> (London, New York, England)</i>, том&nbsp;233, с.&nbsp;135-179
+
+            
+
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+
+
+<span class="fas fa-globe-americas" title="Информация о цитировании статьи получена из внешних систем"></span>
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="2004"><!-- article short information -->
+    <li>
+        <b>
+        
+            2004
+        
+        </b>
+        
+            <a href="/publications/article/2209352/" title="Перейти на страницу статьи">Apoptosis in wheat seedlings grown under normal daylight</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Aleksandrushkina N.I.</a>, 
+            
+            Zamyatnina V.A., 
+            
+            <a href="/workers/2147152/" title="Бакеева Лора Евгеньевна (перейти на страницу сотрудника)">Bakeeva L.E.</a>, 
+            
+            Seredina A.V., 
+            
+            <a href="/workers/1670293/" title="Смирнова Е.Г. (перейти на страницу сотрудника)">Smirnova E.G.</a>, 
+            
+            <a href="/workers/470993/" title="Ягужинский Лев Сергеевич (перейти на страницу сотрудника)">Yaguzhinsky L.S.</a>, 
+            
+            <a href="/workers/8020439/" title="Ванюшин Борис Федорович (перейти на страницу сотрудника)">Vanyushin B.F.</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+
+            
+                в журнале <i><a href="/journals/54985/" title="Перейти на страницу журнала">Biochemistry (Moscow)</a></i>, издательство <i><a href="/publishers/83977330/" title="Перейти на страницу издательства">Pleiades Publishing, Ltd</a> (Road Town, United Kingdom)</i>, том&nbsp;69, №&nbsp;3, с.&nbsp;285-294
+
+            
+
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+
+
+<span class="fas fa-globe-americas" title="Информация о цитировании статьи получена из внешних систем"></span>
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="2004"><!-- article short information -->
+    <li>
+        <b>
+        
+            2004
+        
+        </b>
+        
+            <a href="/publications/article/2038250/" title="Перейти на страницу статьи">Post-hypoxic oxidative stress after radicle protrusion as a possible cause for the production of abnormal seedlings in pea</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            <a href="/workers/1052942/" title="Веселова Татьяна Владимировна (перейти на страницу сотрудника)">Veselova T.V.</a>, 
+            
+            <a href="/workers/588647/" title="Веселовский Владимир Александрович (перейти на страницу сотрудника)">Veselovsky V.A.</a>, 
+            
+            <a href="/workers/851459/" title="Туровецкий  Валерий Борисович (перейти на страницу сотрудника)">Turovetsky V.B.</a>, 
+            
+            <a href="/workers/1930060/" title="Galchuk S.V. (перейти на страницу сотрудника)">Galchuk S.V.</a>, 
+            
+            <a href="/workers/8020439/" title="Ванюшин Борис Федорович (перейти на страницу сотрудника)">Vanyushin B.F.</a>, 
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Aleksandrushkina N.I.</a>, 
+            
+            <a href="/workers/2250492/" title="Рубин Андрей Борисович (перейти на страницу сотрудника)">Rubin A.B.</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+
+            
+                в журнале <i><a href="/journals/87899/" title="Перейти на страницу журнала">Seed Science and Technology</a></i>, издательство <i><a href="/publishers/87898/" title="Перейти на страницу издательства">International Seed Testing Association</a> (Switzerland)</i>, том&nbsp;32, №&nbsp;1, с.&nbsp;283-296
+
+            
+
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+    <span class="fas fa-star" style="color: red;" title="Статья опубликована в журнале из списка RSCI Web of Science"></span>
+
+
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="2003"><!-- article short information -->
+    <li>
+        <b>
+        
+            2003
+        
+        </b>
+        
+            <a href="/publications/article/8878348/" title="Перейти на страницу статьи">Влияние антиоксиданта ионола на протеолитический аппарат стареющих колеоптилей, выращиваемых на свету проростков пшеницы</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            Дунаевский Я.Е., 
+            
+            <a href="/workers/8876491/" title="Федореева Лариса Ивановна (перейти на страницу сотрудника)">Федореева Л.И.</a>, 
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Александрушкина Н.И.</a>, 
+            
+            <a href="/workers/4978489/" title="смирнова татьяна алексеевна (перейти на страницу сотрудника)">Смирнова Т.А.</a>, 
+            
+            <a href="/workers/1643970/" title="Коломийцева Галина Яковлевна (перейти на страницу сотрудника)">Коломийцева Г.Я.</a>, 
+            
+            <a href="/workers/8020439/" title="Ванюшин Борис Федорович (перейти на страницу сотрудника)">Ванюшин Б.Ф.</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+
+            
+                в журнале <i><a href="/journals/93627/" title="Перейти на страницу журнала">Биоорганическая химия</a></i>, издательство <i><a href="/publishers/297824028/" title="Перейти на страницу издательства">Российская академия наук</a> (Москва)</i>, том&nbsp;29, №&nbsp;2, с.&nbsp;505-509
+
+            
+
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+    <span class="fas fa-star" style="color: red;" title="Статья опубликована в журнале из списка RSCI Web of Science"></span>
+
+
+
+<span class="fas fa-globe-americas" title="Информация о цитировании статьи получена из внешних систем"></span>
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="2003"><!-- article short information -->
+    <li>
+        <b>
+        
+            2003
+        
+        </b>
+        
+            <a href="/publications/article/3703252/" title="Перейти на страницу статьи">Влияние антиоксиданта ионола на протеолитический аппарат стареющих колеоптилей выращиваемых на свету проростков пшеницы</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            <a href="/workers/240140/" title="Дунаевский Яков Ефимович (перейти на страницу сотрудника)">Дунаевский Я.Е.</a>, 
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Александрушкина Н.И.</a>, 
+            
+            <a href="/workers/1615220/" title="Смирнова Татьяна Алексеевна (перейти на страницу сотрудника)">Смирнова Т.А.</a>, 
+            
+            <a href="/workers/1643970/" title="Коломийцева Галина Яковлевна (перейти на страницу сотрудника)">Коломийцева Г.Я.</a>, 
+            
+            <a href="/workers/8020439/" title="Ванюшин Борис Федорович (перейти на страницу сотрудника)">Ванюшин Б.Ф.</a>, 
+            
+            <a href="/workers/433671/" title="Белозерский Михаил Андреевич (перейти на страницу сотрудника)">Белозерский М.А.</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+
+            
+                в журнале <i><a href="/journals/93627/" title="Перейти на страницу журнала">Биоорганическая химия</a></i>, издательство <i><a href="/publishers/297824028/" title="Перейти на страницу издательства">Российская академия наук</a> (Москва)</i>, том&nbsp;29, с.&nbsp;505-509
+
+            
+
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+
+
+<span class="fas fa-globe-americas" title="Информация о цитировании статьи получена из внешних систем"></span>
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="2003"><!-- article short information -->
+    <li>
+        <b>
+        
+            2003
+        
+        </b>
+        
+            <a href="/publications/article/2526682/" title="Перейти на страницу статьи">Effect of ethylene producer ethrel and antioxidant ionol (BHT) on the proteolytic apparatus in coleoptiles of wheat seedlings during apoptosis</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            <a href="/workers/1003586/" title="Fedoreyeva L.I. (перейти на страницу сотрудника)">Fedoreyeva L.I.</a>, 
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Aleksandrushkina N.I.</a>, 
+            
+            <a href="/workers/240140/" title="Дунаевский Яков Ефимович (перейти на страницу сотрудника)">Dunaevsky Y.E.</a>, 
+            
+            <a href="/workers/433671/" title="Белозерский Михаил Андреевич (перейти на страницу сотрудника)">Belozersky M.A.</a>, 
+            
+            <a href="/workers/8020439/" title="Ванюшин Борис Федорович (перейти на страницу сотрудника)">Vanyushin B.F.</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+
+            
+                в журнале <i><a href="/journals/54985/" title="Перейти на страницу журнала">Biochemistry (Moscow)</a></i>, издательство <i><a href="/publishers/83977330/" title="Перейти на страницу издательства">Pleiades Publishing, Ltd</a> (Road Town, United Kingdom)</i>, том&nbsp;68, №&nbsp;4, с.&nbsp;464-469
+
+            
+
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+    <span class="fas fa-star" style="color: red;" title="Статья опубликована в журнале из списка RSCI Web of Science"></span>
+
+
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="2003"><!-- article short information -->
+    <li>
+        <b>
+        
+            2003
+        
+        </b>
+        
+            <a href="/publications/article/2272615/" title="Перейти на страницу статьи">Апоптоз у этилированных проростков пшеницы. 2. Влияние антиоксиданта (ВНТ) и перекисей</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            <a href="/workers/2240729/" title="Замятнина В.А. (перейти на страницу сотрудника)">Замятнина В.А.</a>, 
+            
+            <a href="/workers/2147152/" title="Бакеева Лора Евгеньевна (перейти на страницу сотрудника)">Бакеева Л.Е.</a>, 
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Александрушкина Н.И.</a>, 
+            
+            <a href="/workers/8020439/" title="Ванюшин Борис Федорович (перейти на страницу сотрудника)">Ванюшин Б.Ф.</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+
+            
+                в журнале <i><a href="/journals/97219/" title="Перейти на страницу журнала">Физиология растений</a></i>, издательство <i><a href="/publishers/17843256/" title="Перейти на страницу издательства">ФГБУ &quot;Издательство &quot;Наука&quot;</a> (Москва)</i>, том&nbsp;50, №&nbsp;2, с.&nbsp;280-290
+
+            
+
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+
+
+<span class="fas fa-globe-americas" title="Информация о цитировании статьи получена из внешних систем"></span>
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="2003"><!-- article short information -->
+    <li>
+        <b>
+        
+            2003
+        
+        </b>
+        
+            <a href="/publications/article/1875081/" title="Перейти на страницу статьи">Effect of the antioxidant ionol on proteolytic apparatus of aging coleoptiles of wheat seedlings grown in light</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            <a href="/workers/240140/" title="Дунаевский Яков Ефимович (перейти на страницу сотрудника)">Dunaevsky Ya E.</a>, 
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Aleksandrushkina N.I.</a>, 
+            
+            <a href="/workers/1615220/" title="Смирнова Татьяна Алексеевна (перейти на страницу сотрудника)">Smirnova T.A.</a>, 
+            
+            <a href="/workers/1643970/" title="Коломийцева Галина Яковлевна (перейти на страницу сотрудника)">Kolomijtseva G.Ya</a>, 
+            
+            <a href="/workers/8020439/" title="Ванюшин Борис Федорович (перейти на страницу сотрудника)">Vanyushin B.F.</a>, 
+            
+            <a href="/workers/433671/" title="Белозерский Михаил Андреевич (перейти на страницу сотрудника)">Belozersky M.A.</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+
+            
+                в журнале <i><a href="/journals/1088177/" title="Перейти на страницу журнала">Bioorganicheskaia khimiia</a></i>, том&nbsp;29, №&nbsp;5, с.&nbsp;505-509
+
+            
+
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+    <span class="fas fa-star" style="color: red;" title="Статья опубликована в журнале из списка RSCI Web of Science"></span>
+
+
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="2002"><!-- article short information -->
+    <li>
+        <b>
+        
+            2002
+        
+        </b>
+        
+            <a href="/publications/article/8987696/" title="Перейти на страницу статьи">Влияние фитогормонов и 5-азацитидина на апоптоз  у этиолированных проростков пшеницы</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            <a href="/workers/8020439/" title="Ванюшин Борис Федорович (перейти на страницу сотрудника)">Ванюшин Б.Ф.</a>, 
+            
+            <a href="/workers/2829209/" title="Шорнинг Б.Ю. (перейти на страницу сотрудника)">Шорнинг Б.Ю.</a>, 
+            
+            <a href="/workers/2831959/" title="Середина А.В. (перейти на страницу сотрудника)">Середина А.В.</a>, 
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Александушкина Н.И.</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+
+            
+                в журнале <i><a href="/journals/97219/" title="Перейти на страницу журнала">Физиология растений</a></i>, издательство <i><a href="/publishers/17843256/" title="Перейти на страницу издательства">ФГБУ &quot;Издательство &quot;Наука&quot;</a> (Москва)</i>, том&nbsp;49, №&nbsp;4, с.&nbsp;558-564
+
+            
+
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+    <span class="fas fa-star" style="color: red;" title="Статья опубликована в журнале из списка RSCI Web of Science"></span>
+
+
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="2002"><!-- article short information -->
+    <li>
+        <b>
+        
+            2002
+        
+        </b>
+        
+            <a href="/publications/article/2272507/" title="Перейти на страницу статьи">Апоптоз у этилированных проростков пшеницы. 1. Характерная ультраструктура апоптозной клетки</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            <a href="/workers/2240729/" title="Замятнина В.А. (перейти на страницу сотрудника)">Замятнина В.А.</a>, 
+            
+            <a href="/workers/2147152/" title="Бакеева Лора Евгеньевна (перейти на страницу сотрудника)">Бакеева Л.Е.</a>, 
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Александрушкина Н.И.</a>, 
+            
+            <a href="/workers/8020439/" title="Ванюшин Борис Федорович (перейти на страницу сотрудника)">Ванюшин Б.Ф.</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+
+            
+                в журнале <i><a href="/journals/97219/" title="Перейти на страницу журнала">Физиология растений</a></i>, издательство <i><a href="/publishers/17843256/" title="Перейти на страницу издательства">ФГБУ &quot;Издательство &quot;Наука&quot;</a> (Москва)</i>, том&nbsp;49, №&nbsp;6, с.&nbsp;828-838
+
+            
+
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+
+
+<span class="fas fa-globe-americas" title="Информация о цитировании статьи получена из внешних систем"></span>
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="2002"><!-- article short information -->
+    <li>
+        <b>
+        
+            2002
+        
+        </b>
+        
+            <a href="/publications/article/2216549/" title="Перейти на страницу статьи">Apoptosis in the initial leaf of etiolated wheat seedlings: influence of the antioxidant ionol (BHT) and peroxides</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            Zamyatnina V.A., 
+            
+            <a href="/workers/2147152/" title="Бакеева Лора Евгеньевна (перейти на страницу сотрудника)">Bakeeva L.E.</a>, 
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Aleksandrushkina N.I.</a>, 
+            
+            <a href="/workers/8020439/" title="Ванюшин Борис Федорович (перейти на страницу сотрудника)">Vanyushin B.F.</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+
+            
+                в журнале <i><a href="/journals/54985/" title="Перейти на страницу журнала">Biochemistry (Moscow)</a></i>, издательство <i><a href="/publishers/83977330/" title="Перейти на страницу издательства">Pleiades Publishing, Ltd</a> (Road Town, United Kingdom)</i>, том&nbsp;67, №&nbsp;2, с.&nbsp;212-221
+
+            
+
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+
+
+<span class="fas fa-globe-americas" title="Информация о цитировании статьи получена из внешних систем"></span>
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="2001"><!-- article short information -->
+    <li>
+        <b>
+        
+            2001
+        
+        </b>
+        
+            <a href="/publications/article/2216724/" title="Перейти на страницу статьи">Effect of the antioxidant ionol (BHT) on growth and development of etiolated wheat seedlings: control of apoptosis, cell division, organelle ultrastructure, and plastid differentiation</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            <a href="/workers/2147152/" title="Бакеева Лора Евгеньевна (перейти на страницу сотрудника)">Bakeeva L.E.</a>, 
+            
+            Zamyatnina V.A., 
+            
+            Shorning B.Y., 
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Aleksandrushkina N.I.</a>, 
+            
+            <a href="/workers/8020439/" title="Ванюшин Борис Федорович (перейти на страницу сотрудника)">Vanyushin B.F.</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+
+            
+                в журнале <i><a href="/journals/54985/" title="Перейти на страницу журнала">Biochemistry (Moscow)</a></i>, издательство <i><a href="/publishers/83977330/" title="Перейти на страницу издательства">Pleiades Publishing, Ltd</a> (Road Town, United Kingdom)</i>, том&nbsp;66, №&nbsp;8, с.&nbsp;850-859
+
+            
+
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+    <span class="fas fa-star" style="color: red;" title="Статья опубликована в журнале из списка RSCI Web of Science"></span>
+
+
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="1999"><!-- article short information -->
+    <li>
+        <b>
+        
+            1999
+        
+        </b>
+        
+            <a href="/publications/article/2829210/" title="Перейти на страницу статьи">Межнуклеосомная фрагментация и синтез ДНК в проростках пшеницы</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            <a href="/workers/2260092/" title="Кирнос М.Д. (перейти на страницу сотрудника)">Кирнос М.Д.</a>, 
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Александрушкина Н.И.</a>, 
+            
+            <a href="/workers/2829209/" title="Шорнинг Б.Ю. (перейти на страницу сотрудника)">Шорнинг Б.Ю.</a>, 
+            
+            <a href="/workers/2713626/" title="Кудряшова Ирина Борисовна (перейти на страницу сотрудника)">Кудряшова И.Б.</a>, 
+            
+            <a href="/workers/8020439/" title="Ванюшин Борис Федорович (перейти на страницу сотрудника)">Ванюшин Б.Ф.</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+
+            
+                в журнале <i><a href="/journals/97219/" title="Перейти на страницу журнала">Физиология растений</a></i>, издательство <i><a href="/publishers/17843256/" title="Перейти на страницу издательства">ФГБУ &quot;Издательство &quot;Наука&quot;</a> (Москва)</i>, том&nbsp;46, №&nbsp;1, с.&nbsp;48-57
+
+            
+
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+
+
+<span class="fas fa-globe-americas" title="Информация о цитировании статьи получена из внешних систем"></span>
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="1999"><!-- article short information -->
+    <li>
+        <b>
+        
+            1999
+        
+        </b>
+        
+            <a href="/publications/article/2270252/" title="Перейти на страницу статьи">Subcellular reorganization of mitochondria producing heavy DNA in aging wheat coleoptiles</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            <a href="/workers/2147152/" title="Бакеева Лора Евгеньевна (перейти на страницу сотрудника)">Bakeeva L.E.</a>, 
+            
+            <a href="/workers/1003667/" title="Kirnos M.D. (перейти на страницу сотрудника)">Kirnos M.D.</a>, 
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Aleksandrushkina N.I.</a>, 
+            
+            Kazimirchyuk S.B., 
+            
+            Shorning B.Y., 
+            
+            <a href="/workers/2240729/" title="Замятнина В.А. (перейти на страницу сотрудника)">Zamyatnina V.A.</a>, 
+            
+            <a href="/workers/470993/" title="Ягужинский Лев Сергеевич (перейти на страницу сотрудника)">Yaguzhinsky L.S.</a>, 
+            
+            <a href="/workers/8020439/" title="Ванюшин Борис Федорович (перейти на страницу сотрудника)">Vanyushin B.F.</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+
+            
+                в журнале <i><a href="/journals/63410/" title="Перейти на страницу журнала">FEBS Letters</a></i>, издательство <i><a href="/publishers/44160/" title="Перейти на страницу издательства">Elsevier BV</a> (Netherlands)</i>, том&nbsp;457, с.&nbsp;122-125
+
+            
+
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+
+
+<span class="fas fa-globe-americas" title="Информация о цитировании статьи получена из внешних систем"></span>
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="1999"><!-- article short information -->
+    <li>
+        <b>
+        
+            1999
+        
+        </b>
+        
+            <a href="/publications/article/2216821/" title="Перейти на страницу статьи">Unusual fast sedimenting mitochondria producing heavy DNA in the cells of aging coleoptiles of wheat seedlings</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            <a href="/workers/1003667/" title="Kirnos M.D. (перейти на страницу сотрудника)">Kirnos M.D.</a>, 
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Alexandrushkina N.I.</a>, 
+            
+            <a href="/workers/2147152/" title="Бакеева Лора Евгеньевна (перейти на страницу сотрудника)">Bakeeva L.E.</a>, 
+            
+            Kazimirchuk S.B., 
+            
+            Shorning B.Y., 
+            
+            Alekseeva V.A., 
+            
+            <a href="/workers/470993/" title="Ягужинский Лев Сергеевич (перейти на страницу сотрудника)">Yaguzhinsky L.S.</a>, 
+            
+            <a href="/workers/8020439/" title="Ванюшин Борис Федорович (перейти на страницу сотрудника)">Vanyushin B.F.</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+
+            
+                в журнале <i><a href="/journals/54985/" title="Перейти на страницу журнала">Biochemistry (Moscow)</a></i>, издательство <i><a href="/publishers/83977330/" title="Перейти на страницу издательства">Pleiades Publishing, Ltd</a> (Road Town, United Kingdom)</i>, том&nbsp;64, №&nbsp;3, с.&nbsp;307-317
+
+            
+
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+    <span class="fas fa-star" style="color: red;" title="Статья опубликована в журнале из списка RSCI Web of Science"></span>
+
+
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="1992"><!-- article short information -->
+    <li>
+        <b>
+        
+            1992
+        
+        </b>
+        
+            <a href="/publications/article/2827970/" title="Перейти на страницу статьи">Тяжелая&quot; митохондриальная ДНК у высших растений</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            <a href="/workers/2260092/" title="Кирнос М.Д. (перейти на страницу сотрудника)">Кирнос М.Д.</a>, 
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Александрушкина Н.И.</a>, 
+            
+            Горемыкин В.В., 
+            
+            <a href="/workers/2713626/" title="Кудряшова Ирина Борисовна (перейти на страницу сотрудника)">Кудряшова И.Б.</a>, 
+            
+            <a href="/workers/8020439/" title="Ванюшин Борис Федорович (перейти на страницу сотрудника)">Ванюшин Б.Ф.</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+
+            
+                в журнале <i><a href="/journals/93637/" title="Перейти на страницу журнала">Биохимия</a></i>, издательство <i><a href="/publishers/17843256/" title="Перейти на страницу издательства">ФГБУ &quot;Издательство &quot;Наука&quot;</a> (Москва)</i>, том&nbsp;57, №&nbsp;10, с.&nbsp;1566-1573
+
+            
+
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+
+
+<span class="fas fa-globe-americas" title="Информация о цитировании статьи получена из внешних систем"></span>
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="1992"><!-- article short information -->
+    <li>
+        <b>
+        
+            1992
+        
+        </b>
+        
+            <a href="/publications/article/1003671/" title="Перейти на страницу статьи">Superproduction of heavy minicircular mitochondrial DNA in aging wheat coleoptiles</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            <a href="/workers/1003667/" title="Kirnos M.D. (перейти на страницу сотрудника)">Kirnos M.D.</a>, 
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Alexandrushkina N.I.</a>, 
+            
+            <a href="/workers/1003669/" title="Zagorskaya GYa (перейти на страницу сотрудника)">Zagorskaya GYa</a>, 
+            
+            <a href="/workers/379155/" title="Киреев Игорь Игоревич (перейти на страницу сотрудника)">Kireev I.I.</a>, 
+            
+            <a href="/workers/8020439/" title="Ванюшин Борис Федорович (перейти на страницу сотрудника)">Vanyushin B.F.</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+
+            
+                в журнале <i><a href="/journals/63410/" title="Перейти на страницу журнала">FEBS Letters</a></i>, издательство <i><a href="/publishers/44160/" title="Перейти на страницу издательства">Elsevier BV</a> (Netherlands)</i>, том&nbsp;298, №&nbsp;2-3, с.&nbsp;109-112
+
+            
+
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+    <span class="fas fa-star" style="color: red;" title="Статья опубликована в журнале из списка RSCI Web of Science"></span>
+
+
+
+<span class="fas fa-globe-americas" title="Информация о цитировании статьи получена из внешних систем"></span>
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="1990"><!-- article short information -->
+    <li>
+        <b>
+        
+            1990
+        
+        </b>
+        
+            <a href="/publications/article/2828278/" title="Перейти на страницу статьи">Синтез и метилирование по адениновым остаткам &quot;тяжелых&quot; мини-плазмид митохондриальной ДНК в колеоптиле и листе проростков пшеницы: влияние фитогормонов</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Александрушкина Н.И.</a>, 
+            
+            <a href="/workers/2713626/" title="Кудряшова Ирина Борисовна (перейти на страницу сотрудника)">Кудряшова И.Б.</a>, 
+            
+            <a href="/workers/2260092/" title="Кирнос М.Д. (перейти на страницу сотрудника)">Кирнос М.Д.</a>, 
+            
+            <a href="/workers/8020439/" title="Ванюшин Борис Федорович (перейти на страницу сотрудника)">Ванюшин Б.Ф.</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+
+            
+                в журнале <i><a href="/journals/93637/" title="Перейти на страницу журнала">Биохимия</a></i>, издательство <i><a href="/publishers/17843256/" title="Перейти на страницу издательства">ФГБУ &quot;Издательство &quot;Наука&quot;</a> (Москва)</i>, том&nbsp;55, №&nbsp;11, с.&nbsp;2038-2045
+
+            
+
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+
+
+<span class="fas fa-globe-americas" title="Информация о цитировании статьи получена из внешних систем"></span>
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="1988"><!-- article short information -->
+    <li>
+        <b>
+        
+            1988
+        
+        </b>
+        
+            <a href="/publications/article/4469150/" title="Перейти на страницу статьи">Replicative methylation as a discrete stage in modification of DNA in plants - criteria of discreteness level and specificity of methylation of Okazaki fragments</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            <a href="/workers/1003667/" title="Kirnos M.D. (перейти на страницу сотрудника)">Kirnos MD</a>, 
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Aleksandrushkina NI</a>, 
+            
+            <a href="/workers/2829141/" title="Кутуева Людмила Ильтизировна (перейти на страницу сотрудника)">Kutueva LI</a>, 
+            
+            <a href="/workers/8020439/" title="Ванюшин Борис Федорович (перейти на страницу сотрудника)">Vanyushin BF</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+
+            
+                в журнале <i><a href="/journals/54985/" title="Перейти на страницу журнала">Biochemistry (Moscow)</a></i>, издательство <i><a href="/publishers/83977330/" title="Перейти на страницу издательства">Pleiades Publishing, Ltd</a> (Road Town, United Kingdom)</i>, том&nbsp;53, №&nbsp;8, с.&nbsp;1219-1228
+
+            
+
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+    <span class="fas fa-star" style="color: red;" title="Статья опубликована в журнале из списка RSCI Web of Science"></span>
+
+
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="1988"><!-- article short information -->
+    <li>
+        <b>
+        
+            1988
+        
+        </b>
+        
+            <a href="/publications/article/4469143/" title="Перейти на страницу статьи">Репликативное метилирование - дискретный этап модификации ДНК у растений. Критерии дискретности - уровень и специфичность метилирования фрагментов Оказаки</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            <a href="/workers/2260092/" title="Кирнос М.Д. (перейти на страницу сотрудника)">Кирнос М.Д.</a>, 
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Александрушкина Н.И.</a>, 
+            
+            <a href="/workers/2829141/" title="Кутуева Людмила Ильтизировна (перейти на страницу сотрудника)">Кутуева Л.И.</a>, 
+            
+            <a href="/workers/8020439/" title="Ванюшин Борис Федорович (перейти на страницу сотрудника)">Ванюшин Б.Ф.</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+
+            
+                в журнале <i><a href="/journals/93637/" title="Перейти на страницу журнала">Биохимия</a></i>, издательство <i><a href="/publishers/17843256/" title="Перейти на страницу издательства">ФГБУ &quot;Издательство &quot;Наука&quot;</a> (Москва)</i>, том&nbsp;53, №&nbsp;8, с.&nbsp;1397-1406
+
+            
+
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+
+
+<span class="fas fa-globe-americas" title="Информация о цитировании статьи получена из внешних систем"></span>
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="1988"><!-- article short information -->
+    <li>
+        <b>
+        
+            1988
+        
+        </b>
+        
+            <a href="/publications/article/4469134/" title="Перейти на страницу статьи">Replicative and postreplicative methylation of nuclear-DNA modulates the asymmetry of its complementary strands for the content of 5-methylcytosine residues in several successive cell-cycles of cells of the 1st leaf of wheat shoots</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            <a href="/workers/1003667/" title="Kirnos M.D. (перейти на страницу сотрудника)">Kirnos MD</a>, 
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Aleksandrushkina NI</a>, 
+            
+            <a href="/workers/2829141/" title="Кутуева Людмила Ильтизировна (перейти на страницу сотрудника)">Kutueva LI</a>, 
+            
+            <a href="/workers/8020439/" title="Ванюшин Борис Федорович (перейти на страницу сотрудника)">Vanyushin BF</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+
+            
+                в журнале <i><a href="/journals/54985/" title="Перейти на страницу журнала">Biochemistry (Moscow)</a></i>, издательство <i><a href="/publishers/83977330/" title="Перейти на страницу издательства">Pleiades Publishing, Ltd</a> (Road Town, United Kingdom)</i>, том&nbsp;53, №&nbsp;3, с.&nbsp;301-312
+
+            
+
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+    <span class="fas fa-star" style="color: red;" title="Статья опубликована в журнале из списка RSCI Web of Science"></span>
+
+
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="1988"><!-- article short information -->
+    <li>
+        <b>
+        
+            1988
+        
+        </b>
+        
+            <a href="/publications/article/4469104/" title="Перейти на страницу статьи">Репликативное и пострепликативное метилирование ядерной ДНК модулируют асимметрию ее комплементарных цепей по содержанию остатков 5-метилцитозина в нескольких последовательных клеточных циклах клеток первого листа проростков пшеницы</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            <a href="/workers/2260092/" title="Кирнос М.Д. (перейти на страницу сотрудника)">Кирнос М.Д.</a>, 
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Александрушкина Н.И.</a>, 
+            
+            <a href="/workers/2829141/" title="Кутуева Людмила Ильтизировна (перейти на страницу сотрудника)">Кутуева Л.И.</a>, 
+            
+            <a href="/workers/8020439/" title="Ванюшин Борис Федорович (перейти на страницу сотрудника)">Ванюшин Б.Ф.</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+
+            
+                в журнале <i><a href="/journals/93637/" title="Перейти на страницу журнала">Биохимия</a></i>, издательство <i><a href="/publishers/17843256/" title="Перейти на страницу издательства">ФГБУ &quot;Издательство &quot;Наука&quot;</a> (Москва)</i>, том&nbsp;53, №&nbsp;3, с.&nbsp;355-367
+
+            
+
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+
+
+<span class="fas fa-globe-americas" title="Информация о цитировании статьи получена из внешних систем"></span>
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="1987"><!-- article short information -->
+    <li>
+        <b>
+        
+            1987
+        
+        </b>
+        
+            <a href="/publications/article/4469096/" title="Перейти на страницу статьи">Postreplicative methylation is a discrete step of nuclear-DNA methylation in the cell-cycle of initial leaf-cells of wheat seedlings - Influence of temperature, phytohormones, inhibitors of translation and transcription, and DNA methylation</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            <a href="/workers/1003667/" title="Kirnos M.D. (перейти на страницу сотрудника)">Kirnos MD</a>, 
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Aleksandrushkina NI</a>, 
+            
+            <a href="/workers/2829141/" title="Кутуева Людмила Ильтизировна (перейти на страницу сотрудника)">Kutueva LI</a>, 
+            
+            <a href="/workers/4466152/" title="Артюховская Н.А. (перейти на страницу сотрудника)">Artyukhovskaya NA</a>, 
+            
+            <a href="/workers/8020439/" title="Ванюшин Борис Федорович (перейти на страницу сотрудника)">Vanyushin BF</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+
+            
+                в журнале <i><a href="/journals/54985/" title="Перейти на страницу журнала">Biochemistry (Moscow)</a></i>, издательство <i><a href="/publishers/83977330/" title="Перейти на страницу издательства">Pleiades Publishing, Ltd</a> (Road Town, United Kingdom)</i>, том&nbsp;52, №&nbsp;4, с.&nbsp;538-549
+
+            
+
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+    <span class="fas fa-star" style="color: red;" title="Статья опубликована в журнале из списка RSCI Web of Science"></span>
+
+
+
+<span class="fas fa-globe-americas" title="Информация о цитировании статьи получена из внешних систем"></span>
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="1987"><!-- article short information -->
+    <li>
+        <b>
+        
+            1987
+        
+        </b>
+        
+            <a href="/publications/article/4469067/" title="Перейти на страницу статьи">Пострепликативное метилирование - дискретный этап метилирования ядерной ДНК в клеточном цикле клеток первого листа проростков пшеницы. Влияние температуры, фитогормонов, ингибиторов трансляции, транскрипции и метилирования ДНК</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            <a href="/workers/2260092/" title="Кирнос М.Д. (перейти на страницу сотрудника)">Кирнос М.Д.</a>, 
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Александрушкина Н.И.</a>, 
+            
+            <a href="/workers/2829141/" title="Кутуева Людмила Ильтизировна (перейти на страницу сотрудника)">Кутуева Л.И.</a>, 
+            
+            <a href="/workers/4466152/" title="Артюховская Н.А. (перейти на страницу сотрудника)">Артюховская Н.А.</a>, 
+            
+            <a href="/workers/8020439/" title="Ванюшин Борис Федорович (перейти на страницу сотрудника)">Ванюшин Б.Ф.</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+
+            
+                в журнале <i><a href="/journals/93637/" title="Перейти на страницу журнала">Биохимия</a></i>, издательство <i><a href="/publishers/17843256/" title="Перейти на страницу издательства">ФГБУ &quot;Издательство &quot;Наука&quot;</a> (Москва)</i>, том&nbsp;52, №&nbsp;4, с.&nbsp;625-637
+
+            
+
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="1986"><!-- article short information -->
+    <li>
+        <b>
+        
+            1986
+        
+        </b>
+        
+            <a href="/publications/article/8987930/" title="Перейти на страницу статьи">Бактериофаги метанотрофов и их распространение в природе</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            Тютиков Ф.М., 
+            
+            Есипова В.В., 
+            
+            Ребентиш Б.А., 
+            
+            Беспалова И.А., 
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Александрушкина Н.И.</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+
+            
+                в журнале <i><a href="/journals/579005/" title="Перейти на страницу журнала">Известия АН СССР. Серия физическая</a></i>, №&nbsp;3, с.&nbsp;361-369
+
+            
+
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+
+
+<span class="fas fa-globe-americas" title="Информация о цитировании статьи получена из внешних систем"></span>
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="1986"><!-- article short information -->
+    <li>
+        <b>
+        
+            1986
+        
+        </b>
+        
+            <a href="/publications/article/4466226/" title="Перейти на страницу статьи">Inhibition of replicative DNA synthesis by nucleosides, their synthetic analogs, and inhibitors of DNA methylation in initial leaf of etiolated wheat seedlings</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            <a href="/workers/2773060/" title="Ашапкин Василий Васильевич (перейти на страницу сотрудника)">Ashapkin V.V.</a>, 
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Aleksandrushkina N.I.</a>, 
+            
+            <a href="/workers/1003667/" title="Kirnos M.D. (перейти на страницу сотрудника)">Kirnos M.D.</a>, 
+            
+            <a href="/workers/8020439/" title="Ванюшин Борис Федорович (перейти на страницу сотрудника)">Vanyushin B.F.</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+
+            
+                в журнале <i><a href="/journals/54985/" title="Перейти на страницу журнала">Biochemistry (Moscow)</a></i>, издательство <i><a href="/publishers/83977330/" title="Перейти на страницу издательства">Pleiades Publishing, Ltd</a> (Road Town, United Kingdom)</i>, том&nbsp;51, №&nbsp;10, с.&nbsp;1353-1359
+
+            
+
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+    <span class="fas fa-star" style="color: red;" title="Статья опубликована в журнале из списка RSCI Web of Science"></span>
+
+
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="1986"><!-- article short information -->
+    <li>
+        <b>
+        
+            1986
+        
+        </b>
+        
+            <a href="/publications/article/4466215/" title="Перейти на страницу статьи">Подавление репликативного синтеза ДНК нуклеозидами, их синтетическими аналогами и ингибиторами метилирования ДНК в первом листе этиолированных проростков пшеницы</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            <a href="/workers/2773060/" title="Ашапкин Василий Васильевич (перейти на страницу сотрудника)">Ашапкин В.В.</a>, 
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Александрушкина Н.И.</a>, 
+            
+            <a href="/workers/2260092/" title="Кирнос М.Д. (перейти на страницу сотрудника)">Кирнос М.Д.</a>, 
+            
+            <a href="/workers/8020439/" title="Ванюшин Борис Федорович (перейти на страницу сотрудника)">Ванюшин Б.Ф.</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+
+            
+                в журнале <i><a href="/journals/93637/" title="Перейти на страницу журнала">Биохимия</a></i>, издательство <i><a href="/publishers/17843256/" title="Перейти на страницу издательства">ФГБУ &quot;Издательство &quot;Наука&quot;</a> (Москва)</i>, том&nbsp;51, с.&nbsp;1587-1594
+
+            
+
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+
+
+<span class="fas fa-globe-americas" title="Информация о цитировании статьи получена из внешних систем"></span>
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="1986"><!-- article short information -->
+    <li>
+        <b>
+        
+            1986
+        
+        </b>
+        
+            <a href="/publications/article/4466196/" title="Перейти на страницу статьи">Influence of various phytohormones on the replicative synthesis of nuclear DNA in the S-phase of cells of the 1st leaf of etiolated wheat seedlings</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            <a href="/workers/4466152/" title="Артюховская Н.А. (перейти на страницу сотрудника)">Artyukhovskaya N.A.</a>, 
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Aleksandrushkina N.I.</a>, 
+            
+            <a href="/workers/2773060/" title="Ашапкин Василий Васильевич (перейти на страницу сотрудника)">Ashapkin V.V.</a>, 
+            
+            <a href="/workers/1003667/" title="Kirnos M.D. (перейти на страницу сотрудника)">Kirnos M.D.</a>, 
+            
+            <a href="/workers/8020439/" title="Ванюшин Борис Федорович (перейти на страницу сотрудника)">Vanyushin B.F.</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+
+            
+                в журнале <i><a href="/journals/54985/" title="Перейти на страницу журнала">Biochemistry (Moscow)</a></i>, издательство <i><a href="/publishers/83977330/" title="Перейти на страницу издательства">Pleiades Publishing, Ltd</a> (Road Town, United Kingdom)</i>, том&nbsp;51, №&nbsp;11, с.&nbsp;1600-1606
+
+            
+
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+    <span class="fas fa-star" style="color: red;" title="Статья опубликована в журнале из списка RSCI Web of Science"></span>
+
+
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="1986"><!-- article short information -->
+    <li>
+        <b>
+        
+            1986
+        
+        </b>
+        
+            <a href="/publications/article/4466176/" title="Перейти на страницу статьи">Влияние различных фитогормонов на репликативный синтез ядерной ДНК в S-фазе клеток первого листа этиолированных проростков пшеницы</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            <a href="/workers/4466152/" title="Артюховская Н.А. (перейти на страницу сотрудника)">Артюховская Н.А.</a>, 
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Александрушкина Н.И.</a>, 
+            
+            <a href="/workers/2773060/" title="Ашапкин Василий Васильевич (перейти на страницу сотрудника)">Ашапкин В.В.</a>, 
+            
+            <a href="/workers/2260092/" title="Кирнос М.Д. (перейти на страницу сотрудника)">Кирнос М.Д.</a>, 
+            
+            <a href="/workers/8020439/" title="Ванюшин Борис Федорович (перейти на страницу сотрудника)">Ванюшин Б.Ф.</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+
+            
+                в журнале <i><a href="/journals/93637/" title="Перейти на страницу журнала">Биохимия</a></i>, издательство <i><a href="/publishers/17843256/" title="Перейти на страницу издательства">ФГБУ &quot;Издательство &quot;Наука&quot;</a> (Москва)</i>, том&nbsp;51, с.&nbsp;1868-1874
+
+            
+
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+
+
+<span class="fas fa-globe-americas" title="Информация о цитировании статьи получена из внешних систем"></span>
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="1986"><!-- article short information -->
+    <li>
+        <b>
+        
+            1986
+        
+        </b>
+        
+            <a href="/publications/article/4466168/" title="Перейти на страницу статьи">Influence of phytohormones on replicative and postreplicative methylation of nuclear DNA in the S-phase of the cell cycle of cells of the 1st leaf of etiolated wheat seedlings</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            <a href="/workers/1003667/" title="Kirnos M.D. (перейти на страницу сотрудника)">Kirnos M.D.</a>, 
+            
+            <a href="/workers/4466152/" title="Артюховская Н.А. (перейти на страницу сотрудника)">Artyukhovskaya N.A.</a>, 
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Aleksandrushkina N.I.</a>, 
+            
+            <a href="/workers/2773060/" title="Ашапкин Василий Васильевич (перейти на страницу сотрудника)">Ashapkin V.V.</a>, 
+            
+            <a href="/workers/8020439/" title="Ванюшин Борис Федорович (перейти на страницу сотрудника)">Vanyushin B.F.</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+
+            
+                в журнале <i><a href="/journals/54985/" title="Перейти на страницу журнала">Biochemistry (Moscow)</a></i>, издательство <i><a href="/publishers/83977330/" title="Перейти на страницу издательства">Pleiades Publishing, Ltd</a> (Road Town, United Kingdom)</i>, том&nbsp;51, №&nbsp;11, с.&nbsp;1607-1616
+
+            
+
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+    <span class="fas fa-star" style="color: red;" title="Статья опубликована в журнале из списка RSCI Web of Science"></span>
+
+
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="1986"><!-- article short information -->
+    <li>
+        <b>
+        
+            1986
+        
+        </b>
+        
+            <a href="/publications/article/4466153/" title="Перейти на страницу статьи">Влияние фитогормонов на репликативное и пострепликативное метилирование ядерной ДНК в S-фазе клеточного цикла клеток первого листа этиолированных проростков пшеницы</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            <a href="/workers/2260092/" title="Кирнос М.Д. (перейти на страницу сотрудника)">Кирнос М.Д.</a>, 
+            
+            <a href="/workers/4466152/" title="Артюховская Н.А. (перейти на страницу сотрудника)">Артюховская Н.А.</a>, 
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Александрушкина Н.И.</a>, 
+            
+            <a href="/workers/2773060/" title="Ашапкин Василий Васильевич (перейти на страницу сотрудника)">Ашапкин В.В.</a>, 
+            
+            <a href="/workers/8020439/" title="Ванюшин Борис Федорович (перейти на страницу сотрудника)">Ванюшин Б.Ф.</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+
+            
+                в журнале <i><a href="/journals/93637/" title="Перейти на страницу журнала">Биохимия</a></i>, издательство <i><a href="/publishers/17843256/" title="Перейти на страницу издательства">ФГБУ &quot;Издательство &quot;Наука&quot;</a> (Москва)</i>, том&nbsp;51, с.&nbsp;1875-1885
+
+            
+
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="1985"><!-- article short information -->
+    <li>
+        <b>
+        
+            1985
+        
+        </b>
+        
+            <a href="/publications/article/1898165/" title="Перейти на страницу статьи">Bacteriophages of methanotrophic and gas-oxidizing bacteria isolated from fish</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            Tyutikov F.M., 
+            
+            Esipova V.V., 
+            
+            <a href="/workers/1898163/" title="Rebentish B.A. (перейти на страницу сотрудника)">Rebentish B.A.</a>, 
+            
+            Bespalova I.A., 
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Aleksandrushkina N.I.</a>, 
+            
+            <a href="/workers/1897619/" title="Гальченко Валерий Федорович (перейти на страницу сотрудника)">Galchenko V.F.</a>, 
+            
+            Tikhonenko A.S.
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+
+            
+                в журнале <i><a href="/journals/79337/" title="Перейти на страницу журнала">Microbiology</a></i>, издательство <i><a href="/publishers/83977330/" title="Перейти на страницу издательства">Pleiades Publishing, Ltd</a> (Road Town, United Kingdom)</i>, том&nbsp;53, №&nbsp;4, с.&nbsp;645-650
+
+            
+
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+
+
+<span class="fas fa-globe-americas" title="Информация о цитировании статьи получена из внешних систем"></span>
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="1984"><!-- article short information -->
+    <li>
+        <b>
+        
+            1984
+        
+        </b>
+        
+            <a href="/publications/article/4469061/" title="Перейти на страницу статьи">Nonreplicative DNA-synthesis and methylation in cell-cycle of initial leaf-cells of etiolated wheat seedlings</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            <a href="/workers/1003667/" title="Kirnos M.D. (перейти на страницу сотрудника)">Kirnos MD</a>, 
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Ganicheva NI</a>, 
+            
+            <a href="/workers/2829141/" title="Кутуева Людмила Ильтизировна (перейти на страницу сотрудника)">Kutueva LI</a>, 
+            
+            <a href="/workers/8020439/" title="Ванюшин Борис Федорович (перейти на страницу сотрудника)">Vanyushin BF</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+
+            
+                в журнале <i><a href="/journals/54985/" title="Перейти на страницу журнала">Biochemistry (Moscow)</a></i>, издательство <i><a href="/publishers/83977330/" title="Перейти на страницу издательства">Pleiades Publishing, Ltd</a> (Road Town, United Kingdom)</i>, том&nbsp;49, №&nbsp;10, с.&nbsp;1448-1458
+
+            
+
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+    <span class="fas fa-star" style="color: red;" title="Статья опубликована в журнале из списка RSCI Web of Science"></span>
+
+
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="1984"><!-- article short information -->
+    <li>
+        <b>
+        
+            1984
+        
+        </b>
+        
+            <a href="/publications/article/4469050/" title="Перейти на страницу статьи">Нерепликативные синтез и метилирование ДНК в клеточном цикле клеток первого листа этиолированных проростков пшеницы</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            <a href="/workers/2260092/" title="Кирнос М.Д. (перейти на страницу сотрудника)">Кирнос М.Д.</a>, 
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Ганичева Н.И.</a>, 
+            
+            <a href="/workers/2829141/" title="Кутуева Людмила Ильтизировна (перейти на страницу сотрудника)">Кутуева Л.И.</a>, 
+            
+            <a href="/workers/8020439/" title="Ванюшин Борис Федорович (перейти на страницу сотрудника)">Ванюшин Б.Ф.</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+
+            
+                в журнале <i><a href="/journals/93637/" title="Перейти на страницу журнала">Биохимия</a></i>, издательство <i><a href="/publishers/17843256/" title="Перейти на страницу издательства">ФГБУ &quot;Издательство &quot;Наука&quot;</a> (Москва)</i>, том&nbsp;49, №&nbsp;10, с.&nbsp;1690-1702
+
+            
+
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+
+
+<span class="fas fa-globe-americas" title="Информация о цитировании статьи получена из внешних систем"></span>
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="1984"><!-- article short information -->
+    <li>
+        <b>
+        
+            1984
+        
+        </b>
+        
+            <a href="/publications/article/4469042/" title="Перейти на страницу статьи">Nonsemiconservative nature of DNA methylation in leaf meristem of wheat seedlings - formation of incompletely methylated sites and different specificity of methylation of intermediate replicative fragments</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            <a href="/workers/1003667/" title="Kirnos M.D. (перейти на страницу сотрудника)">Kirnos MD</a>, 
+            
+            <a href="/workers/2829141/" title="Кутуева Людмила Ильтизировна (перейти на страницу сотрудника)">Kutueva LI</a>, 
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Ganicheva NI</a>, 
+            
+            <a href="/workers/8020439/" title="Ванюшин Борис Федорович (перейти на страницу сотрудника)">Vanyushin BF</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+
+            
+                в журнале <i><a href="/journals/54985/" title="Перейти на страницу журнала">Biochemistry (Moscow)</a></i>, издательство <i><a href="/publishers/83977330/" title="Перейти на страницу издательства">Pleiades Publishing, Ltd</a> (Road Town, United Kingdom)</i>, том&nbsp;49, №&nbsp;8, с.&nbsp;1163-1171
+
+            
+
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+    <span class="fas fa-star" style="color: red;" title="Статья опубликована в журнале из списка RSCI Web of Science"></span>
+
+
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="1984"><!-- article short information -->
+    <li>
+        <b>
+        
+            1984
+        
+        </b>
+        
+            <a href="/publications/article/4469024/" title="Перейти на страницу статьи">Неполуконсервативный характер репликативного метилирования ДНК в меристеме листа проростков пшеницы: образование недометилированных участков и разная специфичность метилирования промежуточных репликативных фрагментов</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            <a href="/workers/2260092/" title="Кирнос М.Д. (перейти на страницу сотрудника)">Кирнос М.Д.</a>, 
+            
+            <a href="/workers/2829141/" title="Кутуева Людмила Ильтизировна (перейти на страницу сотрудника)">Кутуева Л.И.</a>, 
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Ганичева Н.И.</a>, 
+            
+            <a href="/workers/8020439/" title="Ванюшин Борис Федорович (перейти на страницу сотрудника)">Ванюшин Б.Ф.</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+
+            
+                в журнале <i><a href="/journals/93637/" title="Перейти на страницу журнала">Биохимия</a></i>, издательство <i><a href="/publishers/17843256/" title="Перейти на страницу издательства">ФГБУ &quot;Издательство &quot;Наука&quot;</a> (Москва)</i>, том&nbsp;49, №&nbsp;8, с.&nbsp;1357-1366
+
+            
+
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+    <span class="fas fa-star" style="color: red;" title="Статья опубликована в журнале из списка RSCI Web of Science"></span>
+
+
+
+<span class="fas fa-globe-americas" title="Информация о цитировании статьи получена из внешних систем"></span>
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="1983"><!-- article short information -->
+    <li>
+        <b>
+        
+            1983
+        
+        </b>
+        
+            <a href="/publications/article/2828912/" title="Перейти на страницу статьи">Синхронный синтез ДНК в колеоптиле и первом листе развивающихся 	этиолированных проростков пшеницы: природа и соотношение синтезов 	ядерной и митохондриальной ДНК</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            <a href="/workers/2260092/" title="Кирнос М.Д. (перейти на страницу сотрудника)">Кирнос М.Д.</a>, 
+            
+            <a href="/workers/2260093/" title="Волкова С.А. (перейти на страницу сотрудника)">Волкова С.А.</a>, 
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Ганичева Н.И.</a>, 
+            
+            <a href="/workers/2713626/" title="Кудряшова Ирина Борисовна (перейти на страницу сотрудника)">Кудряшова И.Б.</a>, 
+            
+            <a href="/workers/8020439/" title="Ванюшин Борис Федорович (перейти на страницу сотрудника)">Ванюшин Б.Ф.</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+
+            
+                в журнале <i><a href="/journals/93637/" title="Перейти на страницу журнала">Биохимия</a></i>, издательство <i><a href="/publishers/17843256/" title="Перейти на страницу издательства">ФГБУ &quot;Издательство &quot;Наука&quot;</a> (Москва)</i>, том&nbsp;48, №&nbsp;10, с.&nbsp;1587-1595
+
+            
+
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+    <span class="fas fa-star" style="color: red;" title="Статья опубликована в журнале из списка RSCI Web of Science"></span>
+
+
+
+<span class="fas fa-globe-americas" title="Информация о цитировании статьи получена из внешних систем"></span>
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="1983"><!-- article short information -->
+    <li>
+        <b>
+        
+            1983
+        
+        </b>
+        
+            <a href="/publications/article/2260095/" title="Перейти на страницу статьи">Митохондриальная природа новообразованной ДНК в стареющих колеоптелях этиолированных проростков пшеницы</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            <a href="/workers/2147152/" title="Бакеева Лора Евгеньевна (перейти на страницу сотрудника)">Бакеева Л.Е.</a>, 
+            
+            <a href="/workers/2260092/" title="Кирнос М.Д. (перейти на страницу сотрудника)">Кирнос М.Д.</a>, 
+            
+            <a href="/workers/2260093/" title="Волкова С.А. (перейти на страницу сотрудника)">Волкова С.А.</a>, 
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Ганичева Н.И.</a>, 
+            
+            <a href="/workers/8020439/" title="Ванюшин Борис Федорович (перейти на страницу сотрудника)">Ванюшин Б.Ф.</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+
+            
+                в журнале <i><a href="/journals/93637/" title="Перейти на страницу журнала">Биохимия</a></i>, издательство <i><a href="/publishers/17843256/" title="Перейти на страницу издательства">ФГБУ &quot;Издательство &quot;Наука&quot;</a> (Москва)</i>, том&nbsp;48, с.&nbsp;1505-1512
+
+            
+
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+    <span class="fas fa-star" style="color: red;" title="Статья опубликована в журнале из списка RSCI Web of Science"></span>
+
+
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="1982"><!-- article short information -->
+    <li>
+        <b>
+        
+            1982
+        
+        </b>
+        
+            <a href="/publications/article/5321722/" title="Перейти на страницу статьи">Репликативное метилирование ДНК в L-клетках: действие S-изобутиладенозина и циклогексимида и возможное сущест-вование двух ДНК-метилаз</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            Исаева Л.В., 
+            
+            <a href="/workers/2258098/" title="Кирьянов Глеб Иванович (перейти на страницу сотрудника)">Кирьянов Г.И.</a>, 
+            
+            <a href="/workers/2260092/" title="Кирнос М.Д. (перейти на страницу сотрудника)">Кирнос М.Д.</a>, 
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Ганичева Н.И.</a>, 
+            
+            <a href="/workers/8020439/" title="Ванюшин Борис Федорович (перейти на страницу сотрудника)">Ванюшин Б.Ф.</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+
+            
+                в журнале <i><a href="/journals/93637/" title="Перейти на страницу журнала">Биохимия</a></i>, издательство <i><a href="/publishers/17843256/" title="Перейти на страницу издательства">ФГБУ &quot;Издательство &quot;Наука&quot;</a> (Москва)</i>, №&nbsp;47, с.&nbsp;153-161
+
+            
+
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+    <span class="fas fa-star" style="color: red;" title="Статья опубликована в журнале из списка RSCI Web of Science"></span>
+
+
+
+<span class="fas fa-globe-americas" title="Информация о цитировании статьи получена из внешних систем"></span>
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="1982"><!-- article short information -->
+    <li>
+        <b>
+        
+            1982
+        
+        </b>
+        
+            <a href="/publications/article/1442820/" title="Перейти на страницу статьи">Пурпурные несерные бактерии, выделенные из минеральных источников Армении.	</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            <a href="/workers/1442817/" title="Малатян М.Н. (перейти на страницу сотрудника)">Малатян М.Н.</a>, 
+            
+            <a href="/workers/1442818/" title="Арутюнян Т.Г. (перейти на страницу сотрудника)">Арутюнян Т.Г.</a>, 
+            
+            <a href="/workers/1442819/" title="Парoнян А.Х. (перейти на страницу сотрудника)">Парoнян А.Х.</a>, 
+            
+            <a href="/workers/1336029/" title="Кеппен  Ольга Игоревна (перейти на страницу сотрудника)">Кеппен О.И.</a>, 
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Александрушкина Н.И.</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+
+            
+                в журнале <i><a href="/journals/95775/" title="Перейти на страницу журнала">Микробиология</a></i>, издательство <i><a href="/publishers/17843256/" title="Перейти на страницу издательства">ФГБУ &quot;Издательство &quot;Наука&quot;</a> (Москва)</i>, том&nbsp;51, №&nbsp;3, с.&nbsp;517-519
+
+            
+
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+    <span class="fas fa-star" style="color: red;" title="Статья опубликована в журнале из списка RSCI Web of Science"></span>
+
+
+
+<span class="fas fa-globe-americas" title="Информация о цитировании статьи получена из внешних систем"></span>
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="1981"><!-- article short information -->
+    <li>
+        <b>
+        
+            1981
+        
+        </b>
+        
+            <a href="/publications/article/8884289/" title="Перейти на страницу статьи">5-метилцитозин в   пиримидиновых последовательностях ДНК растений и животных: специфичность метилирования</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            <a href="/workers/2260092/" title="Кирнос М.Д. (перейти на страницу сотрудника)">Кирнос М.Д.</a>, 
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Александрушкина Н.И.</a>, 
+            
+            <a href="/workers/8020439/" title="Ванюшин Борис Федорович (перейти на страницу сотрудника)">Ванюшин Б.Ф.</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+
+            
+                в журнале <i><a href="/journals/93637/" title="Перейти на страницу журнала">Биохимия</a></i>, издательство <i><a href="/publishers/17843256/" title="Перейти на страницу издательства">ФГБУ &quot;Издательство &quot;Наука&quot;</a> (Москва)</i>, том&nbsp;46, №&nbsp;8, с.&nbsp;1458-1474
+
+            
+
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+
+
+<span class="fas fa-globe-americas" title="Информация о цитировании статьи получена из внешних систем"></span>
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="1980"><!-- article short information -->
+    <li>
+        <b>
+        
+            1980
+        
+        </b>
+        
+            <a href="/publications/article/9276068/" title="Перейти на страницу статьи">Methylation of DNA in L cells on replication</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            <a href="/workers/2258098/" title="Кирьянов Глеб Иванович (перейти на страницу сотрудника)">Kiryanov G.I.</a>, 
+            
+            <a href="/workers/2260092/" title="Кирнос М.Д. (перейти на страницу сотрудника)">Kirnos M.D.</a>, 
+            
+            <a href="/workers/5320562/" title="Демидкина Н.П. (перейти на страницу сотрудника)">Demidkina N.P.</a>, 
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Alexandrushkina N.I.</a>, 
+            
+            <a href="/workers/8020439/" title="Ванюшин Борис Федорович (перейти на страницу сотрудника)">Vanyushin B.F.</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+
+            
+                в журнале <i><a href="/journals/63410/" title="Перейти на страницу журнала">FEBS Letters</a></i>, издательство <i><a href="/publishers/44160/" title="Перейти на страницу издательства">Elsevier BV</a> (Netherlands)</i>, том&nbsp;112, №&nbsp;2, с.&nbsp;225-228
+
+            
+
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="1980"><!-- article short information -->
+    <li>
+        <b>
+        
+            1980
+        
+        </b>
+        
+            <a href="/publications/article/8987894/" title="Перейти на страницу статьи">Bacteriophages of mathanotrophic bacteria</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            Tutikov F.V., 
+            
+            Bespalova I.A., 
+            
+            Rebentish B.A., 
+            
+            Krivitski A.S., 
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Alexandrushkina N.I.</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+
+            
+                в журнале <i><a href="/journals/70215/" title="Перейти на страницу журнала">Japanese Journal of Bacteriology</a></i>, издательство <i><a href="/publishers/48202/" title="Перейти на страницу издательства">Business Center for Academic Societies Japan/Nihon Gakkai Jimu Senta</a> (Japan)</i>, том&nbsp;144, с.&nbsp;375-386
+
+            
+
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="1980"><!-- article short information -->
+    <li>
+        <b>
+        
+            1980
+        
+        </b>
+        
+            <a href="/publications/article/8884233/" title="Перейти на страницу статьи">Метилирование ДНК в суспензионной культуре клеток табака при обработке 	фитогормонами</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            Башките Е.А., 
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Александрушкина Н.И.</a>, 
+            
+            <a href="/workers/2260092/" title="Кирнос М.Д. (перейти на страницу сотрудника)">Кирнос М.Д.</a>, 
+            
+            <a href="/workers/2258098/" title="Кирьянов Глеб Иванович (перейти на страницу сотрудника)">Кирьянов Г.И.</a>, 
+            
+            <a href="/workers/8020439/" title="Ванюшин Борис Федорович (перейти на страницу сотрудника)">Ванюшин Б.Ф.</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+
+            
+                в журнале <i><a href="/journals/499184/" title="Перейти на страницу журнала">Биологические науки</a></i>, издательство <i><a href="/publishers/10297706/" title="Перейти на страницу издательства">Высш. шк.</a> (М.)</i>, №&nbsp;4, с.&nbsp;103-110
+
+            
+
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+    <span class="fas fa-star" style="color: red;" title="Статья опубликована в журнале из списка RSCI Web of Science"></span>
+
+
+
+<span class="fas fa-globe-americas" title="Информация о цитировании статьи получена из внешних систем"></span>
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="1980"><!-- article short information -->
+    <li>
+        <b>
+        
+            1980
+        
+        </b>
+        
+            <a href="/publications/article/5320656/" title="Перейти на страницу статьи">Репликация и метилирование ДНК в клетках суспензионной культуры табака</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            <a href="/workers/5320584/" title="Башките Е.А. (перейти на страницу сотрудника)">Башките Е.А.</a>, 
+            
+            <a href="/workers/2260092/" title="Кирнос М.Д. (перейти на страницу сотрудника)">Кирнос М.Д.</a>, 
+            
+            <a href="/workers/2258098/" title="Кирьянов Глеб Иванович (перейти на страницу сотрудника)">Кирьянов Г.И.</a>, 
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Александрушкина Н.И.</a>, 
+            
+            <a href="/workers/8020439/" title="Ванюшин Борис Федорович (перейти на страницу сотрудника)">Ванюшин Б.Ф.</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+
+            
+                в журнале <i><a href="/journals/93637/" title="Перейти на страницу журнала">Биохимия</a></i>, издательство <i><a href="/publishers/17843256/" title="Перейти на страницу издательства">ФГБУ &quot;Издательство &quot;Наука&quot;</a> (Москва)</i>, том&nbsp;45, №&nbsp;8, с.&nbsp;1448-1456
+
+            
+
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="1979"><!-- article short information -->
+    <li>
+        <b>
+        
+            1979
+        
+        </b>
+        
+            <a href="/publications/article/8987780/" title="Перейти на страницу статьи">Структура поверхности спор и морфолого-физологические свойства определенных штаммов Bacillus megaterium</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            Надирова И.М., 
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Александрушкина Н.И.</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+
+            
+                в журнале <i><a href="/journals/579005/" title="Перейти на страницу журнала">Известия АН СССР. Серия физическая</a></i>, №&nbsp;1, с.&nbsp;17-23
+
+            
+
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+    <span class="fas fa-star" style="color: red;" title="Статья опубликована в журнале из списка RSCI Web of Science"></span>
+
+
+
+<span class="fas fa-globe-americas" title="Информация о цитировании статьи получена из внешних систем"></span>
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="1979"><!-- article short information -->
+    <li>
+        <b>
+        
+            1979
+        
+        </b>
+        
+            <a href="/publications/article/8884200/" title="Перейти на страницу статьи">Количественное спектрофото-метрическое определение неизвестных нуклеотидов в ДНК</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            <a href="/workers/2260092/" title="Кирнос М.Д. (перейти на страницу сотрудника)">Кирнос М.Д.</a>, 
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Александрушкина Н.И.</a>, 
+            
+            <a href="/workers/8020439/" title="Ванюшин Борис Федорович (перейти на страницу сотрудника)">Ванюшин Б.Ф.</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+
+            
+                в журнале <i><a href="/journals/93637/" title="Перейти на страницу журнала">Биохимия</a></i>, издательство <i><a href="/publishers/17843256/" title="Перейти на страницу издательства">ФГБУ &quot;Издательство &quot;Наука&quot;</a> (Москва)</i>, том&nbsp;44, с.&nbsp;1026 -1029
+
+            
+
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+
+
+<span class="fas fa-globe-americas" title="Информация о цитировании статьи получена из внешних систем"></span>
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="1978"><!-- article short information -->
+    <li>
+        <b>
+        
+            1978
+        
+        </b>
+        
+            <a href="/publications/article/8881235/" title="Перейти на страницу статьи">Cyanophage S-2L contanes DNA with 2,6-diaminopurine substituted for adenine</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            <a href="/workers/8879611/" title="Худяков И.Я. (перейти на страницу сотрудника)">Khudyakov I.Ya</a>, 
+            
+            <a href="/workers/1003667/" title="Kirnos M.D. (перейти на страницу сотрудника)">Kirnos M.D.</a>, 
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Alexandrushkina N.I.</a>, 
+            
+            <a href="/workers/8020439/" title="Ванюшин Борис Федорович (перейти на страницу сотрудника)">Vanyushin B.F.</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+
+            
+                в журнале <i><a href="/journals/91776/" title="Перейти на страницу журнала">Virology</a></i>, издательство <i><a href="/publishers/46289/" title="Перейти на страницу издательства">Academic Press</a> (United States)</i>, том&nbsp;88, с.&nbsp;8-18
+
+            
+
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+    <span class="fas fa-star" style="color: red;" title="Статья опубликована в журнале из списка RSCI Web of Science"></span>
+
+
+
+<span class="fas fa-globe-americas" title="Информация о цитировании статьи получена из внешних систем"></span>
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="1978"><!-- article short information -->
+    <li>
+        <b>
+        
+            1978
+        
+        </b>
+        
+            <a href="/publications/article/8881231/" title="Перейти на страницу статьи">Нуклеотидный состав ДНК термофильных бактерий рода Thermus</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            Егорова Л.А., 
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Александрушкина Н.И.</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+
+            
+                в журнале <i><a href="/journals/95775/" title="Перейти на страницу журнала">Микробиология</a></i>, издательство <i><a href="/publishers/17843256/" title="Перейти на страницу издательства">ФГБУ &quot;Издательство &quot;Наука&quot;</a> (Москва)</i>, том&nbsp;47, №&nbsp;2, с.&nbsp;250-252
+
+            
+
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+    <span class="fas fa-star" style="color: red;" title="Статья опубликована в журнале из списка RSCI Web of Science"></span>
+
+
+
+<span class="fas fa-globe-americas" title="Информация о цитировании статьи получена из внешних систем"></span>
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="1978"><!-- article short information -->
+    <li>
+        <b>
+        
+            1978
+        
+        </b>
+        
+            <a href="/publications/article/8879641/" title="Перейти на страницу статьи">Об аналоге цитозина в ДНК бактериофага Shigella sonnei &quot;Уфа&quot;</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Александрушкина Н.И.</a>, 
+            
+            <a href="/workers/2260092/" title="Кирнос М.Д. (перейти на страницу сотрудника)">Кирнос М.Д.</a>, 
+            
+            <a href="/workers/8879639/" title="Маградзе Н.М. (перейти на страницу сотрудника)">Маградзе Н.М.</a>, 
+            
+            Замчук Л.А., 
+            
+            <a href="/workers/8879640/" title="Гольдфарб Д.М. (перейти на страницу сотрудника)">Гольдфарб Д.М.</a>, 
+            
+            <a href="/workers/8020439/" title="Ванюшин Борис Федорович (перейти на страницу сотрудника)">Ванюшин Б.Ф.</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+
+            
+                в журнале <i><a href="/journals/93627/" title="Перейти на страницу журнала">Биоорганическая химия</a></i>, издательство <i><a href="/publishers/297824028/" title="Перейти на страницу издательства">Российская академия наук</a> (Москва)</i>, том&nbsp;4, с.&nbsp;1191-1196
+
+            
+
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+    <span class="fas fa-star" style="color: red;" title="Статья опубликована в журнале из списка RSCI Web of Science"></span>
+
+
+
+<span class="fas fa-globe-americas" title="Информация о цитировании статьи получена из внешних систем"></span>
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="1977"><!-- article short information -->
+    <li>
+        <b>
+        
+            1977
+        
+        </b>
+        
+            <a href="/publications/article/9275677/" title="Перейти на страницу статьи">2,6-диаминопурин - новое замещающее аденин основание в ДНК цианофага S-2</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            <a href="/workers/8879611/" title="Худяков И.Я. (перейти на страницу сотрудника)">Худяков И.Я.</a>, 
+            
+            <a href="/workers/2260092/" title="Кирнос М.Д. (перейти на страницу сотрудника)">Кирнос М.Д.</a>, 
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Александрушкина Н.И.</a>, 
+            
+            <a href="/workers/8020439/" title="Ванюшин Борис Федорович (перейти на страницу сотрудника)">Ванюшин Б.Ф.</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+
+            
+                в журнале <i><a href="/journals/94839/" title="Перейти на страницу журнала">Доклады Академии наук</a></i>, издательство <i><a href="/publishers/17843256/" title="Перейти на страницу издательства">ФГБУ &quot;Издательство &quot;Наука&quot;</a> (Москва)</i>, том&nbsp;232, с.&nbsp;965-968
+
+            
+
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+
+
+<span class="fas fa-globe-americas" title="Информация о цитировании статьи получена из внешних систем"></span>
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="1977"><!-- article short information -->
+    <li>
+        <b>
+        
+            1977
+        
+        </b>
+        
+            <a href="/publications/article/8881205/" title="Перейти на страницу статьи">2-aminoadenin is an adenine substituting for a base in S-2L cyanofage DNA</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            <a href="/workers/1003667/" title="Kirnos M.D. (перейти на страницу сотрудника)">Kirnos M.D.</a>, 
+            
+            <a href="/workers/8879611/" title="Худяков И.Я. (перейти на страницу сотрудника)">Khudyakov I.Y.</a>, 
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Alexandrushkina N.I.</a>, 
+            
+            <a href="/workers/8020439/" title="Ванюшин Борис Федорович (перейти на страницу сотрудника)">Vanyushin B.F.</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+
+            
+                в журнале <i><a href="/journals/80248/" title="Перейти на страницу журнала">Nature</a></i>, издательство <i><a href="/publishers/55586/" title="Перейти на страницу издательства">Nature Publishing Group</a> (United Kingdom)</i>, том&nbsp;270, с.&nbsp;369-370
+
+            
+
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+    <span class="fas fa-star" style="color: red;" title="Статья опубликована в журнале из списка RSCI Web of Science"></span>
+
+
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="1977"><!-- article short information -->
+    <li>
+        <b>
+        
+            1977
+        
+        </b>
+        
+            <a href="/publications/article/8879629/" title="Перейти на страницу статьи">Нуклеотидный состав и пиримидиновые блоки в ДНК некоторых индуцирующих опухолеобразование фитопатогенных бактерий</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Александрушкина Н.И.</a>, 
+            
+            Стуруа Г.Б., 
+            
+            <a href="/workers/8020439/" title="Ванюшин Борис Федорович (перейти на страницу сотрудника)">Ванюшин Б.Ф.</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+
+            
+                в журнале <i><a href="/journals/94043/" title="Перейти на страницу журнала">Вестник Московского университета. Серия 16: Биология</a></i>, издательство <i><a href="/publishers/9154208/" title="Перейти на страницу издательства">Изд-во Моск. ун-та</a> (М.)</i>, №&nbsp;1, с.&nbsp;42-49
+
+            
+
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+    <span class="fas fa-star" style="color: red;" title="Статья опубликована в журнале из списка RSCI Web of Science"></span>
+
+
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="1977"><!-- article short information -->
+    <li>
+        <b>
+        
+            1977
+        
+        </b>
+        
+            <a href="/publications/article/1243024/" title="Перейти на страницу статьи">Некоторые характеристики первичной структуры ДНК у S-, R- и М- форм Mycobacterium lacticolum 104</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            <a href="/workers/1441970/" title="Егоров Николай Сергеевич (перейти на страницу сотрудника)">Егоров Н.С.</a>, 
+            
+            <a href="/workers/544977/" title="Милько Елена Серафимовна (перейти на страницу сотрудника)">Милько Е.С.</a>, 
+            
+            <a href="/workers/1573235/" title="Обухова Н.А. (перейти на страницу сотрудника)">Обухова Н.А.</a>, 
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Александрушкина Н.И.</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+
+            
+                в журнале <i><a href="/journals/94043/" title="Перейти на страницу журнала">Вестник Московского университета. Серия 16: Биология</a></i>, издательство <i><a href="/publishers/9154208/" title="Перейти на страницу издательства">Изд-во Моск. ун-та</a> (М.)</i>, №&nbsp;3, с.&nbsp;84-88
+
+            
+
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="1976"><!-- article short information -->
+    <li>
+        <b>
+        
+            1976
+        
+        </b>
+        
+            <a href="/publications/article/2530394/" title="Перейти на страницу статьи">Физиология Prostecomicrobium polyspheroidum</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            Васильева Л.В., 
+            
+            <a href="/workers/8933568/" title="Лафицкая Татьяна Николаевна (перейти на страницу сотрудника)">Лафицкая Т.Н.</a>, 
+            
+            <a href="/workers/1109855/" title="Красильникова Елена Николаевна (перейти на страницу сотрудника)">Красильникова Е.Н.</a>, 
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Александрушкина Н.И.</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+
+            
+                в журнале <i><a href="/journals/2530050/" title="Перейти на страницу журнала">Изв АНСССР, сер биологич</a></i>, №&nbsp;6, с.&nbsp;849-857
+
+            
+
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+    <span class="fas fa-star" style="color: red;" title="Статья опубликована в журнале из списка RSCI Web of Science"></span>
+
+
+
+<span class="fas fa-globe-americas" title="Информация о цитировании статьи получена из внешних систем"></span>
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="1975"><!-- article short information -->
+    <li>
+        <b>
+        
+            1975
+        
+        </b>
+        
+            <a href="/publications/article/9289043/" title="Перейти на страницу статьи">Пиримидиновые олигонуклеотиды и состав ДНК микроорганизмов</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            Мазин А.Л., 
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Александрушкина Н.И.</a>, 
+            
+            <a href="/workers/8020439/" title="Ванюшин Борис Федорович (перейти на страницу сотрудника)">Ванюшин Б.Ф.</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+
+            
+                в журнале <i><a href="/journals/93627/" title="Перейти на страницу журнала">Биоорганическая химия</a></i>, издательство <i><a href="/publishers/297824028/" title="Перейти на страницу издательства">Российская академия наук</a> (Москва)</i>, том&nbsp;1, №&nbsp;2, с.&nbsp;195-202
+
+            
+
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+    <span class="fas fa-star" style="color: red;" title="Статья опубликована в журнале из списка RSCI Web of Science"></span>
+
+
+
+<span class="fas fa-globe-americas" title="Информация о цитировании статьи получена из внешних систем"></span>
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="1974"><!-- article short information -->
+    <li>
+        <b>
+        
+            1974
+        
+        </b>
+        
+            <a href="/publications/article/9765522/" title="Перейти на страницу статьи">Нуклеотидный состав и пиримидиновые блоки ДНК паразитической и 	сапрофитной форм Bdellovibrio bacteriovoru</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Александрушкина Н.И.</a>, 
+            
+            <a href="/workers/8879529/" title="Комиссарова Л.В. (перейти на страницу сотрудника)">Комиссарова Л.В.</a>, 
+            
+            Гершанович В.Н., 
+            
+            <a href="/workers/8020439/" title="Ванюшин Борис Федорович (перейти на страницу сотрудника)">Ванюшин Б.Ф.</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+
+            
+                в журнале <i><a href="/journals/94839/" title="Перейти на страницу журнала">Доклады Академии наук</a></i>, издательство <i><a href="/publishers/17843256/" title="Перейти на страницу издательства">ФГБУ &quot;Издательство &quot;Наука&quot;</a> (Москва)</i>, том&nbsp;219, с.&nbsp;738-741
+
+            
+
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+    <span class="fas fa-star" style="color: red;" title="Статья опубликована в журнале из списка RSCI Web of Science"></span>
+
+
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="1974"><!-- article short information -->
+    <li>
+        <b>
+        
+            1974
+        
+        </b>
+        
+            <a href="/publications/article/9765470/" title="Перейти на страницу статьи">Нуклеотидный состав ДНК 	листерий</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            <a href="/workers/8879459/" title="Имамов А.Х. (перейти на страницу сотрудника)">Имамов А.Х.</a>, 
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Александрушкина Н.И.</a>, 
+            
+            <a href="/workers/8020439/" title="Ванюшин Борис Федорович (перейти на страницу сотрудника)">Ванюшин Б.Ф.</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+
+            
+                в журнале <i><a href="/journals/94917/" title="Перейти на страницу журнала">Журнал микробиологии, эпидемиологии и иммунобиологии</a></i>, том&nbsp;10, с.&nbsp;127-131
+
+            
+
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+    <span class="fas fa-star" style="color: red;" title="Статья опубликована в журнале из списка RSCI Web of Science"></span>
+
+
+
+<span class="fas fa-globe-americas" title="Информация о цитировании статьи получена из внешних систем"></span>
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="1974"><!-- article short information -->
+    <li>
+        <b>
+        
+            1974
+        
+        </b>
+        
+            <a href="/publications/article/8879530/" title="Перейти на страницу статьи">Нуклеотидный состав и пиримидиновые блоки ДНК паразитической и 	сапрофитной форм Bdellovibrio bacteriovorus</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Александрушкина Н.И.</a>, 
+            
+            <a href="/workers/8879529/" title="Комиссарова Л.В. (перейти на страницу сотрудника)">Комиссарова Л.В.</a>, 
+            
+            Гершанович В.Н., 
+            
+            <a href="/workers/8020439/" title="Ванюшин Борис Федорович (перейти на страницу сотрудника)">Ванюшин Б.Ф.</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+
+            
+                в журнале <i><a href="/journals/94839/" title="Перейти на страницу журнала">Доклады Академии наук</a></i>, издательство <i><a href="/publishers/17843256/" title="Перейти на страницу издательства">ФГБУ &quot;Издательство &quot;Наука&quot;</a> (Москва)</i>, том&nbsp;219, №&nbsp;3, с.&nbsp;738-741
+
+            
+
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+    <span class="fas fa-star" style="color: red;" title="Статья опубликована в журнале из списка RSCI Web of Science"></span>
+
+
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="1974"><!-- article short information -->
+    <li>
+        <b>
+        
+            1974
+        
+        </b>
+        
+            <a href="/publications/article/8879462/" title="Перейти на страницу статьи">Нуклеотидный состав ДНК листерий</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            <a href="/workers/8879459/" title="Имамов А.Х. (перейти на страницу сотрудника)">Имамов А.Х.</a>, 
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Александрушкина Н.И.</a>, 
+            
+            <a href="/workers/8020439/" title="Ванюшин Борис Федорович (перейти на страницу сотрудника)">Ванюшин Б.Ф.</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+
+            
+                в журнале <i><a href="/journals/94917/" title="Перейти на страницу журнала">Журнал микробиологии, эпидемиологии и иммунобиологии</a></i>, том&nbsp;10, с.&nbsp;127	-131 
+
+            
+
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+    <span class="fas fa-star" style="color: red;" title="Статья опубликована в журнале из списка RSCI Web of Science"></span>
+
+
+
+<span class="fas fa-globe-americas" title="Информация о цитировании статьи получена из внешних систем"></span>
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="1973"><!-- article short information -->
+    <li>
+        <b>
+        
+            1973
+        
+        </b>
+        
+            <a href="/publications/article/8881065/" title="Перейти на страницу статьи">Физиолого-биохимические особенности пропионовокислых бактерий</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            <a href="/workers/2154890/" title="Воробьева Лена Ивановна (перейти на страницу сотрудника)">Воробьева Л.И.</a>, 
+            
+            <a href="/workers/1050386/" title="Баранова Нина Андреевна (перейти на страницу сотрудника)">Баранова Н.А.</a>, 
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Александрушкина Н.И.</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+
+            
+                в журнале <i><a href="/journals/95775/" title="Перейти на страницу журнала">Микробиология</a></i>, издательство <i><a href="/publishers/17843256/" title="Перейти на страницу издательства">ФГБУ &quot;Издательство &quot;Наука&quot;</a> (Москва)</i>, том&nbsp;42, №&nbsp;3, с.&nbsp;464-467
+
+            
+
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="1973"><!-- article short information -->
+    <li>
+        <b>
+        
+            1973
+        
+        </b>
+        
+            <a href="/publications/article/8881060/" title="Перейти на страницу статьи">Нуклеотидный состав ДНК сине-зеленой водоросли Plectonema boryanum</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            Нестерова Н.В., 
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Александрушкина Н.И.</a>, 
+            
+            Саган Т.С., 
+            
+            Пелипенко В.Г.
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+
+            
+                в журнале <i><a href="/journals/1523104/" title="Перейти на страницу журнала">Мiкробiологiчний журнал</a></i>, том&nbsp;35, №&nbsp;1, с.&nbsp;126-129
+
+            
+
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+
+
+<span class="fas fa-globe-americas" title="Информация о цитировании статьи получена из внешних систем"></span>
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="1973"><!-- article short information -->
+    <li>
+        <b>
+        
+            1973
+        
+        </b>
+        
+            <a href="/publications/article/2879647/" title="Перейти на страницу статьи">PHYSIOLOGO-BIOCHEMICAL PROPERTIES OF PROPIONIC COCCI</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            <a href="/workers/2914909/" title="ALEKSEEV MA (перейти на страницу сотрудника)">ALEKSEEV MA</a>, 
+            
+            <a href="/workers/2154890/" title="Воробьева Лена Ивановна (перейти на страницу сотрудника)">VOROBEVA LI</a>, 
+            
+            <a href="/workers/2879644/" title="TKHAN CT (перейти на страницу сотрудника)">TKHAN CT</a>, 
+            
+            <a href="/workers/1050386/" title="Баранова Нина Андреевна (перейти на страницу сотрудника)">BARANOVA NA</a>, 
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">ALEKSANDRUSHKINA NI</a>, 
+            
+            <a href="/workers/2724334/" title="Гаврина Т.П. (перейти на страницу сотрудника)">GAVRINA TP</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+
+            
+                в журнале <i><a href="/journals/79337/" title="Перейти на страницу журнала">Microbiology</a></i>, издательство <i><a href="/publishers/83977330/" title="Перейти на страницу издательства">Pleiades Publishing, Ltd</a> (Road Town, United Kingdom)</i>, том&nbsp;42, №&nbsp;3, с.&nbsp;464-467
+
+            
+
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+      </ul>
+    
+  </div>
+</section>
+
+<section id="articles_collection">
+  <h3 class="activity_label">Статьи в сборниках</h3>
+
+  <div class="activities-block">
+    
+      <ul>
+      
+        <li>
+          <div class="float-left">
+
+
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="2019"><!-- article short information -->
+    <li>
+        <b>
+        
+            2019
+        
+        </b>
+        
+            <a href="/publications/article/273192637/" title="Перейти на страницу статьи">Научно-исследовательский институт физико-химической биологии им. А.Н.Белозерского</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Александрушкина Н.И.</a>, 
+            
+            <a href="/workers/2540387/" title="Фетисова Зоя Григорьевна (перейти на страницу сотрудника)">Фетисова З.Г.</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+            
+            
+
+            
+                в сборнике <i><a href="/collections/273192635/" title="Перейти на страницу сборника">Московский университе. Ежегодник 2017:краткий отчет о состоянии и действиях Московского государственного университета имени М.В.Ломоносова за 2017 г</a></i>, серия <i><a href="/collections/series/73729002/" title="Перейти на страницу серии">Архив Московского университета</a></i>, место издания <i>Издательство Московского университета, Москва Москва</i>, с.&nbsp;723-742
+            
+
+            
+            
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="2018"><!-- article short information -->
+    <li>
+        <b>
+        
+            2018
+        
+        </b>
+        
+            <a href="/publications/article/273192232/" title="Перейти на страницу статьи">Научно-исследовательский институт физико-химической биологии им. А.Н.Белозерского</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Александрушкина Н.И.</a>, 
+            
+            <a href="/workers/2540387/" title="Фетисова Зоя Григорьевна (перейти на страницу сотрудника)">Фетисова З.Г.</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+            
+            
+
+            
+                в сборнике <i><a href="/collections/273192230/" title="Перейти на страницу сборника">Московский унирситет. Ежегодник 2016: краткий отчет о состоянии и действиях Московского государственного университета имени М.В.Ломоносова за 2016 г. г</a></i>, серия <i><a href="/collections/series/73729002/" title="Перейти на страницу серии">Архив Московского университета</a></i>, место издания <i>М.Издательство московского университета Москва</i>, с.&nbsp;657-672
+            
+
+            
+            
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="2017"><!-- article short information -->
+    <li>
+        <b>
+        
+            2017
+        
+        </b>
+        
+            <a href="/publications/article/90402283/" title="Перейти на страницу статьи">Научно-исследовательский институт физико-химической биологии им. А.Н.Белозерского</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Александрушкина Н.И.</a>, 
+            
+            <a href="/workers/2540387/" title="Фетисова Зоя Григорьевна (перейти на страницу сотрудника)">Фетисова З.Г.</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+            
+            
+
+            
+                в сборнике <i><a href="/collections/37357935/" title="Перейти на страницу сборника">Московский университет. Ежегодник 2015: Краткий отчет о состоянии и действиях Московского государственного университета имени М.В.Ломоносова за 2015 год</a></i>, серия <i><a href="/collections/series/7024037/" title="Перейти на страницу серии">&quot;Архив Московского университета&quot;</a></i>, место издания <i>М.: Издательство Московского университета</i>, с.&nbsp;617-633
+            
+
+            
+            
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="2016"><!-- article short information -->
+    <li>
+        <b>
+        
+            2016
+        
+        </b>
+        
+            <a href="/publications/article/90402100/" title="Перейти на страницу статьи">Научно-исследовательский институт физико-химической биологии им. А.Н.Белозерского</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Александрушкина Н.И.</a>, 
+            
+            <a href="/workers/2540387/" title="Фетисова Зоя Григорьевна (перейти на страницу сотрудника)">Фетисова З.Г.</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+            
+            
+
+            
+                в сборнике <i><a href="/collections/12687538/" title="Перейти на страницу сборника">Московский университет. Ежегодник 2014: Краткий отчет о состоянии и действиях Московского государственного университета имени М.В.Ломоносова за 2014 год</a></i>, серия <i><a href="/collections/series/7024037/" title="Перейти на страницу серии">&quot;Архив Московского университета&quot;</a></i>, место издания <i>Издательство Московского университета Москва</i>, с.&nbsp;681-699
+            
+
+            
+            
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="2014"><!-- article short information -->
+    <li>
+        <b>
+        
+            2014
+        
+        </b>
+        
+            <a href="/publications/article/9328094/" title="Перейти на страницу статьи">Научно-исследовательский институт физико-химической биологии им. А.Н.Белозерского</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Александрушкина Н.И.</a>, 
+            
+            <a href="/workers/2540387/" title="Фетисова Зоя Григорьевна (перейти на страницу сотрудника)">Фетисова З.Г.</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+            
+            
+
+            
+                в сборнике <i><a href="/collections/8129582/" title="Перейти на страницу сборника">Московский университет. Ежегодник 2013: Краткий отчет о состоянии и действиях Московского государственного университета имени М.В.Ломоносова за 2013 год</a></i>, серия <i><a href="/collections/series/7024037/" title="Перейти на страницу серии">&quot;Архив Московского университета&quot;</a></i>, место издания <i>М.: Издательство Московского университета</i>, с.&nbsp;682-698
+            
+
+            
+            
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="2013"><!-- article short information -->
+    <li>
+        <b>
+        
+            2013
+        
+        </b>
+        
+            <a href="/publications/article/9329709/" title="Перейти на страницу статьи">Научно-исследовательский институт физико-химической биологии им. А.Н.Белозерского</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Александрушкина Н.И.</a>, 
+            
+            <a href="/workers/2540387/" title="Фетисова Зоя Григорьевна (перейти на страницу сотрудника)">Фетисова З.Г.</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+            
+            
+
+            
+                в сборнике <i><a href="/collections/9329707/" title="Перейти на страницу сборника">Москвоский университет. Ежегодник-2012</a></i>, серия <i><a href="/collections/series/7024037/" title="Перейти на страницу серии">&quot;Архив Московского университета&quot;</a></i>, место издания <i>М.: Издательство Московского университета</i>, с.&nbsp;664-682
+            
+
+            
+            
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="2012"><!-- article short information -->
+    <li>
+        <b>
+        
+            2012
+        
+        </b>
+        
+            <a href="/publications/article/9328026/" title="Перейти на страницу статьи">Научно-исследовательский инстиут физико-химической биологии им. А.Н.Белозерского</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Александрушкина Н.И.</a>, 
+            
+            <a href="/workers/2540387/" title="Фетисова Зоя Григорьевна (перейти на страницу сотрудника)">Фетисова З.Г.</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+            
+            
+
+            
+                в сборнике <i><a href="/collections/1141008/" title="Перейти на страницу сборника">Московский университет. Ежегодник 2011: Краткий отчет о состоянии и действиях Московского государственного университета имени М.В.Ломоносова за 2011 год</a></i>, серия <i><a href="/collections/series/7024037/" title="Перейти на страницу серии">&quot;Архив Московского университета&quot;</a></i>, место издания <i>Издательство Московского университета Москва</i>, с.&nbsp;608-627
+            
+
+            
+            
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="2011"><!-- article short information -->
+    <li>
+        <b>
+        
+            2011
+        
+        </b>
+        
+            <a href="/publications/article/9328117/" title="Перейти на страницу статьи">Научно-исследовательский институт физико-химической биологии им. А.Н.Белозерского</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Александрушкина Н.И.</a>, 
+            
+            <a href="/workers/2540387/" title="Фетисова Зоя Григорьевна (перейти на страницу сотрудника)">Фетисова З.Г.</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+            
+            
+
+            
+                в сборнике <i><a href="/collections/1141019/" title="Перейти на страницу сборника">Московский университет. Ежегодник 2010: Краткий отчет о состоянии и действиях Московского государственного университета имени М.В.Ломоносова за 2010 год</a></i>, серия <i><a href="/collections/series/7024037/" title="Перейти на страницу серии">&quot;Архив Московского университета&quot;</a></i>, место издания <i>Издательство Московского университета Москва</i>, с.&nbsp;711-727
+            
+
+            
+            
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="1980"><!-- article short information -->
+    <li>
+        <b>
+        
+            1980
+        
+        </b>
+        
+            <a href="/publications/article/5320586/" title="Перейти на страницу статьи">Метилирование ДНК в суспензионной культуре клеток табака при обработке фитогормонами</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            <a href="/workers/5320584/" title="Башките Е.А. (перейти на страницу сотрудника)">Башките Е.А.</a>, 
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Александрушкина Н.И.</a>, 
+            
+            <a href="/workers/2258098/" title="Кирьянов Глеб Иванович (перейти на страницу сотрудника)">Кирьянов Г.И.</a>, 
+            
+            <a href="/workers/2260092/" title="Кирнос М.Д. (перейти на страницу сотрудника)">Кирнос М.Д.</a>, 
+            
+            <a href="/workers/8020439/" title="Ванюшин Борис Федорович (перейти на страницу сотрудника)">Ванюшин Б.Ф.</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+            
+            
+
+            
+                в сборнике <i><a href="/collections/5320585/" title="Перейти на страницу сборника">Биологические науки</a></i>, том&nbsp;4, с.&nbsp;103-110 
+            
+
+            
+            
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+      </ul>
+    
+  </div>
+</section>
+
+<section id="theses">
+  <h3 class="activity_label">Тезисы докладов</h3>
+
+  <div class="activities-block">
+    
+      <ul>
+      
+        <li>
+          <div class="float-left">
+
+
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="2007"><!-- article short information -->
+    <li>
+        <b>
+        
+            2007
+        
+        </b>
+        
+            <a href="/publications/article/2831962/" title="Перейти на страницу статьи">Нуклеазные активности и фрагментация ДНК при старении листьев растений гороха нормального и афильного генотипов</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            <a href="/workers/2831959/" title="Середина А.В. (перейти на страницу сотрудника)">Середина А.В.</a>, 
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Александрушкина Н.И.</a>, 
+            
+            <a href="/workers/1643850/" title="Коф Э.М. (перейти на страницу сотрудника)">Коф Э.М.</a>, 
+            
+            <a href="/workers/2831960/" title="Борзов А.А. (перейти на страницу сотрудника)">Борзов А.А.</a>, 
+            
+            <a href="/workers/2713626/" title="Кудряшова Ирина Борисовна (перейти на страницу сотрудника)">Кудряшова И.Б.</a>, 
+            
+            <a href="/workers/2831961/" title="Харченко П.Н. (перейти на страницу сотрудника)">Харченко П.Н.</a>, 
+            
+            <a href="/workers/8020439/" title="Ванюшин Борис Федорович (перейти на страницу сотрудника)">Ванюшин Б.Ф.</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+            
+            
+
+            
+                в сборнике <i><a href="/collections/2512896/" title="Перейти на страницу сборника">VI Съезд Общества физиологов растений России и Международная конференция «Современная физиология растений: от молекул до экосистем»</a></i>, место издания <i>Сыктывкар</i>, том&nbsp;1, тезисы, с.&nbsp;213-214
+            
+
+            
+            
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="2003"><!-- article short information -->
+    <li>
+        <b>
+        
+            2003
+        
+        </b>
+        
+            <a href="/publications/article/11628076/" title="Перейти на страницу статьи">Hydrolysis of histone H1 by proteases of apoptotic cells of coleoptiles of wheat seedlings</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            <a href="/workers/240140/" title="Дунаевский Яков Ефимович (перейти на страницу сотрудника)">Dunaevsky Ya E.</a>, 
+            
+            <a href="/workers/1643970/" title="Коломийцева Галина Яковлевна (перейти на страницу сотрудника)">Kolomiitseva G.Ya</a>, 
+            
+            <a href="/workers/1615220/" title="Смирнова Татьяна Алексеевна (перейти на страницу сотрудника)">Smirnova T.A.</a>, 
+            
+            <a href="/workers/8020439/" title="Ванюшин Борис Федорович (перейти на страницу сотрудника)">Vanyushin B.F.</a>, 
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Aleksandrushkina N.I.</a>, 
+            
+            <a href="/workers/433671/" title="Белозерский Михаил Андреевич (перейти на страницу сотрудника)">Belozersky M.A.</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+            
+            
+
+            
+                в сборнике <i><a href="/collections/11628075/" title="Перейти на страницу сборника">Cold Spring Harbour Symposium &quot; Programmed Cell Death&quot;</a></i>, место издания <i>New York</i>, тезисы, с.&nbsp;58-58
+            
+
+            
+            
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="1990"><!-- article short information -->
+    <li>
+        <b>
+        
+            1990
+        
+        </b>
+        
+            <a href="/publications/article/2829145/" title="Перейти на страницу статьи">Закономерности синтеза и энзиматической модификации ДНК в делящихся и неделящихся клетках первого листа проростков пшеницы. В кн.: &quot;Физиология семян: формирование, прорастание, прикладные аспекты</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            <a href="/workers/8020439/" title="Ванюшин Борис Федорович (перейти на страницу сотрудника)">Ванюшин Б.Ф.</a>, 
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Александрушкина Н.И.</a>, 
+            
+            <a href="/workers/2829141/" title="Кутуева Людмила Ильтизировна (перейти на страницу сотрудника)">Кутуева Л.И.</a>, 
+            
+            <a href="/workers/2713626/" title="Кудряшова Ирина Борисовна (перейти на страницу сотрудника)">Кудряшова И.Б.</a>, 
+            
+            <a href="/workers/2829142/" title="Ротаенко Е.П. (перейти на страницу сотрудника)">Ротаенко Е.П.</a>, 
+            
+            <a href="/workers/2773060/" title="Ашапкин Василий Васильевич (перейти на страницу сотрудника)">Ашапкин В.В.</a>, 
+            
+            <a href="/workers/1772484/" title="Савельев С.В. (перейти на страницу сотрудника)">Савельев С.В.</a>, 
+            
+            <a href="/workers/2829143/" title="Власова Т.И. (перейти на страницу сотрудника)">Власова Т.И.</a>, 
+            
+            <a href="/workers/2260092/" title="Кирнос М.Д. (перейти на страницу сотрудника)">Кирнос М.Д.</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+            
+            
+
+            
+                в сборнике <i><a href="/collections/5617628/" title="Перейти на страницу сборника">&quot;Физиология семян: формирование, прорастание, прикладные аспекты&quot; Под ред. Х.Х. Каримова</a></i>, место издания <i>Издательство &quot;Дониш&quot; Душанбе</i>, тезисы, с.&nbsp;161-164
+            
+
+            
+            
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="1980"><!-- article short information -->
+    <li>
+        <b>
+        
+            1980
+        
+        </b>
+        
+            <a href="/publications/article/5321490/" title="Перейти на страницу статьи">Методические рекомендации по биохимическим и иммунохимическим методам исследования клеток, их компонентов и других биологических структур</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            <a href="/workers/8020439/" title="Ванюшин Борис Федорович (перейти на страницу сотрудника)">Ванюшин Б.Ф.</a>, 
+            
+            <a href="/workers/2260092/" title="Кирнос М.Д. (перейти на страницу сотрудника)">Кирнос М.Д.</a>, 
+            
+            <a href="/workers/1422013/" title="Исаева Людмила Витальевна (перейти на страницу сотрудника)">Исаева Л.В.</a>, 
+            
+            <a href="/workers/5321487/" title="Бурцева Н.Н. (перейти на страницу сотрудника)">Бурцева Н.Н.</a>, 
+            
+            <a href="/workers/2258098/" title="Кирьянов Глеб Иванович (перейти на страницу сотрудника)">Кирьянов Г.И.</a>, 
+            
+            <a href="/workers/8769786/" title="Романенко Елена Борисовна (перейти на страницу сотрудника)">Романенко Е.Б.</a>, 
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Александрушкина Н.И.</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+            
+            
+
+            
+                в сборнике <i><a href="/collections/5321489/" title="Перейти на страницу сборника">Сборник Москва</a></i>, тезисы
+            
+
+            
+            
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="1980"><!-- article short information -->
+    <li>
+        <b>
+        
+            1980
+        
+        </b>
+        
+            <a href="/publications/article/5321390/" title="Перейти на страницу статьи">Репликатировное метилирование ДНК в животных клетках</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            <a href="/workers/1422013/" title="Исаева Людмила Витальевна (перейти на страницу сотрудника)">Исаева Л.В.</a>, 
+            
+            <a href="/workers/2258098/" title="Кирьянов Глеб Иванович (перейти на страницу сотрудника)">Кирьянов Г.И.</a>, 
+            
+            <a href="/workers/2260092/" title="Кирнос М.Д. (перейти на страницу сотрудника)">Кирнос М.Д.</a>, 
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Александрушкина Н.И.</a>, 
+            
+            <a href="/workers/8020439/" title="Ванюшин Борис Федорович (перейти на страницу сотрудника)">Ванюшин Б.Ф.</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+            
+            
+
+            
+                в сборнике <i><a href="/collections/5321219/" title="Перейти на страницу сборника">Сб. «Всесоюзный симпозиум по стурктуре и функциям клеточного ядра»</a></i>, место издания <i>Харьков</i>, тезисы, с.&nbsp;71-71
+            
+
+            
+            
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="1980"><!-- article short information -->
+    <li>
+        <b>
+        
+            1980
+        
+        </b>
+        
+            <a href="/publications/article/5321220/" title="Перейти на страницу статьи">Характер репликации ДНК в монослойной культуре L-клеток: зависимость от плотности клеток в слое</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            <a href="/workers/1422013/" title="Исаева Людмила Витальевна (перейти на страницу сотрудника)">Исаева Л.В.</a>, 
+            
+            <a href="/workers/5320562/" title="Демидкина Н.П. (перейти на страницу сотрудника)">Демидкина Н.П.</a>, 
+            
+            <a href="/workers/2258098/" title="Кирьянов Глеб Иванович (перейти на страницу сотрудника)">Кирьянов Г.И.</a>, 
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Александрушкина Н.И.</a>, 
+            
+            <a href="/workers/2260092/" title="Кирнос М.Д. (перейти на страницу сотрудника)">Кирнос М.Д.</a>, 
+            
+            <a href="/workers/8020439/" title="Ванюшин Борис Федорович (перейти на страницу сотрудника)">Ванюшин Б.Ф.</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+            
+            
+
+            
+                в сборнике <i><a href="/collections/5321219/" title="Перейти на страницу сборника">Сб. «Всесоюзный симпозиум по стурктуре и функциям клеточного ядра»</a></i>, место издания <i>Харьков</i>, тезисы
+            
+
+            
+            
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="1980"><!-- article short information -->
+    <li>
+        <b>
+        
+            1980
+        
+        </b>
+        
+            <a href="/publications/article/5320885/" title="Перейти на страницу статьи">Метилирование ДНК при репликации и связь со структурой хроматина</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            <a href="/workers/2258098/" title="Кирьянов Глеб Иванович (перейти на страницу сотрудника)">Кирьянов Г.И.</a>, 
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Александрушкина Н.И.</a>, 
+            
+            <a href="/workers/2260092/" title="Кирнос М.Д. (перейти на страницу сотрудника)">Кирнос М.Д.</a>, 
+            
+            <a href="/workers/1422013/" title="Исаева Людмила Витальевна (перейти на страницу сотрудника)">Исаева Л.В.</a>, 
+            
+            Смирнова Т.А.
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+            
+            
+
+            
+                в сборнике <i><a href="/collections/1445463/" title="Перейти на страницу сборника">Тезисы докладов «Реализация наследственной информации»,</a></i>, место издания <i>Пергале Вильнюс</i>, тезисы, с.&nbsp;75 -75 
+            
+
+            
+            
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="1980"><!-- article short information -->
+    <li>
+        <b>
+        
+            1980
+        
+        </b>
+        
+            <a href="/publications/article/5320775/" title="Перейти на страницу статьи">Исследование метилирования ДНК в суспензионной культуре клеток табака и влияние фитогормонов</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            <a href="/workers/5320584/" title="Башките Е.А. (перейти на страницу сотрудника)">Башките Е.А.</a>, 
+            
+            <a href="/workers/8020439/" title="Ванюшин Борис Федорович (перейти на страницу сотрудника)">Ванюшин Б.Ф.</a>, 
+            
+            <a href="/workers/2260092/" title="Кирнос М.Д. (перейти на страницу сотрудника)">Кирнос М.Д.</a>, 
+            
+            <a href="/workers/5320773/" title="Славенас А.Ю. (перейти на страницу сотрудника)">Славенас А.Ю.</a>, 
+            
+            <a href="/workers/2258098/" title="Кирьянов Глеб Иванович (перейти на страницу сотрудника)">Кирьянов Г.И.</a>, 
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Александрушкина Н.И.</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+            
+            
+
+            
+                в сборнике <i><a href="/collections/5320774/" title="Перейти на страницу сборника">Мутагенные факторы и создание селекционного материала</a></i>, место издания <i>Вильнюс</i>, том&nbsp;53, тезисы
+            
+
+            
+            
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+        <li>
+          <div class="float-left">
+
+
+
+
+
+
+
+</div>
+          
+
+
+
+
+
+<ul class="activity" data-year="1980"><!-- article short information -->
+    <li>
+        <b>
+        
+            1980
+        
+        </b>
+        
+            <a href="/publications/article/4606952/" title="Перейти на страницу статьи">Метилирование ДНК при репликации и связь со структурой хроматина</a>
+        
+    </li>
+
+    
+    
+    <li>
+        
+            
+            <a href="/workers/2258098/" title="Кирьянов Глеб Иванович (перейти на страницу сотрудника)">Кирьянов Г.И.</a>, 
+            
+            <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Александрушкина Н.И.</a>, 
+            
+            Кирнос М.Д., 
+            
+            <a href="/workers/1422013/" title="Исаева Людмила Витальевна (перейти на страницу сотрудника)">Исаева Л.В.</a>, 
+            
+            <a href="/workers/1615220/" title="Смирнова Татьяна Алексеевна (перейти на страницу сотрудника)">Смирнова Т.А.</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+
+            
+            
+            
+
+            
+                в сборнике <i><a href="/collections/1445463/" title="Перейти на страницу сборника">Тезисы докладов «Реализация наследственной информации»,</a></i>, место издания <i>Пергале Вильнюс</i>, тезисы, с.&nbsp;75
+            
+
+            
+            
+            
+
+        
+
+        
+
+    </li>
+    
+
+    
+
+    
+
+</ul>
+
+
+
+
+
+        </li>
+      
+      </ul>
+    
+  </div>
+</section>
+
+<section id="books">
+  <h3 class="activity_label">Книги</h3>
+
+  <div class="activities-block">
+    
+      
+<ul>
+    
+	    <li><ul class="activity" data-year="1980"><!-- book short information -->
+    <li><b>1980 </b>
+    
+        <a href="/publications/book/8987837/" title="Перейти на страницу книги">Мутагенные факторы и создание селекционного материала</a></li>
+    
+
+    
+    
+    <li>
+        
+            
+                Башките Е., 
+            
+                <a href="/workers/2260092/" title="Кирнос М.Д. (перейти на страницу сотрудника)">Кирнос М.</a>, 
+            
+                <a href="/workers/1243021/" title="Александрушкина Надежда Ивановна (перейти на страницу сотрудника)">Александрушкина Н.</a>, 
+            
+                <a href="/workers/2258098/" title="Кирьянов Глеб Иванович (перейти на страницу сотрудника)">Кирьянов Г.</a>, 
+            
+                <a href="/workers/8020439/" title="Ванюшин Борис Федорович (перейти на страницу сотрудника)">Ванюин Б.</a>
+            
+        
+    </li>
+    
+    
+
+    
+    <li>
+        
+            
+                место издания <i>Изд-во МинВУЗа Лит.ССР г.Вильнюс</i>
+            
+        
+        
+    </li>
+    
+
+    
+
+</ul>
+</li>
+    
+</ul>
+
+    
+  </div>
+</section>
+
+
+
+
+  </div>
+</div>
+
+  </div>
+</div>
+
+
+<footer>
+  <hr class="mt-0"/>
+  <div class="container-fluid small justify-content-between row">
+    <div class="nav-link">
+      
+      Интеллектуальная Система Тематического Исследования НАукометрических данных <br/>
+      © 2011-2025 <span title="Лаборатория 404. Найдём, что сможем ;)" ondblclick="toggleSidebarPosition()">Лаборатория 404.</span> <a href="http://www.imec.msu.ru/" title="Перейти на официальный веб-сайт НИИ механики МГУ">НИИ механики МГУ</a>.
+      
+    </div>
+
+    <div class="nav">
+    <a href="/common/legal/terms/" class="nav-link text-linkblue">Правила пользования</a><br/>
+    <a href="/help/" class="nav-link text-linkblue">Помощь</a>
+    </div>
+    
+    <div class="nav">
+      <a href="#" class="nav-link text-linkblue" data-toggle="modal" data-target="#helpdesk_modal">
+        Создать обращение
+      </a>
+      <a href="/help/feedback/" class="nav-link text-linkblue">
+        Обратная связь
+      </a>
+    </div>
+  </div>
+</footer>
+
+<script>
+if (window.matchMedia("(max-width: 992px)").matches) {
+  document.getElementById("sidebar").classList.remove("show");
+}
+</script>
+  </body>
+</html>
+
