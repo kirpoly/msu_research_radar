@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "msu_research_radar"
+version = "0.1.0"
+description = "Пакет для анализа научных публикаций МГУ с целью поиска потенциальных научных руководителей"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "requests",
+  "beautifulsoup4",
+  "pandas",
+  "pydantic",
+  "pyyaml",
+  "python-dotenv",
+  "rapidfuzz",
+  "openpyxl",
+  "tqdm",
+]
+
+[project.scripts]
+msu_research_radar = "msu_research_radar.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
