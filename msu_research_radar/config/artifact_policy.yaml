@@ -1,0 +1,14 @@
+generated_artifacts:
+  ignored_by_git:
+    - "msu_research_radar/.pytest_tmp/"
+    - "msu_research_radar/.uv-cache/"
+    - "msu_research_radar/data/interim/**"
+    - "msu_research_radar/data/processed/**"
+    - "msu_research_radar/data/raw/openalex/**"
+    - "msu_research_radar/data/raw/istina/search_cache/**"
+    - "msu_research_radar/data/raw/istina/profiles/**"
+    - "msu_research_radar/exports/**"
+tracked_fixtures:
+  - "msu_research_radar/data/raw/istina/*.html"
+tracked_configs:
+  - "msu_research_radar/config/*.yaml"

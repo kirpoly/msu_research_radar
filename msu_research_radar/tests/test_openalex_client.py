@@ -7,7 +7,9 @@ from typing import Any
 
 import pandas as pd
 import pytest
+import requests
 
+from msu_research_radar.publications import openalex_client
 from msu_research_radar.publications.openalex_client import (
     MSU_ROR,
     collect_openalex_works,
@@ -15,12 +17,14 @@ from msu_research_radar.publications.openalex_client import (
 
 
 class _Response:
-    def __init__(self, payload: dict[str, Any]) -> None:
+    def __init__(self, payload: dict[str, Any], status_code: int = 200, headers: dict[str, str] | None = None) -> None:
         self._payload = payload
-        self.status_code = 200
+        self.status_code = status_code
+        self.headers = headers or {}
 
     def raise_for_status(self) -> None:
-        return None
+        if self.status_code >= 400:
+            raise requests.HTTPError(f"HTTP {self.status_code}")
 
     def json(self) -> dict[str, Any]:
         return self._payload
@@ -34,6 +38,10 @@ def _make_work(
     year: int = 2026,
     institutions: list[dict[str, Any]] | None = None,
     authors: list[str] | None = None,
+    topic: str = "Mesenchymal stem cell research",
+    subfield: str = "Genetics",
+    field: str = "Medicine",
+    domain: str = "Health Sciences",
 ) -> dict[str, Any]:
     author_names = authors or ["Author One", "Author Two"]
     author_institutions = institutions or [{"display_name": "MSU", "ror": MSU_ROR}]
@@ -44,6 +52,7 @@ def _make_work(
                 "author": {"display_name": name},
                 "raw_affiliation_strings": ["Lomonosov Moscow State University"],
                 "institutions": author_institutions,
+                "is_corresponding": False,
             }
         )
 
@@ -58,82 +67,209 @@ def _make_work(
         "authorships": authorships,
         "primary_location": {"source": {"display_name": "Test Journal"}},
         "topics": [{"display_name": "Stem Cells"}],
+        "primary_topic": {
+            "display_name": topic,
+            "subfield": {"display_name": subfield},
+            "field": {"display_name": field},
+            "domain": {"display_name": domain},
+        },
     }
 
 
-def test_collect_openalex_works_pagination_and_persistence(
+def test_collect_openalex_works_chunked_by_year_and_dedupes(
     tmp_path: Path,
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
-    page1 = {
-        "meta": {"next_cursor": "abc"},
-        "results": [
-            _make_work("https://openalex.org/W1", "Title 1"),
-            _make_work("https://openalex.org/W2", "Title 2"),
-        ],
-    }
-    page2 = {
-        "meta": {"next_cursor": None},
-        "results": [_make_work("https://openalex.org/W3", "Title 3")],
-    }
     calls: list[dict[str, Any]] = []
+    data_map = {
+        ("2022-01-01", "2022-12-31", "*"): _Response(
+            {
+                "meta": {"next_cursor": None},
+                "results": [
+                    _make_work("https://openalex.org/W1", "T1", publication_date="2022-01-01", year=2022),
+                    _make_work("https://openalex.org/W2", "T2", publication_date="2022-02-01", year=2022),
+                ],
+            }
+        ),
+        ("2023-01-01", "2023-12-31", "*"): _Response(
+            {
+                "meta": {"next_cursor": None},
+                "results": [
+                    _make_work("https://openalex.org/W2", "T2 duplicate", publication_date="2023-01-03", year=2023),
+                    _make_work("https://openalex.org/W3", "T3", publication_date="2023-03-01", year=2023),
+                ],
+            }
+        ),
+    }
 
-    def fake_get(url: str, params: dict[str, Any], timeout: int) -> _Response:
-        calls.append({"url": url, "params": dict(params)})
-        assert MSU_ROR in params["filter"]
-        assert "from_publication_date:2022-01-01" in params["filter"]
-        assert "to_publication_date:2026-05-20" in params["filter"]
-        assert params["sort"] == "publication_date:desc"
-        cursor = params.get("cursor")
-        if cursor == "*":
-            return _Response(page1)
-        if cursor == "abc":
-            return _Response(page2)
-        raise AssertionError(f"Unexpected cursor {cursor}")
+    def fake_get(self: requests.Session, url: str, params: dict[str, Any], timeout: tuple[float, float]) -> _Response:
+        calls.append({"url": url, "params": dict(params), "timeout": timeout})
+        filter_parts = {
+            item.split(":", 1)[0]: item.split(":", 1)[1]
+            for item in str(params["filter"]).split(",")
+            if ":" in item
+        }
+        key = (
+            filter_parts["from_publication_date"],
+            filter_parts["to_publication_date"],
+            str(params.get("cursor")),
+        )
+        return data_map[key]
 
-    monkeypatch.setattr("msu_research_radar.publications.openalex_client.requests.get", fake_get)
+    monkeypatch.setattr(requests.Session, "get", fake_get)
+    monkeypatch.setattr(openalex_client.time, "sleep", lambda _x: None)
+    monkeypatch.setattr(openalex_client.random, "uniform", lambda _a, _b: 0.0)
 
     result = collect_openalex_works(
         from_date="2022-01-01",
-        to_date="2026-05-20",
-        limit=3,
+        to_date="2023-12-31",
+        limit=None,
         raw_base_dir=tmp_path / "raw",
         interim_dir=tmp_path / "interim",
+        chunk_by="year",
     )
 
     assert result["records_collected"] == 3
-    assert result["pages_collected"] == 2
+    assert result["chunks_total"] == 2
+    assert result["chunks_ok"] == 2
+    assert result["chunks_failed"] == 0
     assert len(calls) == 2
 
-    run_dir = Path(result["raw_run_dir"])
-    assert run_dir.exists()
-    assert (run_dir / "page_0001.json").exists()
-    assert (run_dir / "page_0002.json").exists()
-    manifest = json.loads((run_dir / "manifest.json").read_text(encoding="utf-8"))
-    assert manifest["records_collected"] == 3
-    assert manifest["pages_collected"] == 2
+    df = pd.read_parquet(result["parquet_path"])
+    assert sorted(df["openalex_id"].tolist()) == [
+        "https://openalex.org/W1",
+        "https://openalex.org/W2",
+        "https://openalex.org/W3",
+    ]
+    assert "topic" in df.columns
+    assert "subfield" in df.columns
+    assert "field" in df.columns
+    assert "domain" in df.columns
+    manifest = json.loads(Path(result["manifest_path"]).read_text(encoding="utf-8"))
+    assert manifest["chunks_ok"] == 2
+    assert manifest["chunks_failed"] == 0
+    assert len(manifest["chunk_summaries"]) == 2
 
-    parquet_df = pd.read_parquet(result["parquet_path"])
-    csv_df = pd.read_csv(result["csv_path"])
-    assert len(parquet_df) == 3
-    assert len(csv_df) == 3
-    assert set(
-        [
-            "openalex_id",
-            "doi",
-            "title",
-            "abstract",
-            "publication_date",
-            "publication_year",
-            "journal",
-            "cited_by_count",
-            "authors",
-            "raw_affiliation_strings",
-            "institutions",
-            "topics",
-        ]
-    ).issubset(parquet_df.columns)
-    assert parquet_df.loc[0, "abstract"] == "Hello world"
+
+def test_collect_openalex_retries_on_429_then_succeeds(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    state = {"calls": 0}
+
+    def fake_get(self: requests.Session, url: str, params: dict[str, Any], timeout: tuple[float, float]) -> _Response:
+        state["calls"] += 1
+        if state["calls"] == 1:
+            return _Response({"meta": {"next_cursor": "*"}, "results": []}, status_code=429, headers={"Retry-After": "0"})
+        return _Response(
+            {
+                "meta": {"next_cursor": None},
+                "results": [_make_work("https://openalex.org/W1", "T1", publication_date="2022-01-01", year=2022)],
+            }
+        )
+
+    monkeypatch.setattr(requests.Session, "get", fake_get)
+    monkeypatch.setattr(openalex_client.time, "sleep", lambda _x: None)
+    monkeypatch.setattr(openalex_client.random, "uniform", lambda _a, _b: 0.0)
+
+    result = collect_openalex_works(
+        from_date="2022-01-01",
+        to_date="2022-12-31",
+        limit=None,
+        raw_base_dir=tmp_path / "raw",
+        interim_dir=tmp_path / "interim",
+        max_retries=2,
+    )
+
+    assert state["calls"] == 2
+    assert result["records_collected"] == 1
+    manifest = json.loads(Path(result["manifest_path"]).read_text(encoding="utf-8"))
+    assert manifest["chunk_summaries"][0]["retry_events_used"] >= 1
+
+
+def test_collect_openalex_partial_failure_does_not_overwrite_outputs(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    interim_dir = tmp_path / "interim"
+    interim_dir.mkdir(parents=True, exist_ok=True)
+    existing_csv = interim_dir / "openalex_works.csv"
+    existing_parquet = interim_dir / "openalex_works.parquet"
+    pd.DataFrame([{"openalex_id": "old"}]).to_csv(existing_csv, index=False)
+    pd.DataFrame([{"openalex_id": "old"}]).to_parquet(existing_parquet, index=False, engine="pyarrow")
+
+    def fake_get(self: requests.Session, url: str, params: dict[str, Any], timeout: tuple[float, float]) -> _Response:
+        filter_parts = {
+            item.split(":", 1)[0]: item.split(":", 1)[1]
+            for item in str(params["filter"]).split(",")
+            if ":" in item
+        }
+        if filter_parts["from_publication_date"] == "2022-01-01":
+            return _Response(
+                {
+                    "meta": {"next_cursor": None},
+                    "results": [_make_work("https://openalex.org/W1", "T1", publication_date="2022-01-01", year=2022)],
+                }
+            )
+        raise requests.SSLError("record layer failure")
+
+    monkeypatch.setattr(requests.Session, "get", fake_get)
+    monkeypatch.setattr(openalex_client.time, "sleep", lambda _x: None)
+    monkeypatch.setattr(openalex_client.random, "uniform", lambda _a, _b: 0.0)
+
+    with pytest.raises(RuntimeError):
+        collect_openalex_works(
+            from_date="2022-01-01",
+            to_date="2023-12-31",
+            limit=None,
+            raw_base_dir=tmp_path / "raw",
+            interim_dir=interim_dir,
+            chunk_by="year",
+            max_retries=0,
+        )
+
+    csv_df = pd.read_csv(existing_csv)
+    parquet_df = pd.read_parquet(existing_parquet)
+    assert csv_df.iloc[0]["openalex_id"] == "old"
+    assert parquet_df.iloc[0]["openalex_id"] == "old"
+
+    manifests = sorted((tmp_path / "raw").glob("openalex_*/manifest.json"))
+    assert manifests
+    manifest = json.loads(manifests[-1].read_text(encoding="utf-8"))
+    assert manifest["chunks_failed"] == 1
+
+
+def test_collect_openalex_chunk_none_keeps_single_range(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    call_filters: list[str] = []
+
+    def fake_get(self: requests.Session, url: str, params: dict[str, Any], timeout: tuple[float, float]) -> _Response:
+        call_filters.append(str(params["filter"]))
+        return _Response(
+            {
+                "meta": {"next_cursor": None},
+                "results": [_make_work("https://openalex.org/W1", "T1", publication_date="2022-01-01", year=2022)],
+            }
+        )
+
+    monkeypatch.setattr(requests.Session, "get", fake_get)
+    monkeypatch.setattr(openalex_client.time, "sleep", lambda _x: None)
+    monkeypatch.setattr(openalex_client.random, "uniform", lambda _a, _b: 0.0)
+
+    result = collect_openalex_works(
+        from_date="2022-01-01",
+        to_date="2024-05-20",
+        limit=None,
+        raw_base_dir=tmp_path / "raw",
+        interim_dir=tmp_path / "interim",
+        chunk_by="none",
+    )
+    assert result["chunks_total"] == 1
+    assert len(call_filters) == 1
+    assert "from_publication_date:2022-01-01" in call_filters[0]
+    assert "to_publication_date:2024-05-20" in call_filters[0]
 
 
 def test_collect_openalex_contains_alexandrushkina_2026_article(
@@ -155,12 +291,13 @@ def test_collect_openalex_contains_alexandrushkina_2026_article(
             "Makarevich Pavel I.",
         ],
     )
-    payload = {"meta": {"next_cursor": None}, "results": [alex_work]}
 
-    def fake_get(url: str, params: dict[str, Any], timeout: int) -> _Response:
-        return _Response(payload)
+    def fake_get(self: requests.Session, url: str, params: dict[str, Any], timeout: tuple[float, float]) -> _Response:
+        return _Response({"meta": {"next_cursor": None}, "results": [alex_work]})
 
-    monkeypatch.setattr("msu_research_radar.publications.openalex_client.requests.get", fake_get)
+    monkeypatch.setattr(requests.Session, "get", fake_get)
+    monkeypatch.setattr(openalex_client.time, "sleep", lambda _x: None)
+    monkeypatch.setattr(openalex_client.random, "uniform", lambda _a, _b: 0.0)
 
     result = collect_openalex_works(
         from_date="2026-01-01",
@@ -181,44 +318,10 @@ def test_collect_openalex_contains_alexandrushkina_2026_article(
         == "Reconceptualizing Mesenchymal Stromal Cell Sheets: From Delivery Tool to Models of Morphogenesis"
     )
     assert any(inst.get("ror") == MSU_ROR for inst in record["institutions"])
-
-
-def test_collect_openalex_works_no_limit_collects_all_pages(
-    tmp_path: Path,
-    monkeypatch: pytest.MonkeyPatch,
-) -> None:
-    page1 = {
-        "meta": {"next_cursor": "cursor2"},
-        "results": [_make_work("https://openalex.org/W10", "A1"), _make_work("https://openalex.org/W11", "A2")],
-    }
-    page2 = {
-        "meta": {"next_cursor": None},
-        "results": [_make_work("https://openalex.org/W12", "A3")],
-    }
-    call_count = {"n": 0}
-
-    def fake_get(url: str, params: dict[str, Any], timeout: int) -> _Response:
-        call_count["n"] += 1
-        if params.get("cursor") == "*":
-            return _Response(page1)
-        if params.get("cursor") == "cursor2":
-            return _Response(page2)
-        raise AssertionError(f"Unexpected cursor {params.get('cursor')}")
-
-    monkeypatch.setattr("msu_research_radar.publications.openalex_client.requests.get", fake_get)
-
-    result = collect_openalex_works(
-        from_date="2022-01-01",
-        to_date="2026-05-20",
-        limit=None,
-        raw_base_dir=tmp_path / "raw",
-        interim_dir=tmp_path / "interim",
-    )
-
-    assert result["requested_limit"] is None
-    assert result["records_collected"] == 3
-    assert result["pages_collected"] == 2
-    assert call_count["n"] == 2
+    assert record["topic"] == "Mesenchymal stem cell research"
+    assert record["subfield"] == "Genetics"
+    assert record["field"] == "Medicine"
+    assert record["domain"] == "Health Sciences"
 
 
 @pytest.mark.live_openalex

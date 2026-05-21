@@ -21,6 +21,11 @@ dependencies = [
   "pyarrow",
 ]
 
+[project.optional-dependencies]
+dev = [
+  "pytest",
+]
+
 [project.scripts]
 msu_research_radar = "msu_research_radar.cli:main"
 

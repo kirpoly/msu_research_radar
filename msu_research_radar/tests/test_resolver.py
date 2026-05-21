@@ -29,12 +29,12 @@ PROFILE_HTML = """
 <html>
   <body>
     <div class="personal-info">
-      <a class="fullname">Александрушкина Наталья Андреевна</a>
+      <a class="fullname">Alexandrushkina Natalia Andreevna</a>
       <span class="badge badge-primary">N.Alexandrushkina</span>
       <p class="position">
-        <a href="/organizations/department/58239330/">Лаборатория медицинской биоинженерии</a>
-        <a href="/organizations/department/708037354/">Медицинский научно-образовательный институт</a>
-        <span class="name">научный сотрудник</span>
+        <a href="/organizations/department/58239330/">Regenerative Medicine Lab</a>
+        <a href="/organizations/department/708037354/">Medical Research and Education Institute</a>
+        <span class="name">researcher</span>
       </p>
       <div>IstinaResearcherID (IRID): 50264918</div>
     </div>
@@ -64,24 +64,28 @@ def test_resolve_person_auto_selects_single_exact_match(
     monkeypatch.setattr(resolver, "INTERIM_PROFILE_DIR", tmp_path / "interim")
     monkeypatch.setattr(
         resolver,
-        "search_istina_employees",
+        "search_istina_employees_normalized",
         Mock(
-            return_value=[
-                {
-                    "name": "Кандидат 1",
-                    "profile_url": "https://istina.msu.ru/profile/candidate1/",
-                    "worker_url": "https://istina.msu.ru/workers/111/",
-                    "snippet": "snippet 1",
-                    "affiliation_hint": "aff1",
-                },
-                {
-                    "name": "Кандидат 2",
-                    "profile_url": "https://istina.msu.ru/profile/candidate2/",
-                    "worker_url": "https://istina.msu.ru/workers/222/",
-                    "snippet": "snippet 2",
-                    "affiliation_hint": "aff2",
-                },
-            ]
+            return_value={
+                "input_name": "Natalia A Alexandrushkina",
+                "effective_queries": ["Alexandrushkina N", "Alexandrushkina N.A."],
+                "candidates": [
+                    {
+                        "name": "Candidate 1",
+                        "profile_url": "https://istina.msu.ru/profile/candidate1/",
+                        "worker_url": "https://istina.msu.ru/workers/111/",
+                        "snippet": "snippet 1",
+                        "affiliation_hint": "aff1",
+                    },
+                    {
+                        "name": "Candidate 2",
+                        "profile_url": "https://istina.msu.ru/profile/candidate2/",
+                        "worker_url": "https://istina.msu.ru/workers/222/",
+                        "snippet": "snippet 2",
+                        "affiliation_hint": "aff2",
+                    },
+                ],
+            }
         ),
     )
 
@@ -104,18 +108,19 @@ def test_resolve_person_auto_selects_single_exact_match(
     monkeypatch.setattr(resolver.requests, "get", fake_get)
 
     result = resolver.resolve_istina_person(
-        query="Александрушкина Н",
+        query="Natalia A Alexandrushkina",
         article_title="Target Article",
         coauthors=["Author A"],
     )
 
     assert result["selection_mode"] == "single exact title match"
-    assert result["chosen_candidate"]["name"] == "Кандидат 1"
+    assert result["effective_queries"] == ["Alexandrushkina N", "Alexandrushkina N.A."]
+    assert result["chosen_candidate"]["name"] == "Candidate 1"
     assert result["chosen_match"]["title_exact_norm"] is True
     output_path = Path(result["output_json_path"])
     assert output_path.exists()
     saved = json.loads(output_path.read_text(encoding="utf-8"))
-    assert saved["chosen_candidate"]["name"] == "Кандидат 1"
+    assert saved["chosen_candidate"]["name"] == "Candidate 1"
 
 
 def test_resolve_person_interactive_fallback_with_coauthor_bonus(
@@ -126,24 +131,28 @@ def test_resolve_person_interactive_fallback_with_coauthor_bonus(
     monkeypatch.setattr(resolver, "INTERIM_PROFILE_DIR", tmp_path / "interim")
     monkeypatch.setattr(
         resolver,
-        "search_istina_employees",
+        "search_istina_employees_normalized",
         Mock(
-            return_value=[
-                {
-                    "name": "Кандидат 1",
-                    "profile_url": "https://istina.msu.ru/profile/candidate1/",
-                    "worker_url": "https://istina.msu.ru/workers/333/",
-                    "snippet": "snippet 1",
-                    "affiliation_hint": "aff1",
-                },
-                {
-                    "name": "Кандидат 2",
-                    "profile_url": "https://istina.msu.ru/profile/candidate2/",
-                    "worker_url": "https://istina.msu.ru/workers/444/",
-                    "snippet": "snippet 2",
-                    "affiliation_hint": "aff2",
-                },
-            ]
+            return_value={
+                "input_name": "Alexandrushkina N",
+                "effective_queries": ["Alexandrushkina N"],
+                "candidates": [
+                    {
+                        "name": "Candidate 1",
+                        "profile_url": "https://istina.msu.ru/profile/candidate1/",
+                        "worker_url": "https://istina.msu.ru/workers/333/",
+                        "snippet": "snippet 1",
+                        "affiliation_hint": "aff1",
+                    },
+                    {
+                        "name": "Candidate 2",
+                        "profile_url": "https://istina.msu.ru/profile/candidate2/",
+                        "worker_url": "https://istina.msu.ru/workers/444/",
+                        "snippet": "snippet 2",
+                        "affiliation_hint": "aff2",
+                    },
+                ],
+            }
         ),
     )
     monkeypatch.setattr("builtins.input", Mock(return_value="1"))
@@ -167,12 +176,12 @@ def test_resolve_person_interactive_fallback_with_coauthor_bonus(
     monkeypatch.setattr(resolver.requests, "get", fake_get)
 
     result = resolver.resolve_istina_person(
-        query="Александрушкина Н",
+        query="Alexandrushkina N",
         article_title="Mesenchymal Cell Medicine",
         coauthors=["Makarevich P. I."],
     )
 
     assert result["selection_mode"] == "interactive selection"
-    assert result["chosen_candidate"]["name"] == "Кандидат 2"
+    assert result["chosen_candidate"]["name"] == "Candidate 2"
     assert result["chosen_match"]["title_exact_norm"] is False
     assert result["chosen_match"]["coauthor_overlap"]

@@ -76,6 +76,7 @@ pip-delete-this-directory.txt
 .pdm-python
 .pdm-build/
 .pixi/
+.uv-cache/
 __pypackages__/
 __marimo__/
 marimo/_static/
@@ -83,7 +84,17 @@ marimo/_lsp/
 .streamlit/secrets.toml
 
 # Generated data artifacts (keep manual fixtures)
+msu_research_radar/.pytest_tmp/
+msu_research_radar/.uv-cache/
 msu_research_radar/data/raw/openalex/**
+msu_research_radar/data/interim/**
+msu_research_radar/data/processed/**
+msu_research_radar/exports/**
+msu_research_radar/uv-*.lock
+!msu_research_radar/uv.lock
+!msu_research_radar/data/raw/
+!msu_research_radar/data/raw/istina/
+!msu_research_radar/data/raw/istina/*.html
 msu_research_radar/data/interim/openalex_works.csv
 msu_research_radar/data/interim/openalex_works.parquet
 msu_research_radar/data/raw/istina/search_cache/**

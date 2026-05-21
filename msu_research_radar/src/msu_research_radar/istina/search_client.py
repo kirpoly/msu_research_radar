@@ -12,6 +12,8 @@ from urllib.parse import urljoin
 import requests
 from bs4 import BeautifulSoup
 
+from msu_research_radar.istina.name_queries import generate_istina_name_queries
+
 ISTINA_BASE_URL = "https://istina.msu.ru"
 WORKER_SEARCH_URL = f"{ISTINA_BASE_URL}/workers/worker_search/"
 SEARCH_CACHE_DIR = Path("data/raw/istina/search_cache")
@@ -123,3 +125,56 @@ def search_istina_employees(
 
     return candidates
 
+
+def build_effective_istina_queries(input_name: str) -> list[str]:
+    """Normalize an input name to Istina-compatible surname+initial queries."""
+    variants = generate_istina_name_queries(input_name)
+    if not variants:
+        return []
+
+    effective: list[str] = []
+    seen: set[str] = set()
+    for query in variants:
+        tokens = re.findall(r"[A-Za-zА-Яа-яЁё]+", query)
+        has_initial = any(len(token) == 1 for token in tokens)
+        is_single_token = len(tokens) == 1
+        if not has_initial and not is_single_token:
+            continue
+        key = query.lower()
+        if key in seen:
+            continue
+        seen.add(key)
+        effective.append(query)
+    return effective
+
+
+def search_istina_employees_normalized(
+    input_name: str,
+    *,
+    delay_seconds: float = 0.0,
+    refresh: bool = False,
+) -> dict[str, Any]:
+    """Search Istina with normalized surname+initial queries only."""
+    effective_queries = build_effective_istina_queries(input_name)
+    all_candidates: list[dict[str, Any]] = []
+    seen_keys: set[str] = set()
+
+    for query in effective_queries:
+        for candidate in search_istina_employees(
+            query=query,
+            delay_seconds=delay_seconds,
+            refresh=refresh,
+        ):
+            key = candidate.get("worker_url") or candidate.get("profile_url") or candidate.get("name") or ""
+            if not key or key in seen_keys:
+                continue
+            seen_keys.add(key)
+            enriched = dict(candidate)
+            enriched["matched_query"] = query
+            all_candidates.append(enriched)
+
+    return {
+        "input_name": input_name,
+        "effective_queries": effective_queries,
+        "candidates": all_candidates,
+    }

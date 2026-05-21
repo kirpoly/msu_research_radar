@@ -93,3 +93,29 @@ def test_search_prints_diagnostics_when_structure_unexpected(
     assert "[istina-search] diagnostics" in output
     assert "cards=0" in output
 
+
+def test_build_effective_istina_queries_strips_raw_full_name() -> None:
+    queries = search_client.build_effective_istina_queries("Natalia A. Alexandrushkina")
+    assert queries
+    assert "Alexandrushkina N" in queries
+    assert "Natalia A. Alexandrushkina" not in queries
+
+
+def test_search_istina_employees_normalized_uses_effective_queries(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    mock_search = Mock(
+        side_effect=[
+            [{"name": "Person 1", "worker_url": "https://istina.msu.ru/workers/1/", "profile_url": None}],
+            [{"name": "Person 1", "worker_url": "https://istina.msu.ru/workers/1/", "profile_url": None}],
+        ]
+    )
+    monkeypatch.setattr(search_client, "build_effective_istina_queries", Mock(return_value=["A N", "A N."]))
+    monkeypatch.setattr(search_client, "search_istina_employees", mock_search)
+
+    payload = search_client.search_istina_employees_normalized("Any Input")
+
+    assert payload["input_name"] == "Any Input"
+    assert payload["effective_queries"] == ["A N", "A N."]
+    assert len(payload["candidates"]) == 1
+    assert payload["candidates"][0]["matched_query"] == "A N"

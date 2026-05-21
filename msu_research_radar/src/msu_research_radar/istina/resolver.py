@@ -16,7 +16,9 @@ from bs4 import BeautifulSoup
 from rapidfuzz import fuzz
 
 from msu_research_radar.istina.profile_parser import parse_istina_profile_html
-from msu_research_radar.istina.search_client import ISTINA_BASE_URL, search_istina_employees
+from msu_research_radar.istina.search_client import (
+    search_istina_employees_normalized,
+)
 
 PROFILE_CACHE_DIR = Path("data/raw/istina/profiles")
 INTERIM_PROFILE_DIR = Path("data/interim/istina_profiles")
@@ -234,13 +236,17 @@ def resolve_istina_person(
 ) -> dict[str, Any]:
     """Resolve an Istina person using search + publication matching."""
     input_coauthors = coauthors or []
-    candidates = search_istina_employees(
-        query=query,
+    search_payload = search_istina_employees_normalized(
+        input_name=query,
         delay_seconds=delay_seconds,
         refresh=refresh_search,
     )
+    effective_queries = search_payload["effective_queries"]
+    candidates = search_payload["candidates"]
     if not candidates:
-        raise RuntimeError(f"No Istina candidates found for query: {query!r}")
+        raise RuntimeError(
+            f"No Istina candidates found for input_name={query!r} using effective_queries={effective_queries!r}"
+        )
 
     scored = [
         _score_candidate(
@@ -273,7 +279,9 @@ def resolve_istina_person(
     parsed_profile = parse_istina_profile_html(profile_html, url=profile_url or fetch_url)
 
     result = {
+        "input_name": query,
         "query": query,
+        "effective_queries": effective_queries,
         "article_title": article_title,
         "input_coauthors": input_coauthors,
         "selection_mode": selection_mode,
@@ -310,4 +318,3 @@ def resolve_istina_person(
     result["output_json_path"] = str(output_path)
 
     return result
-

@@ -6,20 +6,33 @@ from msu_research_radar.cli import main
 
 
 def test_cli_search_person_command(monkeypatch, capsys) -> None:
-    fake = [{"name": "Александрушкина Наталья Андреевна", "profile_url": "https://istina.msu.ru/profile/N.Alexandrushkina/"}]
+    fake = {
+        "input_name": "Natalia A Alexandrushkina",
+        "effective_queries": ["Alexandrushkina N", "Alexandrushkina N.A."],
+        "candidates": [
+            {
+                "name": "Alexandrushkina Natalia Andreevna",
+                "profile_url": "https://istina.msu.ru/profile/N.Alexandrushkina/",
+            }
+        ],
+    }
     mock_fn = Mock(return_value=fake)
-    monkeypatch.setattr("msu_research_radar.cli.search_istina_employees", mock_fn)
+    monkeypatch.setattr("msu_research_radar.cli.search_istina_employees_normalized", mock_fn)
 
-    code = main(["istina", "search-person", "Александрушкина Н"])
+    code = main(["istina", "search-person", "Natalia A Alexandrushkina"])
     output = capsys.readouterr().out
 
     assert code == 0
-    assert "Александрушкина Наталья Андреевна" in output
+    assert "effective_queries" in output
+    assert "Alexandrushkina N" in output
     mock_fn.assert_called_once()
 
 
 def test_cli_resolve_person_command(monkeypatch, capsys) -> None:
-    fake = {"chosen_candidate": {"name": "Александрушкина Наталья Андреевна"}, "output_json_path": "data/interim/istina_profiles/test.json"}
+    fake = {
+        "chosen_candidate": {"name": "Alexandrushkina Natalia Andreevna"},
+        "output_json_path": "data/interim/istina_profiles/test.json",
+    }
     mock_fn = Mock(return_value=fake)
     monkeypatch.setattr("msu_research_radar.cli.resolve_istina_person", mock_fn)
 
@@ -27,7 +40,7 @@ def test_cli_resolve_person_command(monkeypatch, capsys) -> None:
         [
             "istina",
             "resolve-person",
-            "Александрушкина Н",
+            "Alexandrushkina N",
             "--article-title",
             "Target Article",
             "--coauthor",
@@ -37,6 +50,5 @@ def test_cli_resolve_person_command(monkeypatch, capsys) -> None:
     output = capsys.readouterr().out
 
     assert code == 0
-    assert "Александрушкина Наталья Андреевна" in output
+    assert "Alexandrushkina Natalia Andreevna" in output
     mock_fn.assert_called_once()
-

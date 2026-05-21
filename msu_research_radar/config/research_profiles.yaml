@@ -1,0 +1,103 @@
+profiles:
+  bio_msu:
+    description: "Example user profile for biology-adjacent MSU supervisor discovery."
+    affiliation_tags:
+      biology_faculty:
+        weight: 3.0
+        include_terms:
+          - "Faculty of Biology"
+          - "Biological Faculty"
+          - "Биологический факультет"
+      adjacent_biomedical_unit:
+        weight: 1.5
+        include_terms:
+          - "bioengineering"
+          - "биоинженер"
+          - "biomedical"
+          - "biomedicine"
+          - "regenerative"
+          - "regeneration"
+    topic_tags:
+      bioengineering_regeneration:
+        weight: 2.0
+        include_terms:
+          - "bioengineering"
+          - "biomedical technolog"
+          - "regeneration"
+          - "regenerative"
+          - "tissue engineering"
+          - "stem cell"
+          - "mesenchymal"
+      systems_omics:
+        weight: 2.0
+        include_terms:
+          - "systems biology"
+          - "omics"
+          - "genomics"
+          - "transcriptomics"
+          - "proteomics"
+          - "metabolomics"
+          - "multiomics"
+      genetics_epigenetics:
+        weight: 2.0
+        include_terms:
+          - "genetic"
+          - "genetics"
+          - "genomics"
+          - "epigenetic"
+          - "epigenomics"
+          - "dna methylation"
+          - "chromatin"
+      molecular_cell_biology:
+        weight: 1.0
+        include_terms:
+          - "molecular biology"
+          - "cell biology"
+          - "cellular"
+    role_tags:
+      senior:
+        weight: 1.5
+        author_positions:
+          - "last"
+        corresponding_author: true
+        position_terms:
+          - "профессор"
+          - "доцент"
+          - "заведующий"
+          - "руководитель"
+          - "ведущий научный сотрудник"
+          - "главный научный сотрудник"
+          - "principal investigator"
+          - "head"
+          - "professor"
+      young:
+        weight: 1.0
+        author_positions:
+          - "first"
+        position_terms:
+          - "аспирант"
+          - "студент"
+          - "младший научный сотрудник"
+          - "junior"
+          - "phd student"
+    scoring:
+      recent_years: [2025, 2026]
+      supervisor_weights:
+        relevant_pub_count: 1.0
+        recent_pub_count: 1.3
+        last_author_count: 2.0
+        corresponding_author_count: 1.7
+        senior_role_tag_count: 3.0
+        matched_tag_count: 0.8
+        profile_match_score: 0.5
+        unique_msu_coauthors: 0.4
+        has_istina_profile: 1.5
+        has_unit: 1.0
+      young_contact_weights:
+        relevant_pub_count: 1.0
+        recent_pub_count: 1.5
+        first_author_count: 2.0
+        young_role_tag_count: 2.0
+        matched_tag_count: 0.8
+        profile_match_score: 0.4
+        has_istina_profile: 1.0

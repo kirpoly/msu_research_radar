@@ -123,7 +123,9 @@ def _translit_lat_to_cyr(text: str) -> str:
 
 
 def _is_initial(token: str) -> bool:
-    return len(token) == 1
+    if len(token) == 1:
+        return True
+    return token.lower() in {"yu", "ya", "yo", "ye", "zh", "kh", "ts", "ch", "sh"}
 
 
 def _extract_surname_and_initials(tokens: list[str]) -> tuple[str, list[str]]:
@@ -138,10 +140,10 @@ def _extract_surname_and_initials(tokens: list[str]) -> tuple[str, list[str]]:
 
     first = tokens[0]
     last = tokens[-1]
-    if not _is_initial(first) and any(_is_initial(t) for t in tokens[1:]):
-        surname = first
-    elif not _is_initial(last) and any(_is_initial(t) for t in tokens[:-1]):
+    if not _is_initial(last) and any(_is_initial(t) for t in tokens[:-1]):
         surname = last
+    elif not _is_initial(first) and any(_is_initial(t) for t in tokens[1:]):
+        surname = first
     else:
         surname = max(candidates, key=len)
 
